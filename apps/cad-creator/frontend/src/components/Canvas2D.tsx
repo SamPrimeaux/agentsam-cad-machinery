@@ -976,3 +976,79 @@ export const Canvas2D: React.FC<Props> = ({
       {selectedId && !isViewer && (
         <div className="absolute top-2.5 right-2.5 z-10 flex items-center space-x-1 bg-[#252525] border border-blue-500/40 p-1 rounded shadow-lg">
           {selectedType === 'furniture' && (
+            <button
+              onClick={handleRotateSelected}
+              className="px-2 py-1 bg-[#1E1E1E] hover:bg-[#333] text-gray-200 text-xs font-medium rounded flex items-center space-x-1 transition"
+            >
+              <RotateCw className="w-3 h-3" />
+              <span>Rotate 45°</span>
+            </button>
+          )}
+          <button
+            onClick={handleDeleteSelected}
+            className="px-2 py-1 bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/30 text-xs font-medium rounded flex items-center space-x-1 transition"
+          >
+            <Trash2 className="w-3 h-3" />
+            <span>Delete</span>
+          </button>
+        </div>
+      )}
+
+      {/* Main Canvas HTML5 element */}
+      <canvas
+        ref={canvasRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onWheel={handleWheel}
+        className="w-full h-full cursor-crosshair"
+      />
+
+      {/* Bottom Area & Construction Stats HUD */}
+      <div className="absolute bottom-2.5 left-2.5 z-10 flex items-center space-x-2 pointer-events-none">
+        <div className="bg-[#252525] border border-[#333] px-3 py-1.5 rounded shadow-lg flex items-center space-x-3 text-xs">
+          <div>
+            <span className="text-gray-500 block text-[9px] uppercase font-bold tracking-wider">Total Area</span>
+            <span className="font-bold text-white text-xs">{stats.areaSqFt} sq ft</span>
+          </div>
+          <div className="w-[1px] h-5 bg-[#444]"></div>
+          <div>
+            <span className="text-gray-500 block text-[9px] uppercase font-bold tracking-wider">Perimeter</span>
+            <span className="font-semibold text-gray-300 text-xs">{stats.perimeterFt} ft</span>
+          </div>
+          <div className="w-[1px] h-5 bg-[#444]"></div>
+          <div>
+            <span className="text-gray-500 block text-[9px] uppercase font-bold tracking-wider">Est. Budget</span>
+            <span className="font-semibold text-emerald-400 text-xs">${stats.estCost.toLocaleString()}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Zoom / Grid Controls Bottom Right */}
+      <div className="absolute bottom-2.5 right-2.5 z-10 flex items-center space-x-0.5 bg-[#252525] border border-[#333] p-0.5 rounded shadow-lg">
+        <button
+          onClick={() => setZoom((z) => Math.min(4, z + 0.2))}
+          className="p-1 text-gray-400 hover:text-white rounded hover:bg-[#333] transition"
+        >
+          <ZoomIn className="w-3.5 h-3.5" />
+        </button>
+        <span className="text-[10px] text-gray-400 font-mono px-1">{Math.round(zoom * 100)}%</span>
+        <button
+          onClick={() => setZoom((z) => Math.max(0.2, z - 0.2))}
+          className="p-1 text-gray-400 hover:text-white rounded hover:bg-[#333] transition"
+        >
+          <ZoomOut className="w-3.5 h-3.5" />
+        </button>
+        <button
+          onClick={() => {
+            setPan({ x: 120, y: 120 });
+            setZoom(1.4);
+          }}
+          className="px-1.5 py-0.5 text-[10px] text-gray-400 hover:text-white rounded hover:bg-[#333] transition font-mono"
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+  );
+};

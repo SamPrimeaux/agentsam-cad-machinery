@@ -702,4 +702,113 @@ export function CadCreatorApp({
       />
       {(copilotDraft || assistantReply) && <aside data-annotation-control="" aria-label="CAD copilot status" className="fixed bottom-14 right-4 z-[100] w-[min(26rem,calc(100vw-2rem))] rounded-xl border border-white/20 bg-slate-950 px-3 py-2 text-xs text-white shadow-2xl">
         <div className="flex items-center justify-between gap-2"><strong>AgentSam CAD copilot</strong><button type="button" aria-label="Dismiss copilot status" onClick={() => {setCopilotDraft('');setAssistantReply('');}}>Close</button></div>
-        {assistantReply && <p role="status" className="mt-2
+        {assistantReply && <p role="status" className="mt-2 whitespace-pre-wrap">{assistantReply}</p>}
+        {copilotDraft && <><textarea readOnly value={copilotDraft} aria-label="CAD request draft" rows={4} className="mt-2 w-full rounded bg-slate-800 p-2 text-white"/><button type="button" onClick={() => void navigator.clipboard.writeText(copilotDraft)}>Copy request</button></>}
+      </aside>}
+      {/* 4. Unified CAD Bottom Status Contract */}
+      <CadStatusStrip
+        workspace={currentWorkspaceDescriptor}
+        activeTool={activeTool}
+        unit={unit}
+        selectionCount={currentUser.selectedIds.length}
+        jobStatus={cadToolsReport ? `${cadToolsReport.available_tools}/${cadToolsReport.total_tools} Engines Online` : 'Engine Ready'}
+        isSynced={isSynced}
+        isDarkMode={isDarkMode}
+        capabilities={liveCapabilities}
+      />
+
+      {/* 5. Modals */}
+      <TemplateLibraryModal
+        isOpen={isTemplateLibraryOpen}
+        onClose={() => setIsTemplateLibraryOpen(false)}
+        onSelectTemplate={(tmpl) => {
+          if (isViewer) return;
+          updateProject(() => ({
+            ...tmpl,
+            id: `proj_${Date.now()}`,
+            updatedAt: Date.now(),
+            version: 1
+          }));
+          showToast(`Loaded "${tmpl.name}" template`);
+        }}
+        userRole={currentUser.role}
+      />
+
+      <FurniturePicker
+        isOpen={isFurniturePickerOpen}
+        onClose={() => setIsFurniturePickerOpen(false)}
+        onSelectFurniture={(type, name, category, w, d, h, color) => {
+          if (isViewer) return;
+          setSelectedFurnitureType(type);
+          setActiveTool('furniture');
+          const newFurn = {
+            id: `furn_${Date.now()}`,
+            type,
+            category,
+            name,
+            x: 150,
+            y: 150,
+            w,
+            d,
+            h,
+            rotation: 0,
+            color
+          };
+          updateProject((prev) => ({
+            ...prev,
+            furniture: [...prev.furniture, newFurn],
+            updatedAt: Date.now()
+          }));
+        }}
+      />
+
+      <ExportPublishModal
+        isOpen={isExportPublishOpen}
+        onClose={() => setIsExportPublishOpen(false)}
+        project={project}
+        canExport={permissions.canExport}
+      />
+
+      <VeoStudioModal
+        isOpen={isVeoModalOpen}
+        onClose={() => setIsVeoModalOpen(false)}
+        initialImageUrl={activeSnapshotUrl}
+      />
+
+      <ImageGenModal
+        isOpen={isImageGenModalOpen}
+        onClose={() => setIsImageGenModalOpen(false)}
+        initialImageUrl={activeSnapshotUrl}
+        onSendToVeo={(imageUrl) => {
+          setActiveSnapshotUrl(imageUrl);
+          setIsImageGenModalOpen(false);
+          setIsVeoModalOpen(true);
+        }}
+      />
+
+      <SketchUploadModal
+        isOpen={isSketchModalOpen}
+        onClose={() => setIsSketchModalOpen(false)}
+        onApplyParsedPlan={(plan) => {
+          if (isViewer) return;
+          updateProject((prev) => ({
+            ...prev,
+            walls: plan.walls && plan.walls.length > 0 ? plan.walls : prev.walls,
+            doors: plan.doors ? plan.doors : prev.doors,
+            windows: plan.windows ? plan.windows : prev.windows,
+            furniture: plan.furniture && plan.furniture.length > 0 ? plan.furniture : prev.furniture,
+            rooms: plan.rooms && plan.rooms.length > 0 ? plan.rooms : prev.rooms,
+            updatedAt: Date.now()
+          }));
+        }}
+      />
+
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-indigo-600 text-white px-4 py-2 rounded-xl shadow-xl text-xs font-semibold animate-in fade-in slide-in-from-bottom-2">
+          {toastMessage}
+        </div>
+      )}
+    </div>
+  );
+}

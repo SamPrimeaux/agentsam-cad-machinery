@@ -847,4 +847,200 @@ function create3DFurnitureMesh(
     base.receiveShadow = true;
 
     // Backrest
-    const 
+    const backH = h * 0.55;
+    const backD = d * 0.25;
+    const back = new THREE.Mesh(new THREE.BoxGeometry(w, backH, backD), mainMat);
+    back.position.set(0, baseH + backH / 2, -d / 2 + backD / 2);
+    back.castShadow = true;
+
+    // Armrests
+    const armW = w * 0.12;
+    const armH = h * 0.35;
+    const leftArm = new THREE.Mesh(new THREE.BoxGeometry(armW, armH, d), mainMat);
+    leftArm.position.set(-w / 2 + armW / 2, baseH + armH / 2, 0);
+    const rightArm = new THREE.Mesh(new THREE.BoxGeometry(armW, armH, d), mainMat);
+    rightArm.position.set(w / 2 - armW / 2, baseH + armH / 2, 0);
+
+    group.add(base, back, leftArm, rightArm);
+  } else if (item.type.includes('bed') || item.category === 'bedroom') {
+    // 3D Platform Bed (frame, mattress, pillows, headboard)
+    const frameH = h * 0.3;
+    const frame = new THREE.Mesh(new THREE.BoxGeometry(w, frameH, d), woodMat);
+    frame.position.y = frameH / 2;
+    frame.castShadow = true;
+
+    // Mattress
+    const mattH = h * 0.35;
+    const mattMat = getMaterial('fabric', '#f8fafc');
+    const mattress = new THREE.Mesh(new THREE.BoxGeometry(w * 0.95, mattH, d * 0.92), mattMat);
+    mattress.position.set(0, frameH + mattH / 2, d * 0.02);
+    mattress.castShadow = true;
+
+    // Headboard
+    const headH = h;
+    const headD = d * 0.08;
+    const head = new THREE.Mesh(new THREE.BoxGeometry(w, headH, headD), woodMat);
+    head.position.set(0, headH / 2, -d / 2 + headD / 2);
+    head.castShadow = true;
+
+    group.add(frame, mattress, head);
+  } else if (item.type.includes('table') || item.type.includes('desk') || item.category === 'tables') {
+    // 3D Table / Desk with 4 legs
+    const topH = 0.04;
+    const top = new THREE.Mesh(new THREE.BoxGeometry(w, topH, d), woodMat);
+    top.position.y = h - topH / 2;
+    top.castShadow = true;
+    top.receiveShadow = true;
+
+    const legThick = 0.04;
+    const legGeo = new THREE.BoxGeometry(legThick, h - topH, legThick);
+    const leg1 = new THREE.Mesh(legGeo, metalMat);
+    leg1.position.set(-w / 2 + legThick, (h - topH) / 2, -d / 2 + legThick);
+    const leg2 = new THREE.Mesh(legGeo, metalMat);
+    leg2.position.set(w / 2 - legThick, (h - topH) / 2, -d / 2 + legThick);
+    const leg3 = new THREE.Mesh(legGeo, metalMat);
+    leg3.position.set(-w / 2 + legThick, (h - topH) / 2, d / 2 - legThick);
+    const leg4 = new THREE.Mesh(legGeo, metalMat);
+    leg4.position.set(w / 2 - legThick, (h - topH) / 2, d / 2 - legThick);
+
+    group.add(top, leg1, leg2, leg3, leg4);
+  } else if (item.type.includes('island') || item.category === 'kitchen') {
+    // 3D Kitchen Island / Counter with marble top
+    const baseH = h * 0.9;
+    const base = new THREE.Mesh(new THREE.BoxGeometry(w, baseH, d), mainMat);
+    base.position.y = baseH / 2;
+    base.castShadow = true;
+
+    const marbleTop = new THREE.Mesh(new THREE.BoxGeometry(w * 1.05, h * 0.1, d * 1.05), getMaterial('marble'));
+    marbleTop.position.y = baseH + (h * 0.1) / 2;
+    marbleTop.castShadow = true;
+
+    group.add(base, marbleTop);
+  } else if (item.type.includes('bathtub') || item.type.includes('tub')) {
+    // 3D Freestanding Soaking Tub
+    const tubGeo = new THREE.CylinderGeometry(w / 2, w / 2.3, h, 24);
+    const tubMat = getMaterial('marble', '#ffffff');
+    const tub = new THREE.Mesh(tubGeo, tubMat);
+    tub.position.y = h / 2;
+    tub.scale.set(1, 1, d / w);
+    tub.castShadow = true;
+    group.add(tub);
+  } else if (item.type.includes('plant')) {
+    // 3D Potted Plant
+    const potH = h * 0.35;
+    const pot = new THREE.Mesh(new THREE.CylinderGeometry(w * 0.4, w * 0.3, potH, 16), getMaterial('terracotta', '#ea580c'));
+    pot.position.y = potH / 2;
+    pot.castShadow = true;
+
+    const foliage = new THREE.Mesh(new THREE.SphereGeometry(w * 0.45, 12, 12), getMaterial('foliage', '#15803d'));
+    foliage.position.y = potH + (h * 0.4);
+    foliage.castShadow = true;
+
+    group.add(pot, foliage);
+  } else {
+    // Generic Architectural Cuboid
+    const box = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mainMat);
+    box.position.y = h / 2;
+    box.castShadow = true;
+    box.receiveShadow = true;
+    group.add(box);
+  }
+
+  return group;
+}
+
+function createParametricObjectMesh(
+  item: ParametricObject,
+  getMaterial: (type: string, color?: string) => THREE.Material
+): THREE.Group {
+  const group = new THREE.Group();
+  group.position.set(item.transform.x * SCALE, (item.transform.z || 0) * SCALE, item.transform.y * SCALE);
+  group.rotation.y = -((item.transform.rotationY || 0) * Math.PI) / 180;
+
+  const w = (Number(item.parameters.deskWidth || item.parameters.unitWidth || item.parameters.postSpanX || 48)) * SCALE;
+  const d = (Number(item.parameters.deskDepth || item.parameters.unitDepth || item.parameters.postSpanY || 24)) * SCALE;
+  const h = (Number(item.parameters.deskHeight || item.parameters.unitHeight || item.parameters.totalHeight || 30)) * SCALE;
+
+  const woodMat = getMaterial('wood_panel', '#d97706');
+  const metalMat = getMaterial('steel', '#475569');
+  const accentMat = getMaterial('accent', '#a855f7');
+
+  if (item.generatorTemplate === 'workstation' || item.name.toLowerCase().includes('desk')) {
+    // Desktop slab
+    const topH = 0.035;
+    const top = new THREE.Mesh(new THREE.BoxGeometry(w, topH, d), woodMat);
+    top.position.y = h - topH / 2;
+    top.castShadow = true;
+    top.receiveShadow = true;
+
+    // 4 legs
+    const legThick = 0.045;
+    const legGeo = new THREE.BoxGeometry(legThick, h - topH, legThick);
+    const leg1 = new THREE.Mesh(legGeo, metalMat);
+    leg1.position.set(-w / 2 + legThick, (h - topH) / 2, -d / 2 + legThick);
+    const leg2 = new THREE.Mesh(legGeo, metalMat);
+    leg2.position.set(w / 2 - legThick, (h - topH) / 2, -d / 2 + legThick);
+    const leg3 = new THREE.Mesh(legGeo, metalMat);
+    leg3.position.set(-w / 2 + legThick, (h - topH) / 2, d / 2 - legThick);
+    const leg4 = new THREE.Mesh(legGeo, metalMat);
+    leg4.position.set(w / 2 - legThick, (h - topH) / 2, d / 2 - legThick);
+
+    // Modesty Panel
+    const modH = h * 0.45;
+    const mod = new THREE.Mesh(new THREE.BoxGeometry(w * 0.85, modH, 0.02), metalMat);
+    mod.position.set(0, h - topH - modH / 2, -d / 2 + 0.04);
+    mod.castShadow = true;
+
+    group.add(top, leg1, leg2, leg3, leg4, mod);
+  } else if (item.generatorTemplate === 'bookshelf' || item.name.toLowerCase().includes('shelf')) {
+    // Bookshelf Frame
+    const t = 0.02;
+    const left = new THREE.Mesh(new THREE.BoxGeometry(t, h, d), woodMat);
+    left.position.set(-w / 2 + t / 2, h / 2, 0);
+    const right = new THREE.Mesh(new THREE.BoxGeometry(t, h, d), woodMat);
+    right.position.set(w / 2 - t / 2, h / 2, 0);
+    const bottom = new THREE.Mesh(new THREE.BoxGeometry(w, t, d), woodMat);
+    bottom.position.set(0, t / 2, 0);
+    const top = new THREE.Mesh(new THREE.BoxGeometry(w, t, d), woodMat);
+    top.position.set(0, h - t / 2, 0);
+
+    group.add(left, right, bottom, top);
+
+    const numShelves = Number(item.parameters.numShelves || 4);
+    const shelfSpacing = (h - 2 * t) / (numShelves + 1);
+    for (let s = 1; s <= numShelves; s++) {
+      const shelf = new THREE.Mesh(new THREE.BoxGeometry(w - 2 * t, t, d), woodMat);
+      shelf.position.set(0, s * shelfSpacing, 0);
+      shelf.castShadow = true;
+      group.add(shelf);
+    }
+  } else if (item.generatorTemplate === 'pergola' || item.name.toLowerCase().includes('pergola')) {
+    const postSize = 0.12;
+    const postGeo = new THREE.BoxGeometry(postSize, h, postSize);
+    const p1 = new THREE.Mesh(postGeo, woodMat);
+    p1.position.set(-w / 2, h / 2, -d / 2);
+    const p2 = new THREE.Mesh(postGeo, woodMat);
+    p2.position.set(w / 2, h / 2, -d / 2);
+    const p3 = new THREE.Mesh(postGeo, woodMat);
+    p3.position.set(-w / 2, h / 2, d / 2);
+    const p4 = new THREE.Mesh(postGeo, woodMat);
+    p4.position.set(w / 2, h / 2, d / 2);
+
+    const beamGeo = new THREE.BoxGeometry(w + 0.4, 0.2, 0.08);
+    const b1 = new THREE.Mesh(beamGeo, woodMat);
+    b1.position.set(0, h + 0.1, -d / 2);
+    const b2 = new THREE.Mesh(beamGeo, woodMat);
+    b2.position.set(0, h + 0.1, d / 2);
+
+    group.add(p1, p2, p3, p4, b1, b2);
+  } else {
+    // Custom Parametric Bounding Box with Purple Architectural Accent
+    const box = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), accentMat);
+    box.position.y = h / 2;
+    box.castShadow = true;
+    box.receiveShadow = true;
+    group.add(box);
+  }
+
+  return group;
+}
