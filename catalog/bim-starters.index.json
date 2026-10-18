@@ -6,7 +6,7 @@
     "bucket": "cad",
     "keyPrefix": "library/bim-starters/"
   },
-  "verificationNote": "Remote manifests fetched through the connected R2 service on 2026-10-18; source SHA-256 values matched the preserved local FreeCAD source files. Other object bytes have not been individually compared against remote hashes. Public distribution rights remain unreviewed.",
+  "verificationNote": "Both remote manifests and both normal (unescaped) GLB preview keys were fetched through the connected R2 service on 2026-10-18; source SHA-256 values matched preserved local FreeCAD sources. Remote preview SHA-256 has not been compared, nor have source and thumbnail bytes been independently checked. Distribution rights remain unreviewed.",
   "items": [
     {
       "id": "bimexample",
@@ -24,7 +24,8 @@
       "verification": {
         "remoteManifest": true,
         "localSourceHashMatchesManifest": true,
-        "remoteBinaryHashConfirmed": false
+        "remoteBinaryHashConfirmed": false,
+        "remotePreviewExists": true
       },
       "access": "internal-pending-license-review"
     },
@@ -45,7 +46,8 @@
       "verification": {
         "remoteManifest": true,
         "localSourceHashMatchesManifest": true,
-        "remoteBinaryHashConfirmed": false
+        "remoteBinaryHashConfirmed": false,
+        "remotePreviewExists": true
       },
       "access": "internal-pending-license-review"
     }
