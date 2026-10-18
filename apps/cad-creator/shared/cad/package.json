@@ -1,0 +1,19 @@
+{
+  "name": "@inneranimalmedia/agentsam-cad-shared",
+  "version": "2.6.12",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./types": "./src/types.ts",
+    "./operations": "./src/domain/operations.ts",
+    "./validation": "./src/domain/validation.ts",
+    "./robotics": "./src/robotics/types.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.2"
+  }
+}
