@@ -1,0 +1,10 @@
+{
+  "contract": "cad.runtime.package.v1",
+  "originRepo": "SamPrimeaux/agentsam-sdk",
+  "originCommit": "511280e0e7170502514b17d100c2dc17a7d204fd",
+  "generator": "esbuild bundled from src/lib/cad/project-cli.js",
+  "files": {
+    "project-cli.mjs": "2a4e5886d0c6f3632500419934e53014f443311816158585246a487316a3beb3",
+    "cad/blender/adapter.py": "b43967854ea9ccdd3047711fd370a8bdd50a454442fd01d43d9ef099ab5203ea"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "agentsam.host-install.v1",
+  "app_id": "cad-creator",
+  "config": {
+    "modes": [
+      "standalone",
+      "embedded"
+    ],
+    "runtime": {
+      "native_engines": "discovered_on_machine",
+      "docker_cad": "explicit_approval",
+      "cloudflare_native_processes": "unavailable"
+    }
+  },
+  "mounts": [
+    {
+      "id": "cad",
+      "path": "/cad"
+    }
+  ],
+  "features": [],
+  "notes": "Host-local installation configuration only. Canonical product definition/capabilities are in ../agentsam.app.json."
+}
