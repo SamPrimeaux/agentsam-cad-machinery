@@ -48,7 +48,10 @@
     "package:verify": "npm run build && npm run typecheck && npm test && npm run test:bim && node scripts/verify-publish-package.mjs",
     "prepack": "npm run package:verify",
     "prepare:runtime": "node scripts/prepare-cad-runtime.mjs",
-    "test:bim": "node --test bin/bim-starters.test.mjs"
+    "test:bim": "node --test bin/bim-starters.test.mjs",
+    "worker:build": "node scripts/verify-worker-config.mjs && npm run build -w @inneranimalmedia/agentsam-cad-frontend",
+    "worker:dry-run": "npm run worker:build && wrangler deploy -c backend/wrangler.jsonc --dry-run",
+    "worker:deploy": "npm run worker:build && wrangler deploy -c backend/wrangler.jsonc"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -79,7 +82,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SamPrimeaux/agentsam-sdk.git",
+    "url": "git+https://github.com/SamPrimeaux/agentsam-cad-machinery.git",
     "directory": "apps/cad-creator"
   }
 }
