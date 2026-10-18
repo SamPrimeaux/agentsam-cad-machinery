@@ -1,0 +1,53 @@
+{
+  "index": "cad-bim-source-index",
+  "status": "metadata-verified",
+  "storage": {
+    "provider": "cloudflare-r2",
+    "bucket": "cad",
+    "keyPrefix": "library/bim-starters/"
+  },
+  "verificationNote": "Remote manifests fetched through the connected R2 service on 2026-10-18; source SHA-256 values matched the preserved local FreeCAD source files. Other object bytes have not been individually compared against remote hashes. Public distribution rights remain unreviewed.",
+  "items": [
+    {
+      "id": "bimexample",
+      "title": "BIMExample",
+      "sourceFormat": "FCStd",
+      "sourceSha256": "94f4f71d256f467c2de637fbcf1955347cd1ac5ed298ea80c5ad4ae4720a0cb6",
+      "objectCount": 362,
+      "meshCount": 113,
+      "materialCount": 10,
+      "manifestKey": "library/bim-starters/bimexample/BIMExample-Manifest.json",
+      "sourceKey": "library/bim-starters/bimexample/BIMExample-FreeCAD-Source.FCStd",
+      "previewKey": "library/bim-starters/bimexample/BIMExample-Interactive-Preview.glb",
+      "thumbnailKey": "library/bim-starters/bimexample/BIMExample-Thumbnail.png",
+      "localPreviewSha256": "84c1810032b5cd6145deec9cce0a3178f12bb880f44b6595e14eca749d8d59a5",
+      "verification": {
+        "remoteManifest": true,
+        "localSourceHashMatchesManifest": true,
+        "remoteBinaryHashConfirmed": false
+      },
+      "access": "internal-pending-license-review"
+    },
+    {
+      "id": "archdetail",
+      "title": "ArchDetail",
+      "sourceFormat": "FCStd",
+      "sourceSha256": "227b01f28f089fbea7d380b6a09032d782880b5f0a9d60bd25e8d2c6fc5d0cc9",
+      "objectCount": 435,
+      "meshCount": 129,
+      "materialCount": 34,
+      "manifestKey": "library/bim-starters/archdetail/ArchDetail-Manifest.json",
+      "sourceKey": "library/bim-starters/archdetail/ArchDetail-FreeCAD-Source.FCStd",
+      "workingSourceKey": "library/bim-starters/archdetail/ArchDetail-FreeCAD-Working.FCStd",
+      "previewKey": "library/bim-starters/archdetail/ArchDetail-Interactive-Preview.glb",
+      "thumbnailKey": "library/bim-starters/archdetail/ArchDetail-Thumbnail.png",
+      "localPreviewSha256": "1a75468fa6171d7e2661ae14df19397a32f8611a6f421b9f0af950b6fe7a0117",
+      "verification": {
+        "remoteManifest": true,
+        "localSourceHashMatchesManifest": true,
+        "remoteBinaryHashConfirmed": false
+      },
+      "access": "internal-pending-license-review"
+    }
+  ]
+}
