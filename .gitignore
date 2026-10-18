@@ -1,0 +1,29 @@
+# Keep heavy source assets and generated outputs out of the code repository.
+# Link them through the asset catalog, their hashes, and authorized storage locations.
+.DS_Store
+.env
+.env.*
+!.env.example
+.agentsam/
+node_modules/
+dist/
+build/
+target/
+__pycache__/
+*.pyc
+*.FCStd
+*.FCStd1
+*.blend
+*.blend1
+*.glb
+*.gltf
+*.ifc
+*.stl
+*.step
+*.stp
+*.mp4
+*.mov
+*.webm
+*.wav
+*.zip
+*.tar.gz
