@@ -1,0 +1,33 @@
+name: CAD public Worker build verification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "wrangler.jsonc"
+      - "scripts/build-public-worker.mjs"
+      - "apps/cad-creator/**"
+      - ".github/workflows/cad-public-build.yml"
+  pull_request:
+    paths:
+      - "wrangler.jsonc"
+      - "scripts/build-public-worker.mjs"
+      - "apps/cad-creator/**"
+      - ".github/workflows/cad-public-build.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify-public-cad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Build CAD Creator and validate Worker/source ownership
+        run: node scripts/build-public-worker.mjs
+      - name: Verify deploy bundle without publishing
+        run: npx --yes wrangler@4.151.1 deploy --dry-run
