@@ -14,6 +14,23 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const app = path.join(root, 'apps/cad-creator');
 const rootConfig = JSON.parse(fs.readFileSync(path.join(root, 'wrangler.jsonc'), 'utf8'));
 const appConfig = JSON.parse(fs.readFileSync(path.join(app, 'backend/wrangler.jsonc'), 'utf8'));
+const lock = JSON.parse(fs.readFileSync(path.join(root, 'catalog/studio-source.lock.json'),'utf8'));
+const snapshot = JSON.parse(fs.readFileSync(path.join(app,'agentsam.app.json'),'utf8'));
+const isPreviewOnly = process.env.CAD_PREVIEW_BUILD === '1';
+function versionAtLeast(current, minimum) {
+  const parts = value => /^\d+\.\d+\.\d+$/.test(value) ? value.split('.').map(Number) : null;
+  const a = parts(current), b = parts(minimum);
+  if (!a || !b) return false;
+  for (let i=0;i<3;i++) if (a[i] !== b[i]) return a[i] > b[i];
+  return true;
+}
+if (!isPreviewOnly) {
+  if (!versionAtLeast(snapshot.version, lock.minimum_version) || lock.status !== 'approved' || !/^[0-9a-f]{40}$/.test(lock.approved_sdk_commit || '') ||
+      lock.approved_app_version !== snapshot.version) {
+    throw new Error('cad_public_worker_contract:approved_clean_sdk_source_required');
+  }
+}
+
 function requireInvariant(value, reason) { if (!value) throw new Error('cad_public_worker_contract:' + reason); }
 requireInvariant(rootConfig.name === appConfig.name, 'worker_name');
 requireInvariant(rootConfig.main === 'apps/cad-creator/backend/' + appConfig.main, 'worker_source');
@@ -23,6 +40,10 @@ requireInvariant(JSON.stringify(rootConfig.assets.run_worker_first) === JSON.str
 requireInvariant(JSON.stringify(rootConfig.routes) === JSON.stringify(appConfig.routes), 'domain_routes');
 requireInvariant(JSON.stringify(rootConfig.d1_databases) === JSON.stringify(appConfig.d1_databases), 'database_bindings');
 requireInvariant(JSON.stringify(rootConfig.r2_buckets) === JSON.stringify(appConfig.r2_buckets), 'r2_bindings');
+requireInvariant(JSON.stringify(rootConfig.ai) === JSON.stringify(appConfig.ai), 'ai_binding');
+requireInvariant(JSON.stringify(rootConfig.ratelimits) === JSON.stringify(appConfig.ratelimits), 'public_ai_rate_limit');
+requireInvariant(rootConfig.ai?.binding === 'AGENTSAM_WAI', 'workers_ai_binding');
+requireInvariant(rootConfig.assets.run_worker_first.includes('/studio') && rootConfig.assets.run_worker_first.includes('/studio/*'), 'studio_worker_routing');
 requireInvariant(rootConfig.assets?.not_found_handling === 'single-page-application', 'spa_navigation');
 function run(file, args, cwd) {
   const r = spawnSync(file, args, { cwd, stdio: 'inherit', env: process.env, shell: process.platform === 'win32' });
@@ -34,6 +55,7 @@ if (!fs.existsSync(bin)) {
   console.log('CAD public Worker: installing locked CAD Creator 2.6.12 dependencies');
   run('npm', ['ci', '--no-audit', '--no-fund'], app);
 }
+run('node', ['--test', 'backend/worker/public-ai-demo.test.mjs'], app);
 run('npm', ['run', 'worker:build'], app);
 const dist = path.join(app, 'frontend/dist');
 const indexPath = path.join(dist, 'index.html');
@@ -45,5 +67,7 @@ requireInvariant(assets.some(x => x.endsWith('.js')) && assets.some(x => x.endsW
 const appEntry = fs.readFileSync(path.join(app, 'frontend/src/App.tsx'), 'utf8');
 requireInvariant(appEntry.includes('DreamHouseCaseStudy') && appEntry.includes('CadCreatorApp'), 'public_routes_missing');
 const worker = fs.readFileSync(path.join(app,'backend/worker/index.js'),'utf8');
+requireInvariant(worker.includes('handleCadPublicDemo(request, env)'), 'public_ai_policy_route');
+requireInvariant(appEntry.includes('CadStandaloneShell'), 'standalone_shell_missing');
 requireInvariant(worker.includes('env.ASSETS.fetch(request)'), 'spa_worker_fallback_missing');
 console.log('CAD_PUBLIC_WORKER_BUNDLE_PASS', {worker:rootConfig.name,route:rootConfig.routes[0]?.pattern,files:assets.length});

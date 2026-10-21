@@ -284,11 +284,20 @@ export function CadCreatorApp({
     collaborationClient.sendProjectUpdate(next);
   };
 
+  useEffect(() => {
+    const go = (event: Event) => {
+      const id = (event as CustomEvent<{id?:WorkspaceId}>).detail?.id;
+      if (id && WORKSPACE_REGISTRY.some(w=>w.id===id)) handleSelectWorkspace(id);
+    };
+    window.addEventListener('agentsam:cad-select-workspace',go);
+    return () => window.removeEventListener('agentsam:cad-select-workspace',go);
+  });
+
   const currentWorkspaceDescriptor =
     WORKSPACE_REGISTRY.find((w) => w.id === activeWorkspace) || WORKSPACE_REGISTRY[0];
 
   return (
-    <div className={`flex flex-col h-screen w-screen font-sans overflow-hidden select-none ${isDarkMode ? 'dark bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'}`}>
+    <div className={`flex flex-col h-full w-full min-h-0 min-w-0 font-sans overflow-hidden select-none ${isDarkMode ? 'dark bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'}`}>
       {/* 1. Global Shell Header (5 Workspaces, Project, Sync, Undo/Redo, AgentSam, Export) */}
       {chromeFolded ? (
         <div className="flex h-8 shrink-0 items-center justify-between border-b border-white/10 bg-slate-900 px-3 text-[11px]">

@@ -1,0 +1,9 @@
+{
+  "schema": "agentsam.cad.public.studio-source-lock.v1",
+  "status": "pending_sdk_release",
+  "sdk_package": "@inneranimalmedia/agentsam-cad-creator",
+  "minimum_version": "2.6.13",
+  "approved_app_version": null,
+  "approved_sdk_commit": null,
+  "note": "Live /studio is a 2.6.13 build from an uncommitted SDK checkout. Promote verified source to a clean, immutable SDK release and approve this lock before allowing the root production build to deploy."
+}

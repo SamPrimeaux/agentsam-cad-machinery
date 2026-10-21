@@ -21,6 +21,8 @@ permissions:
 jobs:
   verify-public-cad:
     runs-on: ubuntu-latest
+    env:
+      CAD_PREVIEW_BUILD: "1"
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4

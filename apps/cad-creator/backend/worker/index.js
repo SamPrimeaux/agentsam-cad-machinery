@@ -1,3 +1,4 @@
+import { handleCadPublicDemo } from './public-ai-demo.js';
 import { getRoboticsPerceptionCapabilities, runRoboticsPerception } from '../src/robotics/perception.ts';
 import appManifest from '../../agentsam.app.json';
 
@@ -68,6 +69,9 @@ export default {
         },
       });
     }
+
+    const publicDemo = await handleCadPublicDemo(request, env);
+    if (publicDemo) return publicDemo;
 
     if (path.startsWith("/api/")) {
       // Public UI != permission to read user projects, invoke CAD engines,

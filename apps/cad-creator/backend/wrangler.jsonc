@@ -36,7 +36,22 @@
     "run_worker_first": [
       "/api/*",
       "/health",
-      "/case-studies/dream-house/assets/*"
+      "/case-studies/dream-house/assets/*",
+      "/studio",
+      "/studio/*"
     ]
-  }
+  },
+  "ai": {
+    "binding": "AGENTSAM_WAI"
+  },
+  "ratelimits": [
+    {
+      "name": "CAD_DEMO_RATE_LIMIT",
+      "namespace_id": "973124",
+      "simple": {
+        "limit": 6,
+        "period": 60
+      }
+    }
+  ]
 }

@@ -1,0 +1,28 @@
+/* Product host layout only. Actual navigation and workbench controls are SDK packages. */
+.cad-standalone-shell{display:flex;width:100%;height:100dvh;min-width:0;overflow:hidden;color:var(--nav-text,#e5e7eb);background:var(--nav-canvas,#101317)}
+.cad-standalone-main{display:flex;flex-direction:column;min-width:0;min-height:0;flex:1;overflow:hidden}
+.cad-standalone-content{display:flex;min-width:0;min-height:0;flex:1;overflow:hidden}
+.cad-standalone-stage{min-width:0;min-height:0;flex:1;overflow:hidden}
+.cad-shell-product{font-size:11px;color:inherit;opacity:.7;padding:0 12px}
+.cad-chat-panel{width:min(440px,38vw);min-width:300px;flex-shrink:0;min-height:0;display:flex;flex-direction:column;border-right:1px solid var(--nav-border,#ffffff24);background:var(--nav-surface,#171b22)}
+.cad-chat-heading{display:flex;gap:11px;align-items:center;padding:18px 16px;border-bottom:1px solid var(--nav-border,#ffffff1b)}
+.cad-chat-heading strong{font-size:14px}
+.cad-chat-heading p{font-size:11px;opacity:.65;margin-top:3px}
+.cad-chat-history{flex:1;min-height:0;overflow-y:auto;padding:20px 16px;display:flex;flex-direction:column;gap:13px}
+.cad-chat-empty{margin:auto 0}
+.cad-chat-empty h2{font-size:19px;letter-spacing:-.035em;font-weight:600;margin-bottom:13px}
+.cad-chat-empty p{font-size:12px;line-height:1.75;opacity:.72}
+.cad-chat-turn{border:1px solid var(--nav-border,#ffffff20);border-radius:12px;padding:12px 13px;white-space:pre-wrap;overflow-wrap:anywhere}
+.cad-chat-turn--you{margin-left:26px;background:var(--nav-popover,#ffffff0c)}
+.cad-chat-turn span{font-size:10px;opacity:.63}
+.cad-chat-turn p{font-size:12px;line-height:1.65;margin-top:7px}
+.cad-chat-working{font-size:12px;opacity:.65}
+.cad-chat-compose{padding:14px;border-top:1px solid var(--nav-border,#ffffff1b)}
+.cad-chat-composer{padding:8px;border:1px solid var(--nav-border,#ffffff34);border-radius:14px;background:var(--nav-popover,#ffffff0c)}
+.cad-chat-input{display:block;width:100%;min-height:60px;max-height:160px;padding:8px;resize:none;outline:none;background:transparent;color:inherit;font-size:13px}
+.cad-chat-actions{display:flex;align-items:center;gap:8px}
+.cad-chat-actions button{padding:7px 13px;border-radius:8px;font-size:12px;background:var(--nav-accent,#82a7fb);color:var(--nav-canvas,#0b1018)}
+.cad-chat-actions button:disabled{opacity:.4}
+.cad-chat-compose>p{font-size:10px;opacity:.65;margin:9px 3px 0}
+@media(max-width:900px){.cad-chat-panel{width:min(390px,46vw);min-width:260px}}
+@media(max-width:720px){.cad-chat-panel{width:100%;min-width:0}.cad-standalone-stage--chat{position:absolute;visibility:hidden;pointer-events:none}.cad-shell-product{display:none}}
