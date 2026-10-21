@@ -1,0 +1,88 @@
+{
+  "name": "@inneranimalmedia/agentsam-cad-creator",
+  "version": "2.6.12",
+  "description": "Prepackaged AgentSam CAD, spatial design, and robotics application kit.",
+  "type": "module",
+  "license": "MIT",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared/*"
+  ],
+  "bin": {
+    "agentsam-cad-creator": "bin/agentsam-cad-creator.mjs"
+  },
+  "files": [
+    ".env.example",
+    "README.md",
+    "BIM_STARTERS.md",
+    "agentsam.app.json",
+    "bin/",
+    "frontend/dist/",
+    "frontend/src/",
+    "frontend/public/",
+    "frontend/index.html",
+    "frontend/package.json",
+    "frontend/tsconfig.json",
+    "frontend/vite.config.ts",
+    "backend/dist/",
+    "backend/src/",
+    "backend/worker/",
+    "backend/wrangler.jsonc",
+    "backend/package.json",
+    "backend/tsconfig.json",
+    "backend/.dev.vars.example",
+    "shared/cad/",
+    "backend/runtime/",
+    "scripts/prepare-cad-runtime.mjs"
+  ],
+  "scripts": {
+    "dev": "npm run prepare:runtime && npm run dev -w @inneranimalmedia/agentsam-cad-backend",
+    "build": "npm run prepare:runtime && npm run build -w @inneranimalmedia/agentsam-cad-frontend && npm run build -w @inneranimalmedia/agentsam-cad-backend",
+    "start": "npm run start -w @inneranimalmedia/agentsam-cad-backend",
+    "preview": "npm run preview -w @inneranimalmedia/agentsam-cad-frontend",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "clean": "rm -rf frontend/dist backend/dist coverage",
+    "cf:dry-run": "npm run build && wrangler deploy -c backend/wrangler.jsonc --dry-run",
+    "package:verify": "npm run build && npm run typecheck && npm test && npm run test:bim && node scripts/verify-publish-package.mjs",
+    "prepack": "npm run package:verify",
+    "prepare:runtime": "node scripts/prepare-cad-runtime.mjs",
+    "test:bim": "node --test bin/bim-starters.test.mjs",
+    "worker:build": "node scripts/verify-worker-config.mjs && npm run build -w @inneranimalmedia/agentsam-cad-frontend",
+    "worker:dry-run": "npm run worker:build && wrangler deploy -c backend/wrangler.jsonc --dry-run",
+    "worker:deploy": "npm run worker:build && wrangler deploy -c backend/wrangler.jsonc"
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "ws": "^8.21.3"
+  },
+  "devDependencies": {
+    "wrangler": "4.147.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "overrides": {
+    "qs": "6.16.0"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true,
+    "protobufjs@7.6.6": true,
+    "@google/genai@2.22.0": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.2": true,
+    "esbuild@0.28.1": true,
+    "workerd@1.20260921.1": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamPrimeaux/agentsam-cad-machinery.git",
+    "directory": "apps/cad-creator"
+  }
+}

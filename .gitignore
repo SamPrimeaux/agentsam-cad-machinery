@@ -1,0 +1,16 @@
+.agentsam/
+**/node_modules/
+**/dist/
+**/build/
+**/.wrangler/
+**/.venv*/
+**/coverage/
+**/backend/runtime/
+**/.env*
+!**/.env.example
+*.log
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.DS_Store
+apps/cad-creator/reference/
