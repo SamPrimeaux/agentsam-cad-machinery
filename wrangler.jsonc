@@ -35,7 +35,9 @@
     "run_worker_first": [
       "/api/*",
       "/health",
-      "/case-studies/dream-house/assets/*"
+      "/case-studies/dream-house/assets/*",
+      "/studio",
+      "/studio/*"
     ]
   },
   "build": {
