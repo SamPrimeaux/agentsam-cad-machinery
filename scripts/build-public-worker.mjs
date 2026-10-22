@@ -54,7 +54,9 @@ if (process.env.AGENTSAM_SDK_SOURCE_ROOT?.trim()) {
   requireInvariant(sourceUrl === 'https://github.com/SamPrimeaux/agentsam-sdk.git', 'sdk_source_url_unapproved');
   run('git', ['clone','--quiet','--filter=blob:none',sourceUrl,sdkDir], root);
   run('git', ['-C',sdkDir,'checkout','--quiet','--detach',studioLock.approved_sdk_commit], root);
-  run('npm', ['ci','--no-audit','--no-fund'], path.join(sdkDir,'apps/cad-creator'));
+  // Install the SDK root workspace so unpublished workspace packages (Workbench,
+  // contracts, etc.) resolve from this pinned source, not from npm releases.
+  run('npm', ['ci','--no-audit','--no-fund'], sdkDir);
 }
 const sdkCad = path.join(sdkDir, 'apps/cad-creator');
 requireInvariant(fs.existsSync(path.join(sdkCad, 'agentsam.app.json')), 'sdk_cad_source_missing');
