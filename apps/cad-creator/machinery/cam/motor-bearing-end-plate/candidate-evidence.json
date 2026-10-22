@@ -1,0 +1,33 @@
+{
+  "schema": "inneranimalmedia.cad.machinery.fixture.v1",
+  "part_id": "motor-bearing-end-plate",
+  "revision": "candidate-150mm-001",
+  "authority": "agentsam-cad-machinery",
+  "status": "proposal_not_approved",
+  "sources": {
+    "motor-bearing-end-plate-candidate-150mm.stl": {
+      "sha256": "e1a31874d4aa50c4b55def47f2b78c3f52e39b101b67521d8e524e069f2119fe",
+      "bytes": 1093988
+    },
+    "part-preview.png": {
+      "sha256": "9a5d709d5b4ecf936cdf6e3b5ab10bd6991c8f7cfab85dce0ec01942ef83936b",
+      "bytes": 1731462
+    },
+    "motor-bearing-end-plate-candidate-150mm.step": {
+      "sha256": "b60be72ac3e68374dd21d10d52f02aad56ef2ca061200900fe2cb40627901538",
+      "bytes": 25668
+    },
+    "motor-bearing-end-plate-candidate-150mm.FCStd": {
+      "sha256": "770c431a7f112f57480d4df0f115773723067d745ac07cef35008e70ee64d459",
+      "bytes": 36227
+    }
+  },
+  "artifact_path": ".agentsam/artifacts/cam/motor-bearing-end-plate/candidate-150mm",
+  "studio_import": {
+    "id": "motor-bearing-end-plate",
+    "format": "STL",
+    "preview_format": "webp"
+  },
+  "r2_registration": "not_published",
+  "note": "Original CAD is editable FreeCAD/STEP; STL is a derivative for Studio view. Do not treat as a manufacturing release."
+}

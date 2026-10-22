@@ -34,7 +34,8 @@
     "backend/.dev.vars.example",
     "shared/cad/",
     "backend/runtime/",
-    "scripts/prepare-cad-runtime.mjs"
+    "scripts/prepare-cad-runtime.mjs",
+    "machinery/"
   ],
   "scripts": {
     "dev": "npm run prepare:runtime && npm run dev -w @inneranimalmedia/agentsam-cad-backend",
@@ -51,7 +52,9 @@
     "test:bim": "node --test bin/bim-starters.test.mjs",
     "worker:build": "node scripts/verify-worker-config.mjs && npm run build -w @inneranimalmedia/agentsam-cad-frontend",
     "worker:dry-run": "npm run worker:build && wrangler deploy -c backend/wrangler.jsonc --dry-run",
-    "worker:deploy": "npm run worker:build && wrangler deploy -c backend/wrangler.jsonc"
+    "worker:deploy": "npm run worker:build && wrangler deploy -c backend/wrangler.jsonc",
+    "cam:verify": "python3 machinery/cam/motor-bearing-end-plate/test_generate_toolpaths.py",
+    "cam:build:model-01": "python3 machinery/cam/motor-bearing-end-plate/run.py '{\"variant\":\"candidate-150mm\"}'"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
