@@ -27,3 +27,19 @@ __pycache__/
 *.wav
 *.zip
 *.tar.gz
+
+# Production-release rules carried from the live snapshot
+**/node_modules/
+**/dist/
+**/build/
+**/.wrangler/
+**/.venv*/
+**/coverage/
+**/backend/runtime/
+**/.env*
+!**/.env.example
+*.log
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+apps/cad-creator/reference/
