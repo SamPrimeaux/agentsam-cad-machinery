@@ -53,7 +53,7 @@
     "worker:build": "node scripts/verify-worker-config.mjs && npm run build -w @inneranimalmedia/agentsam-cad-frontend",
     "worker:dry-run": "npm run worker:build && wrangler deploy -c backend/wrangler.jsonc --dry-run",
     "worker:deploy": "npm run worker:build && wrangler deploy -c backend/wrangler.jsonc",
-    "cam:verify": "python3 machinery/cam/motor-bearing-end-plate/test_generate_toolpaths.py",
+    "cam:verify": "python3 machinery/cam/motor-bearing-end-plate/test_generate_toolpaths.py && python3 machinery/cam/desk-assembly/verify.py",
     "cam:build:model-01": "python3 machinery/cam/motor-bearing-end-plate/run.py '{\"variant\":\"candidate-150mm\"}'"
   },
   "dependencies": {
