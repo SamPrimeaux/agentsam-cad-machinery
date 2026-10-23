@@ -1,0 +1,95 @@
+{
+  "schema": "inneranimalmedia.cad.parametric-desk.v1",
+  "id": "DSK-001",
+  "revision": "A",
+  "units": "mm",
+  "status": "DESIGN_CANDIDATE",
+  "envelope": {
+    "length": 1200,
+    "depth": 600,
+    "height": 740,
+    "top_thickness": 25
+  },
+  "wood": {
+    "material": "25 mm birch plywood",
+    "corner_radius": 3,
+    "edge_radius": 1.5,
+    "pilot_diameter": 3.5,
+    "pilot_depth": 20
+  },
+  "steel": {
+    "grade": "S235JR or reviewed equivalent",
+    "leg_shs": [
+      40,
+      40,
+      2
+    ],
+    "leg_length": 707,
+    "rail_rhs": [
+      40,
+      20,
+      2
+    ],
+    "long_rail_length": 1034,
+    "short_rail_length": 434,
+    "top_plate": [
+      80,
+      80,
+      3
+    ],
+    "rail_plate": [
+      40,
+      40,
+      3
+    ]
+  },
+  "layout": {
+    "leg_x": [
+      -540,
+      540
+    ],
+    "leg_y": [
+      -240,
+      240
+    ],
+    "leg_bottom": 5,
+    "leg_top": 712,
+    "top_plate_bottom": 712,
+    "top_plate_top": 715,
+    "rails_bottom": 670,
+    "rails_top": 710
+  },
+  "holes": {
+    "top_plate_diameter": 6.5,
+    "top_plate_pitch": 60,
+    "rail_plate_diameter": 8.5,
+    "rail_plate_z": [
+      680,
+      700
+    ],
+    "rivnut_nominal_diameter": 11
+  },
+  "hardware": {
+    "M8_screws": 16,
+    "M8_washers": 16,
+    "M8_rivnuts": 16,
+    "wood_screws": 16,
+    "adjustable_feet": 4
+  },
+  "finish": {
+    "desktop": "Sealed and matte",
+    "steel": "Matte black powder coating"
+  },
+  "design_targets": {
+    "distributed_load_kg": 75,
+    "not_a_certified_rating": true,
+    "design_height_range_mm": [
+      735,
+      745
+    ]
+  },
+  "notes": [
+    "Prototype design only. No physical manufacturing or NC release.",
+    "Confirm supplier hardware, fastener fits, structural stability and appropriate professional fabrication review."
+  ]
+}

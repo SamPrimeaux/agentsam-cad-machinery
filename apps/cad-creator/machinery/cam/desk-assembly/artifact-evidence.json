@@ -1,0 +1,40 @@
+{
+  "schema": "inneranimalmedia.cad.review-artifacts.v1",
+  "part": "DSK-001",
+  "revision": "A",
+  "source": "conversation prototype 2026-10-22",
+  "status": "GENERATED_UNPUBLISHED",
+  "source_of_truth": "parameters.json",
+  "snapshot_note": "Original prototype's binary files remain attached to the conversation; listed hashes are evidence only, not proof of storage registration. The repository build script should be rerun before derivative publication. The prototype GLB used millimetre coordinates; build.py now converts to metres for glTF.",
+  "original_artifacts": [
+    {
+      "file": "desk_assembly.step",
+      "sha256": "94ffff3e296780c1d130f3d7ef6d9f8a74a2d483c4ccc596e5f237f078e8e5e0",
+      "bytes": 1619111
+    },
+    {
+      "file": "desk_assembly.glb",
+      "sha256": "99eb521f15d52e94b701ab21f844c5552bd78a67a1ac8a0ab96c741a8a2c7f43",
+      "bytes": 2017768
+    },
+    {
+      "file": "desk_assembly.stl",
+      "sha256": "a5fa2a25bd66c0d490838056e8d8e2e9dbbe102ec577a02ad655082b42ee5c62",
+      "bytes": 5928684
+    },
+    {
+      "file": "desk_assembly_presentation.pdf",
+      "sha256": "ace5768bba37f19822c8cf61bcbef3de2bd3f3b2bba874d6e6cfad767a0e829f",
+      "bytes": 488071
+    }
+  ],
+  "release_gates": [
+    "parameter verification",
+    "STEP B-rep inspection",
+    "manifold STL and geometry parity",
+    "drawing/BOM reconciliation",
+    "artifact storage registration",
+    "SDK UI preview/identity",
+    "human review before manufacturing use"
+  ]
+}
