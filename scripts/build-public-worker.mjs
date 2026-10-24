@@ -59,10 +59,27 @@ if (process.env.AGENTSAM_SDK_SOURCE_ROOT?.trim()) {
   run('npm', ['ci','--no-audit','--no-fund'], sdkDir);
 }
 const sdkCad = path.join(sdkDir, 'apps/cad-creator');
-// The SDK root lock intentionally excludes runnable apps. Install the CAD app's
-// own pinned workspace lock for its Vite plugins and CAD runtime dependencies;
-// the root install above supplies reusable SDK packages only.
-run('npm', ['ci','--no-audit','--no-fund'], sdkCad);
+// SDK root npm workspaces intentionally exclude runnable CAD apps. Resolve the
+// public frontend's external dependencies from its immutable app lock without
+// installing its unpublished @inneranimalmedia workspace packages from npm.
+const sdkFrontend = JSON.parse(fs.readFileSync(path.join(sdkCad,'frontend/package.json'),'utf8'));
+const sdkCadLock = JSON.parse(fs.readFileSync(path.join(sdkCad,'package-lock.json'),'utf8'));
+const externalDeps = Object.keys({...sdkFrontend.dependencies,...sdkFrontend.devDependencies})
+  .filter(name => !name.startsWith('@inneranimalmedia/'));
+const missingDeps = externalDeps.filter(name => !fs.existsSync(path.join(sdkDir,'node_modules',name,'package.json')));
+if (missingDeps.length) {
+  const locked = missingDeps.map(name => {
+    const version = sdkCadLock.packages?.['node_modules/' + name]?.version;
+    requireInvariant(version && /^\\d+\\.\\d+\\.\\d+/.test(version), 'sdk_dependency_not_locked:' + name);
+    return name + '@' + version;
+  });
+  run('npm', ['install','--no-save','--no-package-lock','--ignore-scripts','--workspaces=false','--no-audit','--no-fund',...locked], sdkDir);
+}
+const localShared = path.join(sdkCad,'shared/cad');
+requireInvariant(fs.existsSync(path.join(localShared,'package.json')), 'sdk_cad_shared_missing');
+const localSharedLink = path.join(sdkCad,'node_modules/@inneranimalmedia/agentsam-cad-shared');
+fs.mkdirSync(path.dirname(localSharedLink),{recursive:true});
+if (!fs.existsSync(localSharedLink)) fs.symlinkSync(localShared,localSharedLink,'dir');
 requireInvariant(fs.existsSync(path.join(sdkCad, 'agentsam.app.json')), 'sdk_cad_source_missing');
 const sdkManifest = JSON.parse(fs.readFileSync(path.join(sdkCad,'agentsam.app.json'),'utf8'));
 requireInvariant(sdkManifest.id === 'cad-creator', 'sdk_cad_app_identity');
