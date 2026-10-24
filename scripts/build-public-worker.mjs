@@ -107,6 +107,9 @@ const sdkManifest = JSON.parse(fs.readFileSync(path.join(sdkCad,'agentsam.app.js
 requireInvariant(sdkManifest.id === 'cad-creator', 'sdk_cad_app_identity');
 requireInvariant(sdkManifest.version === studioLock.approved_app_version, 'sdk_source_version_unapproved');
 const sdkBuild = path.join(sdkCad,'frontend/dist');
+// The pinned CAD frontend imports source-workspace nav CSS directly. A fresh
+// SDK checkout has no generated dist; build its declared nav dependency first.
+run('npm', ['run','build','-w','@inneranimalmedia/agentsam-nav'], sdkDir);
 run('npm', ['run', 'build', '-w', '@inneranimalmedia/agentsam-cad-frontend', '--', '--base=/studio/'], sdkCad);
 requireInvariant(fs.existsSync(path.join(sdkBuild,'index.html')), 'sdk_studio_bundle_missing');
 const studioDest = path.join(app,'frontend/dist/studio');
