@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-ia-expression="editorial">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f8e8d9"><meta name="description" content="Beyond the Blueprint. A cinematic InnerAnimal story about aspiration, perseverance, understanding, and what becomes possible when powerful tools are made approachable.">
+<title>Beyond the Blueprint — An InnerAnimal Story</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400,50,1;9..144,500,50,1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand/tokens.css">
+<link rel="stylesheet" href="/beyond/style.css">
+<script type="importmap">{"imports":{"three":"/beyond/vendor/three.module.js","three/addons/":"/beyond/vendor/addons/"}}</script>
+</head>
+<body class="btb-body" data-footer-theme="dark" data-iam-header="light">
+<a class="btb-skip" href="#story">Skip to story</a>
+<!--IA_CHROME_HEADER-->
+<main id="main-content">
+<div class="btb-story-shell" id="story" aria-label="Beyond the Blueprint seven chapter visual story">
+  <div class="btb-world" aria-hidden="true">
+    <div class="btb-world__gradient"></div>
+    <canvas id="btb-canvas" aria-label="Continuous illustrative clay architectural world"></canvas>
+    <img class="btb-world__fallback" src="/beyond/media/v12-courtyard.jpg" alt="" aria-hidden="true" decoding="async">
+    <div class="btb-world__veil"></div>
+    <div class="btb-orb btb-orb--one"></div>
+    <div class="btb-orb btb-orb--two"></div>
+  </div>
+  <div class="btb-frame" aria-hidden="true">
+    <div class="btb-frame__top"><span>INNERANIMAL <span class="btb-frame__divider">/</span> BEYOND THE BLUEPRINT</span></div>
+    <div class="btb-frame__bottom"><span>AN ORIGINAL STORY ABOUT WHAT COMES NEXT</span><span>DESIGNED TO BE EXPERIENCED</span></div>
+  </div>
+
+  <div class="btb-scene-tools" aria-label="Scene settings">
+    <button type="button" id="btb-motion" aria-pressed="false" title="Choose scene motion">Reduce motion <span aria-hidden="true">Ⅱ</span></button>
+    <span class="btb-scene-tools__status" id="btb-scene-status" role="status">Editorial world</span>
+  </div>
+  <div id="btb-stage-live" class="btb-sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div class="btb-scenes" id="btb-scene-stack">{{STORY_CHAPTERS}}</div>
+  <div class="btb-chapter-indicator" aria-label="Story progress">
+    <div class="btb-chapter-indicator-track" aria-hidden="true"><span id="btb-chapter-indicator-fill"></span></div>
+  </div>
+</div>
+
+<section id="architectural-evidence" class="btb-feature" aria-labelledby="btb-feature-title">
+  <div class="btb-container">
+    <div class="btb-feature__eyebrow"><span>INNERANIMAL / THE REAL WORK</span><span>01 — ARCHITECTURE & SPATIAL DESIGN</span></div>
+    <div class="btb-feature__hero">
+      <div class="btb-feature__title"><p class="btb-overline">The concept, brought into focus</p><h2 id="btb-feature-title">The dream is <em>not the drawing.</em><br>But the drawing helps us get there.</h2></div>
+      <p>A working architectural project, shown at two levels. One for seeing what's possible. Another for understanding the real decisions beneath it.</p>
+    </div>
+    <figure class="btb-wide-photo"><img src="/beyond/media/v12-courtyard.jpg" alt="Actual DreamHouse V1.2 courtyard architectural review rendering" loading="lazy" decoding="async"><figcaption><span>01 / DREAMHOUSE V1.2</span><span>PROJECT ARCHITECTURE / CONCEPTUAL REVIEW</span></figcaption></figure>
+    <div class="btb-feature__aside"><span class="btb-feature__index">THE SPACE BETWEEN VISION AND EXECUTION</span><p>Architecture is a particularly visible example of a much bigger problem: sophisticated tools should not require years of fluency before someone's first idea is welcome.</p></div>
+    <div class="btb-feature__split">
+      <figure><div class="btb-photo-wrap"><img src="/beyond/media/v12-wireframe.jpg" alt="Actual isometric BIM wireframe in DreamHouse V1.2 architectural documentation" loading="lazy"></div><figcaption><strong>01 / UNDERSTAND THE STRUCTURE</strong><small>Actual BIM isometric review</small></figcaption></figure>
+      <figure><div class="btb-photo-wrap"><img src="/beyond/media/v12-isometric.jpg" alt="Actual model isometric overview produced for DreamHouse V1.2" loading="lazy"></div><figcaption><strong>02 / EXPERIENCE THE DESIGN</strong><small>Same project, architectural interpretation</small></figcaption></figure>
+    </div>
+    <div class="btb-feature__specs"><div><span>01</span><strong>Native source</strong><p>FreeCAD and IFC4 remain the engineering reference; editorial materials never change authoritative geometry.</p></div><div><span>02</span><strong>Spatial identity</strong><p>21 original IFC spaces and 189 proposed review solids connect technical information to the scene.</p></div><div><span>03</span><strong>Design iterations</strong><p>Sections, elevations, site grades and courtyard relationships remain reviewable, not silently declared finished.</p></div></div>
+    {{PROCESS_RUNGS}}
+    <div class="btb-feature__plans">
+      <div><p class="btb-overline">DETAILED VIEW / ARCHITECTURAL REVIEW</p><h3>See the whole.<br><em>Inspect the parts.</em></h3><p>The model is useful because the underlying documents remain accessible. Open the review from any level of detail—without losing the larger vision.</p><a href="https://cad.inneranimalmedia.com/studio" target="_blank" rel="noopener noreferrer">Explore AgentSam CAD <span aria-hidden="true">↗</span></a></div>
+      <figure><img src="/beyond/media/v12-plan.jpg" alt="DreamHouse V1.2 ground-floor BIM cut drawing" loading="lazy"><figcaption>GROUND FLOOR / ACTUAL V1.2 REVIEW SHEET</figcaption></figure>
+    </div>
+    <p class="btb-approval-note">{{EVIDENCE_STATUS}}</p>
+  </div>
+</section>
+
+<section class="btb-beyond" aria-labelledby="btb-beyond-title">
+  <div class="btb-container">
+    <p class="btb-overline">THE SAME PHILOSOPHY / MANY INDUSTRIES</p>
+    <div class="btb-beyond__heading"><h2 id="btb-beyond-title">Beyond a <em>single blueprint.</em></h2><p>A better way to work is worth building everywhere. The worlds differ. The invitation is the same.</p></div>
+    <div class="btb-beyond__rows">
+      <a href="/case-studies/ecommerce" class="btb-beyond__row"><span class="btb-beyond__number">01 / RETAIL & COMMERCE</span><strong>From an idea to a working business.</strong><span class="btb-beyond__arrow" aria-hidden="true">↗</span><img src="/brand/media/fnf.png" alt="" loading="lazy"></a>
+      <a href="/case-studies/moviemode" class="btb-beyond__row"><span class="btb-beyond__number">02 / CREATIVE PRODUCTION</span><strong>From a moment to a story worth sharing.</strong><span class="btb-beyond__arrow" aria-hidden="true">↗</span><img src="/brand/media/case-studies/moviemode.jpg" alt="" loading="lazy"></a>
+      <a href="/case-studies/studio" class="btb-beyond__row"><span class="btb-beyond__number">03 / SOFTWARE & ENGINEERING</span><strong>From curiosity to capable creation.</strong><span class="btb-beyond__arrow" aria-hidden="true">↗</span><img src="/brand/media/case-studies/studio.png" alt="" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+<section class="btb-finish" aria-labelledby="btb-finish-title"><div class="btb-container"><p>INNERANIMAL / THE NEXT CHAPTER</p><h2 id="btb-finish-title">You can begin <em>before</em><br>you know how it ends.</h2><a href="https://inneranimalmedia.com/contact" target="_blank" rel="noopener noreferrer">Start with your idea <span aria-hidden="true">↗</span></a><span class="btb-finish__small">AN INVITATION TO EXPLORE WHAT'S POSSIBLE.</span></div></section>
+</main>
+<!--IA_CHROME_FOOTER-->
+<script type="module" src="/beyond/story.js"></script>
+</body>
+</html>

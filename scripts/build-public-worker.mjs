@@ -44,6 +44,7 @@ const studioLock = JSON.parse(fs.readFileSync(path.join(root,'catalog/studio-sou
 requireInvariant(studioLock.schema === 'agentsam.cad.public.studio-source-lock.v1' && studioLock.status === 'approved', 'sdk_source_lock_not_approved');
 requireInvariant(typeof studioLock.approved_sdk_commit === 'string' && /^[a-f0-9]{40}$/.test(studioLock.approved_sdk_commit), 'sdk_source_commit_not_pinned');
 let tempSdkDir = null;
+let tempExternalDeps = null;
 let sdkDir;
 if (process.env.AGENTSAM_SDK_SOURCE_ROOT?.trim()) {
   sdkDir = path.resolve(process.env.AGENTSAM_SDK_SOURCE_ROOT);
@@ -59,11 +60,58 @@ if (process.env.AGENTSAM_SDK_SOURCE_ROOT?.trim()) {
   run('npm', ['ci','--no-audit','--no-fund'], sdkDir);
 }
 const sdkCad = path.join(sdkDir, 'apps/cad-creator');
+// SDK root npm workspaces intentionally exclude runnable CAD apps. Resolve the
+// public frontend's external dependencies from its immutable app lock without
+// installing its unpublished @inneranimalmedia workspace packages from npm.
+const sdkFrontend = JSON.parse(fs.readFileSync(path.join(sdkCad,'frontend/package.json'),'utf8'));
+const sdkCadLock = JSON.parse(fs.readFileSync(path.join(sdkCad,'package-lock.json'),'utf8'));
+const externalDeps = Object.keys({...sdkFrontend.dependencies,...sdkFrontend.devDependencies})
+  .filter(name => !name.startsWith('@inneranimalmedia/'));
+const missingDeps = externalDeps.filter(name => !fs.existsSync(path.join(sdkDir,'node_modules',name,'package.json')));
+if (missingDeps.length) {
+  // Installing into the SDK root mutates its workspace graph (and can trigger
+  // npm Arborist 'edgesOut' failures); the CAD app lock also references
+  // unpublished @inneranimalmedia packages. Hydrate ONLY its pinned external
+  // deps in an isolated prefix, then link them into the clean SDK checkout.
+  const locked = missingDeps.map(name => {
+    const version = sdkCadLock.packages?.['node_modules/' + name]?.version;
+    requireInvariant(version && /^\d+\.\d+\.\d+/.test(version), 'sdk_dependency_not_locked:' + name);
+    return name + '@' + version;
+  });
+  const isolatedDepsDir = fs.mkdtempSync(path.join(os.tmpdir(), 'agentsam-cad-externals-'));
+  try {
+    run('npm', ['install','--prefix',isolatedDepsDir,'--no-save','--no-package-lock',
+      '--ignore-scripts','--no-audit','--no-fund',...locked], root);
+    for (const name of missingDeps) {
+      const source = path.join(isolatedDepsDir,'node_modules',name);
+      requireInvariant(fs.existsSync(path.join(source,'package.json')), 'sdk_external_missing:' + name);
+      const dest = path.join(sdkDir,'node_modules',name);
+      fs.mkdirSync(path.dirname(dest),{recursive:true});
+      if (!fs.existsSync(dest)) fs.symlinkSync(source,dest,'dir');
+    }
+    // Keep the isolated node_modules alive for transitive dependency resolution
+    // until the studio build has completed; see cleanup near release receipt.
+    tempExternalDeps = isolatedDepsDir;
+  } catch (error) {
+    fs.rmSync(isolatedDepsDir,{recursive:true,force:true});
+    throw error;
+  }
+}
+const localShared = path.join(sdkCad,'shared/cad');
+requireInvariant(fs.existsSync(path.join(localShared,'package.json')), 'sdk_cad_shared_missing');
+const localSharedLink = path.join(sdkCad,'node_modules/@inneranimalmedia/agentsam-cad-shared');
+fs.mkdirSync(path.dirname(localSharedLink),{recursive:true});
+if (!fs.existsSync(localSharedLink)) fs.symlinkSync(localShared,localSharedLink,'dir');
 requireInvariant(fs.existsSync(path.join(sdkCad, 'agentsam.app.json')), 'sdk_cad_source_missing');
 const sdkManifest = JSON.parse(fs.readFileSync(path.join(sdkCad,'agentsam.app.json'),'utf8'));
 requireInvariant(sdkManifest.id === 'cad-creator', 'sdk_cad_app_identity');
 requireInvariant(sdkManifest.version === studioLock.approved_app_version, 'sdk_source_version_unapproved');
 const sdkBuild = path.join(sdkCad,'frontend/dist');
+// The pinned CAD frontend imports source-workspace nav CSS directly. A fresh
+// SDK checkout has no generated dist; build its declared nav dependency first.
+run('npm', ['run','build','-w','@inneranimalmedia/agentsam-nav'], sdkDir);
+// Workbench builds the linked contracts/loading-scene workspace packages as needed.
+run('npm', ['run','build','-w','@inneranimalmedia/agentsam-workbench'], sdkDir);
 run('npm', ['run', 'build', '-w', '@inneranimalmedia/agentsam-cad-frontend', '--', '--base=/studio/'], sdkCad);
 requireInvariant(fs.existsSync(path.join(sdkBuild,'index.html')), 'sdk_studio_bundle_missing');
 const studioDest = path.join(app,'frontend/dist/studio');
@@ -91,6 +139,7 @@ const receipt = {
 fs.writeFileSync(path.join(studioDest,'source-manifest.json'),JSON.stringify(receipt,null,2)+'\n');
 console.log('CAD_STUDIO_INCLUDED_FROM_SDK',receipt);
 if (tempSdkDir) fs.rmSync(tempSdkDir,{recursive:true,force:true});
+if (tempExternalDeps) fs.rmSync(tempExternalDeps,{recursive:true,force:true});
 
 const indexPath = path.join(dist, 'index.html');
 requireInvariant(fs.existsSync(indexPath), 'html_not_built');

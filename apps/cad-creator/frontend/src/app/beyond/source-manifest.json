@@ -1,0 +1,76 @@
+{
+  "schema": "iam.beyond-blueprint.review-assets.v1",
+  "version": "1.3.0-preview",
+  "release": "local-review-only",
+  "scope": "Editorial derivatives; original BIM unmodified",
+  "dreamHouseModel": {
+    "source": "builds/v1.2/DreamHouse-V1.2.glb",
+    "bytes": 5953468,
+    "sha256": "79b40397f76e30890b81d77e48c5ae81ef8363d066585cb14f3c509eeb6b71ea"
+  },
+  "files": [
+    {
+      "source": "builds/v1.2/review/A01-v12-courtyard-isometric.png",
+      "sourceSha256": "4841b0523cf5ff6c953aff972d42fecdbc78cc191655d7874796de3f2360c598",
+      "output": "media/v12-courtyard.jpg",
+      "outputSha256": "7dff362f2184e7adfab69acf2ec01d331b2f65f08c0bd93f6ca03dfffe398d67",
+      "bytes": 61616
+    },
+    {
+      "source": "builds/v1.2/review/A02-v12-pool-and-pavilion.png",
+      "sourceSha256": "ef76e3c34186b50201180e8538b83b527105c2a63a490fae9e16b7fbd22a460b",
+      "output": "media/v12-pool.jpg",
+      "outputSha256": "2c3c7fffa02c48bcebfb757adbfeda53ea5418b248ac56a57c8f813e71e56fa9",
+      "bytes": 65717
+    },
+    {
+      "source": "builds/v1.2/architectural-package/A07-isometric-architectural-overview.png",
+      "sourceSha256": "4d310fec92f36472108b8ae90f9eb3c0fb14259e4e59c8f8835fdebe1c85f327",
+      "output": "media/v12-isometric.jpg",
+      "outputSha256": "39a01795a1a018cca27ca7deeebc4678ddbfc89f6fa07f655f44db1e38bac5ad",
+      "bytes": 61366
+    },
+    {
+      "source": "builds/v1.2/architectural-package/A14-bim-isometric-wireframe.png",
+      "sourceSha256": "11cb24b5cbee46eb8f03e1f8b5df0ce24ceb2dbad72b86ddf7d8cc82b7363ae0",
+      "output": "media/v12-wireframe.jpg",
+      "outputSha256": "394894b20aa5406828a9434a158dcf29a68b6a4fd643211c8cfe6abfd8ae8ec9",
+      "bytes": 151535
+    },
+    {
+      "source": "builds/v1.2/architectural-package/A01-ground-floor-bim-cut.png",
+      "sourceSha256": "b1b4db16c2e1f161dda1f062fed16b4285e3329e6a0ef18bfffbf80b5a165bd6",
+      "output": "media/v12-plan.jpg",
+      "outputSha256": "0bb2d15fa1c5fbe87f9d65aefb70a79acb690537ca41dcb979b6e6321c6c1a59",
+      "bytes": 41017
+    },
+    {
+      "source": "builds/v1.2/architectural-package/A09-north-south-facade.png",
+      "sourceSha256": "24b1d03a5260793ae2bc17f0f9bc8ebe80ae68b1f52694299becbcdaa91faa83",
+      "output": "media/v12-elevation.jpg",
+      "outputSha256": "608493828e1e91f568156f757419a652cc5c74cb7e8edbb35bed6d09b6af9b03",
+      "bytes": 43340
+    },
+    {
+      "source": "builds/v1/DreamHouse-V1-plan.png",
+      "sourceSha256": "b254243f6836dd262c4f6ce32293b5420e27a2e7137200e2805d6cbbd0d76af0",
+      "output": "media/v1-plan.jpg",
+      "outputSha256": "a1d47b9ffc591f1d42f1a9b47741cdcbe55e3c2a04d8447833b4cb6302d38758",
+      "bytes": 71268
+    },
+    {
+      "source": "builds/v1.1/architectural-package/A09-bim-wireframe-isometric.png",
+      "sourceSha256": "6f20b5e01db99c8902ebe0af920e64d1d4d5ef75247e1367e22e7898bb3b5dfd",
+      "output": "media/v11-wireframe.jpg",
+      "outputSha256": "95998c20a0f42eea71f1c7573d618cff90dffc61466a7c2c298f0a2fc6893e3a",
+      "bytes": 149990
+    },
+    {
+      "source": "builds/v1.3/architectural-package/drafting/D02-ground-floor-cut-plan.png",
+      "sourceSha256": "f8c731ceaec159e47e84d4960dfee4589260e0d02c75fca044fb5c39294aa977",
+      "output": "media/v13-ground-floor-plan.jpg",
+      "outputSha256": "45fcb22a42e6087909075eb89a4296f39bfa6f13e94467c024f54ef35da925a7",
+      "bytes": 82440
+    }
+  ]
+}

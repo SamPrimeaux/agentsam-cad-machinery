@@ -1,4 +1,5 @@
 import { getRoboticsPerceptionCapabilities, runRoboticsPerception } from '../src/robotics/perception.ts';
+import beyondEvidence from '../../frontend/src/app/beyond/source-manifest.json';
 import appManifest from '../../agentsam.app.json';
 import { handlePublicBimStarters } from './bim-starters-library.js';
 
@@ -46,6 +47,23 @@ export default {
         docker_service: "not_probed_by_worker",
         project_access: "requires_authenticated_SAM_session",
       });
+    }
+
+    // Public Beyond editorial derivatives are an exact allowlist projected from
+    // the reviewed source manifest. No arbitrary R2 key proxy or BIM source exposure.
+    if (method === "GET" && path.startsWith("/beyond/media/")) {
+      const name = path.slice("/beyond/media/".length);
+      const file = beyondEvidence.files.find(entry => entry.output === "media/" + name);
+      if (!file) return json({ok:false,error:"beyond_asset_not_public"},404);
+      if (!env.WEBSITE_ASSETS) return json({ok:false,error:"cad_asset_bindings_missing"},503);
+      const key = "public/cad/showcases/beyond-blueprint/v1.4/media/" + name;
+      const asset = await env.WEBSITE_ASSETS.get(key);
+      if (!asset) return json({ok:false,error:"beyond_asset_not_published"},404);
+      return new Response(asset.body, {status:200,headers:{
+        "content-type":"image/jpeg","cache-control":"public, max-age=600",
+        "x-content-type-options":"nosniff","x-cad-evidence-revision":"v1.4",
+        "access-control-allow-origin":"*"
+      }});
     }
 
     // Explicitly published DreamHouse V1.1 read-only experience.
