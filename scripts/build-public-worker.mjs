@@ -110,6 +110,8 @@ const sdkBuild = path.join(sdkCad,'frontend/dist');
 // The pinned CAD frontend imports source-workspace nav CSS directly. A fresh
 // SDK checkout has no generated dist; build its declared nav dependency first.
 run('npm', ['run','build','-w','@inneranimalmedia/agentsam-nav'], sdkDir);
+// Workbench builds the linked contracts/loading-scene workspace packages as needed.
+run('npm', ['run','build','-w','@inneranimalmedia/agentsam-workbench'], sdkDir);
 run('npm', ['run', 'build', '-w', '@inneranimalmedia/agentsam-cad-frontend', '--', '--base=/studio/'], sdkCad);
 requireInvariant(fs.existsSync(path.join(sdkBuild,'index.html')), 'sdk_studio_bundle_missing');
 const studioDest = path.join(app,'frontend/dist/studio');
