@@ -70,7 +70,7 @@ const missingDeps = externalDeps.filter(name => !fs.existsSync(path.join(sdkDir,
 if (missingDeps.length) {
   const locked = missingDeps.map(name => {
     const version = sdkCadLock.packages?.['node_modules/' + name]?.version;
-    requireInvariant(version && /^\\d+\\.\\d+\\.\\d+/.test(version), 'sdk_dependency_not_locked:' + name);
+    requireInvariant(version && /^\d+\.\d+\.\d+/.test(version), 'sdk_dependency_not_locked:' + name);
     return name + '@' + version;
   });
   run('npm', ['install','--no-save','--no-package-lock','--ignore-scripts','--workspaces=false','--no-audit','--no-fund',...locked], sdkDir);
