@@ -38,7 +38,8 @@
       "/health",
       "/case-studies/dream-house/assets/*",
       "/studio",
-      "/studio/*"
+      "/studio/*",
+      "/beyond/media/*"
     ]
   }
 }

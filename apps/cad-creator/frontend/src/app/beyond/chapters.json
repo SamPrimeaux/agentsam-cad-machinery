@@ -1,0 +1,246 @@
+{
+  "schema": "iam.beyond-blueprint.storyboard.v2",
+  "title": "Beyond the Blueprint",
+  "status": "local-owner-review",
+  "model": "DreamHouse V1.2 reference GLB (editorial staging only)",
+  "philosophy": "A dream shouldn't require you to understand every obstacle before you're allowed to pursue it.",
+  "chapters": [
+    {
+      "id": "aspiration",
+      "chapter": "01",
+      "kicker": "THE BEGINNING",
+      "title": "Every dream begins before there's a blueprint.",
+      "lede": "A vision doesn't need permission to exist. It just needs somewhere to begin.",
+      "eyebrow": "The aspiration",
+      "camera": [
+        29,
+        17,
+        43
+      ],
+      "target": [
+        0,
+        2,
+        -38
+      ],
+      "scene": "Serene clay landscape, distant architecture, spacious horizon",
+      "light": "Sunrise",
+      "action": "Begin the journey",
+      "headlineHtml": "Every dream begins <em>before</em> there's a blueprint<span class=\"btb-dot\">.</span>",
+      "eyebrowHtml": "<span class=\"btb-index\">01</span> THE BEGINNING <span class=\"btb-rule\"></span> ASPIRATION",
+      "frame": 0,
+      "cta": "Follow the journey"
+    },
+    {
+      "id": "complexity",
+      "chapter": "02",
+      "kicker": "THE LANDSCAPE OF DECISIONS",
+      "title": "Between imagining it and building it lies complexity.",
+      "lede": "Decisions. Details. Systems. An entire world of things you're expected to understand before you can even begin.",
+      "eyebrow": "The obstacle",
+      "camera": [
+        32,
+        22,
+        -7
+      ],
+      "target": [
+        0,
+        3,
+        -68
+      ],
+      "scene": "Bridges, terracing, paths and overlapping architectural systems",
+      "light": "Diffused midday",
+      "headlineHtml": "Between imagining it and building it lies <em>complexity.</em>",
+      "eyebrowHtml": "<span class=\"btb-index\">02</span> THE OBSTACLE <span class=\"btb-rule\"></span> COMPLEXITY",
+      "frame": 1,
+      "cta": ""
+    },
+    {
+      "id": "uncertainty",
+      "chapter": "03",
+      "kicker": "FINDING A WAY",
+      "title": "Not knowing the way forward doesn't mean there isn't one.",
+      "lede": "Every breakthrough begins somewhere between uncertainty and the courage to try again.",
+      "eyebrow": "The unknown",
+      "camera": [
+        12,
+        14,
+        -56
+      ],
+      "target": [
+        -6,
+        1,
+        -105
+      ],
+      "scene": "Camera finds a winding route through deeper hills",
+      "light": "Soft cool haze",
+      "headlineHtml": "Not knowing the way forward doesn't mean there <em>isn't one.</em>",
+      "eyebrowHtml": "<span class=\"btb-index\">03</span> THE UNKNOWN <span class=\"btb-rule\"></span> THE NEXT STEP",
+      "frame": 2,
+      "cta": ""
+    },
+    {
+      "id": "perseverance",
+      "chapter": "04",
+      "kicker": "KEEP MOVING",
+      "title": "The strength isn't in never falling. It's in rising again.",
+      "lede": "Progress isn't always a straight line. Sometimes it's simply refusing to let the last setback become the final chapter.",
+      "eyebrow": "The turning point",
+      "camera": [
+        -23,
+        20,
+        -97
+      ],
+      "target": [
+        1,
+        4,
+        -140
+      ],
+      "scene": "Climb into a broad opening with warm light on the horizon",
+      "light": "Late golden hour",
+      "headlineHtml": "The strength isn't in never falling. It's in <em>rising again.</em>",
+      "eyebrowHtml": "<span class=\"btb-index\">04</span> THE TURNING POINT <span class=\"btb-rule\"></span> PERSEVERANCE",
+      "frame": 3,
+      "cta": ""
+    },
+    {
+      "id": "understanding",
+      "chapter": "05",
+      "kicker": "THE IDEA BECOMES VISIBLE",
+      "title": "What once felt impossible begins to take shape.",
+      "lede": "From an idea to a sketch. From a sketch to a model. From a model to something you can finally understand, explore, and improve.",
+      "eyebrow": "DreamHouse V1.2",
+      "camera": [
+        39,
+        23,
+        -125
+      ],
+      "target": [
+        0,
+        5,
+        -170
+      ],
+      "scene": "Authentic GLB model enters the environment; technical-to-clay model interpretation",
+      "light": "Soft daylight",
+      "headlineHtml": "What once felt impossible begins <em>to take shape.</em>",
+      "eyebrowHtml": "<span class=\"btb-index\">05</span> THE BRIDGE <span class=\"btb-rule\"></span> UNDERSTANDING",
+      "frame": 4,
+      "cta": "Explore the DreamHouse project"
+    },
+    {
+      "id": "capability",
+      "chapter": "06",
+      "kicker": "REAL WORKING TOOLS",
+      "title": "Industry-grade power. A more human way to create.",
+      "lede": "Explore the complexity when you need it. Let the tools guide you when you don't. Your experience level should never be the price of entry.",
+      "eyebrow": "The capability",
+      "camera": [
+        11,
+        40,
+        -155
+      ],
+      "target": [
+        0,
+        3,
+        -170
+      ],
+      "scene": "Authentic wireframe derived from V1.2 GLB with original architectural sheets",
+      "light": "Studio lighting",
+      "headlineHtml": "Industry-grade power. A <em>more human</em> way to create.",
+      "eyebrowHtml": "<span class=\"btb-index\">06</span> THE CAPABILITY <span class=\"btb-rule\"></span> APPROACHABILITY",
+      "frame": 5,
+      "cta": "Explore the DreamHouse project"
+    },
+    {
+      "id": "possibility",
+      "chapter": "07",
+      "kicker": "THE INVITATION",
+      "title": "Your vision deserves a way forward.",
+      "lede": "You don't need every answer to begin. Bring the aspiration. We'll help you find the next step.",
+      "eyebrow": "The horizon",
+      "camera": [
+        47,
+        29,
+        -198
+      ],
+      "target": [
+        -6,
+        4,
+        -240
+      ],
+      "scene": "World opens to multiple creative pathways and broader possibility",
+      "light": "Open sunrise",
+      "headlineHtml": "Your vision deserves <em>a way forward.</em>",
+      "eyebrowHtml": "<span class=\"btb-index\">07</span> THE HORIZON <span class=\"btb-rule\"></span> POSSIBILITY",
+      "frame": 6,
+      "cta": "See what became possible"
+    }
+  ],
+  "reducedMotion": "Native V1.2 architectural stills and full textual narrative remain accessible without WebGL.",
+  "sourceReference": "DreamHouse V1.2 BIM architectural package; approved geometry remains unchanged.",
+  "delivery": "Local browser preview only. No deployment or source model mutation.",
+  "process": {
+    "overline": "THE PROCESS / RUNG BY RUNG",
+    "title": "Every drawing is a rung. Climb one at a time.",
+    "intro": "Nobody starts fluent. DreamHouse was built one stage at a time, and each stage produced a real drawing, taught a real lesson and proved a real tool.",
+    "rungs": [
+      {
+        "id": "first-plan",
+        "version": "V1 / FIRST PLAN",
+        "title": "Pictures and a room list become a plan",
+        "lede": "The first pass took a single evening: two reference pictures, a list of rooms and a schematic floor plan to react to.",
+        "what": "A schematic plan shows rooms, sizes and how they connect. It is not construction detail.",
+        "why": "It gives you something concrete to disagree with. Opinions get sharper the moment there is a drawing.",
+        "produces": "A room-by-room layout, in metres, that the next stage can turn into a model.",
+        "image": "v1-plan.jpg",
+        "alt": "DreamHouse V1 schematic floor plan",
+        "caption": "V1 / SCHEMATIC FLOOR PLAN / FIRST PASS"
+      },
+      {
+        "id": "model",
+        "version": "V1.1 / THE MODEL",
+        "title": "The plan becomes a model",
+        "lede": "The same plan was rebuilt in three dimensions, out of building parts rather than a picture of them.",
+        "what": "A BIM model describes walls, roofs, doors and rooms as objects that know what they are.",
+        "why": "A model can be cut, counted and checked. A picture can only be looked at.",
+        "produces": "A 3D model whose parts can generate drawings on demand.",
+        "image": "v11-wireframe.jpg",
+        "alt": "DreamHouse V1.1 BIM wireframe isometric drawing",
+        "caption": "V1.1 / BIM WIREFRAME ISOMETRIC"
+      },
+      {
+        "id": "review",
+        "version": "V1.2 / THE REVIEW",
+        "title": "The model gets cut open",
+        "lede": "Plans and sections were pulled from the model so they could be checked. That is where the real problems showed up.",
+        "what": "A review sheet is a slice through the model, such as the ground floor cut at a set height.",
+        "why": "Mistakes are cheap on paper and expensive on site. A review finds them while they are still cheap.",
+        "produces": "An honest list of blockers, such as garage doors that were drawn as panels but not yet modeled as real openings.",
+        "image": "v12-plan.jpg",
+        "alt": "DreamHouse V1.2 ground-floor BIM cut drawing",
+        "caption": "V1.2 / GROUND FLOOR / BIM CUT"
+      },
+      {
+        "id": "drafting",
+        "version": "V1.3 / THE DRAFTING SET",
+        "title": "Drawings come from the model",
+        "lede": "Thirteen sheets, generated from one model, so the plan, the sections and the elevations cannot quietly disagree.",
+        "what": "A drafting set is the family of drawings (plans, elevations, sections) that explains a building to someone else.",
+        "why": "This is the language architects and builders share. Speaking it is how an idea gets taken seriously.",
+        "produces": "A coordinated schematic set in standard formats, labeled preliminary and not for construction.",
+        "image": "v13-ground-floor-plan.jpg",
+        "alt": "DreamHouse V1.3 ground-floor cut plan generated from the IFC model",
+        "caption": "V1.3 / GROUND-FLOOR CUT PLAN / GENERATED FROM IFC"
+      },
+      {
+        "id": "next",
+        "version": "NEXT RUNG",
+        "title": "Interiors, then a real conversation",
+        "lede": "The next rungs are curating the interior, then sitting down with a professional to find out what they would change.",
+        "what": "Interior curation: layout, circulation, door and window openings and furniture zones, for all 21 spaces.",
+        "why": "A model only becomes a home once you can walk through it and someone qualified has argued with it.",
+        "produces": "A room schedule, then a walk-through with an architect or builder and a written list of their corrections."
+      }
+    ],
+    "status": "Design status: V1.3 schematic coordination for owner review. Preliminary only: not a survey, not construction drawings, and not engineering or code approval. This is real work in progress, shown as it is."
+  }
+}
