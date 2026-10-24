@@ -59,6 +59,10 @@ if (process.env.AGENTSAM_SDK_SOURCE_ROOT?.trim()) {
   run('npm', ['ci','--no-audit','--no-fund'], sdkDir);
 }
 const sdkCad = path.join(sdkDir, 'apps/cad-creator');
+// The SDK root lock intentionally excludes runnable apps. Install the CAD app's
+// own pinned workspace lock for its Vite plugins and CAD runtime dependencies;
+// the root install above supplies reusable SDK packages only.
+run('npm', ['ci','--no-audit','--no-fund'], sdkCad);
 requireInvariant(fs.existsSync(path.join(sdkCad, 'agentsam.app.json')), 'sdk_cad_source_missing');
 const sdkManifest = JSON.parse(fs.readFileSync(path.join(sdkCad,'agentsam.app.json'),'utf8'));
 requireInvariant(sdkManifest.id === 'cad-creator', 'sdk_cad_app_identity');
