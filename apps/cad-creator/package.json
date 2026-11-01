@@ -63,7 +63,7 @@
     "ws": "^8.21.3"
   },
   "devDependencies": {
-    "wrangler": "4.151.1"
+    "wrangler": "4.156.0"
   },
   "publishConfig": {
     "access": "public"
