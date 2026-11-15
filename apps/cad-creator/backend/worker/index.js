@@ -2,6 +2,7 @@ import { getRoboticsPerceptionCapabilities, runRoboticsPerception } from '../src
 import beyondEvidence from '../../frontend/src/app/beyond/source-manifest.json';
 import appManifest from '../../agentsam.app.json';
 import { handlePublicBimStarters } from './bim-starters-library.js';
+import { handleDreamHousePublishedMedia } from './dreamhouse-public-media.js';
 
 /**
  * Canonical Cloudflare Worker boundary for CAD Creator.
@@ -111,6 +112,10 @@ export default {
     // Read-only BIM starter catalog; exact ID and file allowlists inside the handler.
     const bimLibraryResponse = await handlePublicBimStarters(request, env);
     if (bimLibraryResponse) return bimLibraryResponse;
+
+    // Immutable V1.5 public case-study images (exact CAD R2 allowlist).
+    const dreamhouseMedia = await handleDreamHousePublishedMedia(request, env);
+    if (dreamhouseMedia) return dreamhouseMedia;
 
     // Only explicit, presentation-safe assets are available to anonymous visitors.
     // Do not turn the private CAD R2 bucket into an arbitrary object proxy.
