@@ -1,0 +1,387 @@
+{
+  "formatVersion": "1.0.0",
+  "metadata": {
+    "id": "iam-about-native-earth",
+    "name": "About — Original Holographic Earth",
+    "description": "Original About-page Earth geometry and orbit details, converted to a portable IAM scene. Scroll progress controls the same globe rig; IAM owns the renderer and material layers.",
+    "tags": [
+      "about",
+      "earth",
+      "holographic",
+      "scroll-driven",
+      "portable",
+      "inneranimalmedia"
+    ],
+    "provenance": {
+      "source": "Original published About scene geometry",
+      "sourceUrl": "https://prod.spline.design/CNI9Bx5eUGw7Eom2/scene.splinecode",
+      "conversion": "Build-time geometry extraction to glTF; materials, camera, and scroll choreography are native IAM iamscene contracts.",
+      "runtime": "@inneranimalmedia/iamscene",
+      "geometryAsset": "about-earth-geometry.glb",
+      "runtimeSplineDependency": false
+    }
+  },
+  "coordinateSystem": {
+    "handedness": "right",
+    "upAxis": "Y",
+    "distanceUnit": "m"
+  },
+  "scene": {
+    "rootNodeIds": [
+      "scene-root"
+    ],
+    "nodes": [
+      {
+        "id": "scene-root",
+        "name": "scene-root",
+        "kind": "group",
+        "transform": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "visible": true
+      },
+      {
+        "id": "about-composition",
+        "name": "about-composition",
+        "kind": "group",
+        "parentId": "scene-root",
+        "transform": {
+          "position": [
+            9.5304774344,
+            41.5942628207,
+            0.6850697813
+          ],
+          "rotation": [
+            0.16953202249987687,
+            -0.0375843445352855,
+            0.2131514098652129,
+            0.9614638770465722
+          ],
+          "scale": [
+            1.3,
+            1.3,
+            1.3
+          ]
+        },
+        "visible": true
+      },
+      {
+        "id": "earth-rig",
+        "name": "earth-rig",
+        "kind": "group",
+        "parentId": "about-composition",
+        "transform": {
+          "position": [
+            0,
+            0.4927009344,
+            -0.0598996878
+          ],
+          "rotation": [
+            -1,
+            0,
+            0,
+            0
+          ],
+          "scale": [
+            50,
+            50,
+            50
+          ]
+        },
+        "visible": true
+      },
+      {
+        "id": "earth-geometry",
+        "name": "Original Earth geometry",
+        "kind": "mesh",
+        "parentId": "earth-rig",
+        "assetRef": "about-earth-geometry",
+        "transform": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "userData": {
+          "source": "original-spline-globe-children",
+          "materialOverrides": "glb-node-extras"
+        },
+        "visible": true
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "about-earth-geometry",
+      "uri": "about-earth-geometry.glb",
+      "mediaType": "model/gltf-binary",
+      "role": "presentation",
+      "sha256": "293fce2670ea4a0eac4e398c3b874badf93bf90fe20d8e8fee6196ebfca9f8e5",
+      "sourceNodeId": "earth-geometry",
+      "units": "m"
+    }
+  ],
+  "materials": [
+    {
+      "id": "earth-base",
+      "baseColor": "#071a34",
+      "emissive": "#0b3661",
+      "emissiveIntensity": 0.08,
+      "metalness": 0.12,
+      "roughness": 0.72,
+      "holographicEarth": {
+        "layer": "ocean",
+        "frequency": [
+          90,
+          90
+        ],
+        "dotSize": 0.27,
+        "smoothness": 0.5,
+        "dotColor": "#0b3661",
+        "dotOpacity": 0.12,
+        "fresnelColor": "#005bff",
+        "fresnelBias": 0.06,
+        "fresnelScale": 0.8,
+        "fresnelPower": 3.62,
+        "fresnelIntensity": 0.22
+      }
+    },
+    {
+      "id": "earth-dots",
+      "baseColor": "#28e4ff",
+      "emissive": "#000000",
+      "emissiveIntensity": 0,
+      "opacity": 0.78,
+      "transparent": true,
+      "additive": true,
+      "depthWrite": false,
+      "holographicEarth": {
+        "layer": "dots",
+        "frequency": [
+          150,
+          150
+        ],
+        "dotSize": 0.3,
+        "smoothness": 0.66,
+        "dotColor": "#28e4ff",
+        "dotOpacity": 0.34
+      }
+    },
+    {
+      "id": "earth-outline",
+      "baseColor": "#51deff",
+      "emissive": "#000000",
+      "emissiveIntensity": 0,
+      "opacity": 0.36,
+      "transparent": true,
+      "additive": true,
+      "depthWrite": false,
+      "holographicEarth": {
+        "layer": "outline",
+        "lineColor": "#51deff",
+        "lineWidth": 1,
+        "lineOpacity": 0.28,
+        "lineIntensity": 1
+      }
+    },
+    {
+      "id": "orbit-ffd772",
+      "baseColor": "#ffd772",
+      "emissive": "#ffd772",
+      "emissiveIntensity": 1.15,
+      "roughness": 0.5,
+      "opacity": 0.92,
+      "transparent": true,
+      "additive": true,
+      "depthWrite": false
+    },
+    {
+      "id": "orbit-aff8fc",
+      "baseColor": "#aff8fc",
+      "emissive": "#aff8fc",
+      "emissiveIntensity": 1.15,
+      "roughness": 0.5,
+      "opacity": 0.92,
+      "transparent": true,
+      "additive": true,
+      "depthWrite": false
+    },
+    {
+      "id": "orbit-ff7272",
+      "baseColor": "#ff7272",
+      "emissive": "#ff7272",
+      "emissiveIntensity": 1.15,
+      "roughness": 0.5,
+      "opacity": 0.92,
+      "transparent": true,
+      "additive": true,
+      "depthWrite": false
+    },
+    {
+      "id": "orbit-72ddff",
+      "baseColor": "#72ddff",
+      "emissive": "#72ddff",
+      "emissiveIntensity": 1.15,
+      "roughness": 0.5,
+      "opacity": 0.92,
+      "transparent": true,
+      "additive": true,
+      "depthWrite": false
+    },
+    {
+      "id": "orbit-7272ff",
+      "baseColor": "#7272ff",
+      "emissive": "#7272ff",
+      "emissiveIntensity": 1.15,
+      "roughness": 0.5,
+      "opacity": 0.92,
+      "transparent": true,
+      "additive": true,
+      "depthWrite": false
+    },
+    {
+      "id": "orbit-b3ff72",
+      "baseColor": "#b3ff72",
+      "emissive": "#b3ff72",
+      "emissiveIntensity": 1.15,
+      "roughness": 0.5,
+      "opacity": 0.92,
+      "transparent": true,
+      "additive": true,
+      "depthWrite": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "earth-scroll",
+      "name": "Original scroll-controlled Earth orientation",
+      "duration": 1,
+      "loop": false,
+      "tracks": [
+        {
+          "id": "earth-yaw",
+          "targetId": "earth-rig",
+          "property": "rotation.y",
+          "keyframes": [
+            {
+              "time": 0,
+              "value": 0,
+              "easing": "linear"
+            },
+            {
+              "time": 1,
+              "value": 5.026548245743669,
+              "easing": "linear"
+            }
+          ]
+        },
+        {
+          "id": "earth-pitch",
+          "targetId": "earth-rig",
+          "property": "rotation.x",
+          "keyframes": [
+            {
+              "time": 0,
+              "value": 0,
+              "easing": "linear"
+            },
+            {
+              "time": 0.125,
+              "value": 0.04592201188381077,
+              "easing": "linear"
+            },
+            {
+              "time": 0.25,
+              "value": 0.0848528137423857,
+              "easing": "linear"
+            },
+            {
+              "time": 0.375,
+              "value": 0.1108655439013544,
+              "easing": "linear"
+            },
+            {
+              "time": 0.5,
+              "value": 0.12,
+              "easing": "linear"
+            },
+            {
+              "time": 0.625,
+              "value": 0.1108655439013544,
+              "easing": "linear"
+            },
+            {
+              "time": 0.75,
+              "value": 0.08485281374238571,
+              "easing": "linear"
+            },
+            {
+              "time": 0.875,
+              "value": 0.04592201188381079,
+              "easing": "linear"
+            },
+            {
+              "time": 1,
+              "value": 1.4695761589768237e-17,
+              "easing": "linear"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "interactions": [],
+  "environment": {
+    "background": "#050713",
+    "ambientIntensity": 0,
+    "lights": []
+  },
+  "camera": {
+    "projection": "orthographic",
+    "position": [
+      4.9424388296,
+      36.4158554028,
+      2291.9576172838
+    ],
+    "target": [
+      4.9424388296,
+      36.4158554028,
+      0
+    ],
+    "frustumHeight": 206.0573,
+    "zoom": 1,
+    "near": -100000,
+    "far": 100000
+  },
+  "extensionsUsed": [],
+  "extensionsRequired": [],
+  "$schema": "https://schemas.inneranimalmedia.com/iamscene/v1/scene.schema.json",
+  "format": "iamscene"
+}

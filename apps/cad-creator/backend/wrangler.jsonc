@@ -48,6 +48,11 @@
       "!/scenes/*",
       "!/glb/*",
       "!/home-app/*",
+      "!/samscene/assets/*",
+      "!/samscene/models/*",
+      "!/samscene/library/*",
+      "!/samscene/brand/*",
+      "!/samscene/api-data/*",
       "!/fonts/*",
       "!/studio/assets/*"
     ]

@@ -104,7 +104,8 @@ export async function handleCmsPage(request, env) {
         } })
         .transform(new Response(res.body, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=60' } }));
     }
-    const head = `<meta name="iam-chrome" content="external"><link rel="stylesheet" href="/brand/primetech.css">${FONT_LINK}`;
+    const appCss = meta.app_css ? `<style>${String(meta.app_css).replace(/<\/style/gi, '')}</style>` : '';
+    const head = `<meta name="iam-chrome" content="external"><link rel="stylesheet" href="/brand/primetech.css">${FONT_LINK}${appCss}`;
     const rewritten = new HTMLRewriter()
       .on('head', { element(el) { el.append(head, { html: true }); } })
       .on('body', { element(el) {

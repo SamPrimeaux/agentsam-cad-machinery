@@ -1,0 +1,1051 @@
+Most packages are 2.6.15. The notable exceptions are:
+
+
+
+Package
+
+
+
+Current version
+
+
+
+Visibility
+
+
+
+architectural-intelligence
+
+
+
+2.6.14
+
+
+
+Private
+
+
+
+primetech-procedures
+
+
+
+2.6.14
+
+
+
+Private theme-contract
+
+2.6.14
+
+Private iamscene
+
+0.1.2
+
+Public what are these, in detail
+
+
+
+
+
+
+
+
+
+
+
+
+
+Worked for 2m 41s
+
+
+
+
+
+These four packages are quite different from one another. They aren't simply four outdated packages that need their versions updated.
+
+They represent four separate capabilities within your ecosystem:
+1. Architectural Intelligence — domain knowledge and architectural operations for AgentSam.
+2. PrimeTech Procedures — specialist workflows and operating procedures for PrimeTech.
+3. Theme Contract — the shared technical contract that makes independently developed themes compatible with the CMS.
+4. IAMScene — a reusable 3D scene and spatial application capability.
+The distinction matters because each has a different purpose, audience, dependency structure and distribution strategy.
+
+Here's what each actually does and where I would position it.
+1. Architectural Intelligence
+Private
+2.6.14
+Architecture / BIM
+
+Path: packages/agentsam-architectural-intelligence/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10
+
+
+
+
+
+
+
+
+
+
+
+What it is: An architectural knowledge and reference service designed to give AgentSam structured, sourced information about building materials, dimensions, architectural documentation and BIM standards.
+
+Think of it as a specialist knowledge interface that CAD Creator and other PrimeTech applications can consult.
+What is actually implemented?
+It contains five executable MCP tools:
+Tool	Function
+arch.material.lookup	Looks up actual lumber dimensions
+arch.assembly.thickness	Calculates specified assembly thickness
+arch.qa.compare_dimensions	Compares dimensions against tolerance
+arch.references.list	Returns curated technical authorities
+arch.capabilities.status	Reports implemented capabilities
+
+For example, material lookup currently understands:
+Nominal lumber	Actual thickness	Actual width
+2×4	1.5 in	3.5 in
+2×6	1.5 in	5.5 in
+2×8	1.5 in	7.25 in
+2×10	1.5 in	9.25 in
+2×12	1.5 in	11.25 in
+
+These dimensions are sourced from the American Wood Council.
+
+It also maintains nine technical references, including:
+- American Wood Council.
+- National CAD Standard.
+- IFC 4.3.
+- buildingSMART Information Delivery Specification.
+- CSI MasterFormat.
+- Autodesk DXF documentation.
+- International Code Council.
+- U.S. Access Board.
+It records whether references are publicly accessible, edition-controlled or licensed.
+The 12 architectural skills
+There is another important component: the package README identifies 12 AgentSam skills stored under skills/agentsam-arch-*.
+Skill	Responsibility
+Accessibility	Accessibility scoping
+Assemblies	Walls, floors, roofs and openings
+BIM	Typed building objects and IFC
+CAD	Drafting conventions and dimensions
+Codes	Adopted building-code research
+Coordination	Survey, structural and MEP coordination
+Documents	SD/DD/CD documentation
+Geometry	Actual solid-modeling operations
+Materials	Manufacturer and material references
+Orchestrate	Coordinate architectural workflows
+Specifications	Product and specification verification
+Verify	Evidence-based acceptance
+
+What it does NOT do yet
+This distinction is particularly important.
+
+The package does not currently implement a complete architectural CAD/BIM engine.
+
+It does not independently:
+- Generate complete building models.
+- Execute arbitrary OpenCASCADE operations.
+- Create or certify construction drawings.
+- Perform complete IFC validation.
+- Determine legally applicable building codes automatically.
+Those capabilities require the corresponding real application integrations, domain operations and verified sources.
+
+My recommendation: Keep this as the PrimeTech Architecture Intelligence service. Eventually expose it as an installable AgentSam capability, with its reference database and skills distributed through properly defined contracts.
+
+2. PrimeTech Procedures
+Private / Experimental
+2.6.14
+Engineering automation
+
+Path: packages/primetech-procedures/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8
+
+
+
+
+
+
+
+
+
+
+
+What it is: A controlled engineering workflow execution layer.
+
+This is arguably one of the more strategically important packages in the group.
+
+Its purpose is to turn a successful engineering task into a repeatable, versioned procedure that can be executed by AgentSam across different applications and hosts.
+
+Imagine:
+1. AgentSam receives a request to inspect a CAD project.
+2. It selects an approved PrimeTech procedure.
+3. The procedure checks the required capabilities.
+4. It executes its defined steps.
+5. It validates the outputs.
+6. It records an evidence receipt containing hashes and execution information.
+The same procedure should work through Local Studio, a desktop host, a Cloudflare host or an SDK integration without duplicating its implementation.
+What the engine actually contains
+Its main JavaScript implementation is:
+
+packages/primetech-procedures/src/index.js
+
+It exposes four important APIs:
+API	Purpose
+validateProcedureManifest()	Validates procedure definitions
+createProcedureCatalog()	Discovers and manages available procedures
+createPrimeTechProcedureHandler()	Executes authorized procedures
+summarizeProcedureRuns()	Summarizes execution receipts
+
+The procedure engine supports five effect classifications:
+- read
+- local_write
+- project_write
+- export
+- external_action
+A procedure also defines its input schema, output schema, required capabilities, execution environment, verification method and approval requirements.
+
+This is important because the engine doesn't simply execute arbitrary commands supplied by an agent.
+
+It uses existing SAM authorization and operation routing.
+Two actual procedures
+A. repo.asset.inventory@0.1.0
+Read-only
+Inspects an engineering project for native assets.
+
+Supported asset types include:
+- FreeCAD FCStd
+- IFC
+- Blender
+- STEP
+- DXF
+- SVG
+- GLB
+Produces:
+- Asset inventory.
+- File sizes.
+- SHA-256 hashes.
+- File-type counts.
+- Explicit truncation and error information.
+- Deterministic JSON output.
+It does not modify project files or require operator review.
+
+B. cad.motor-bearing-end-plate@0.1.0
+Requires operator review
+This is a much more substantial manufacturing procedure.
+
+It generates a parametric motor/bearing end plate using FreeCAD and OpenCASCADE.
+
+Its output includes:
+- Native FCStd model.
+- STEP geometry.
+- STL geometry.
+- Verification and feasibility JSON.
+- Dimensioned SVG/PDF drawing.
+- Simulation-only CAM plan.
+- Illustrative toolpath preview.
+- Seven-page PDF review deck.
+- Source snapshot.
+- Manifest and ZIP delivery bundle.
+An interesting engineering decision already documented:
+
+The original 120 mm outer diameter could not accommodate the specified separate pocket while clearing the 52 mm counterbore and remaining inside the circular boundary.
+
+Candidate B uses a 150 mm diameter and a different pocket placement.
+
+That is explicitly recorded as a proposal, not an approved design revision.
+
+The CAM output is not approved for physical machining. No physical hardware is actuated.
+What PrimeTech Procedures is intended to cover
+Its README identifies six production disciplines:
+1. Architecture and BIM.
+2. Mechanical and industrial engineering.
+3. Spatial worlds.
+4. Motion and media.
+5. Brands and merchandise.
+6. Software and CMS.
+These are intended workflow categories, not six fully implemented procedure libraries.
+
+Currently, the package contains two procedure definitions.
+Why I would keep it private for now
+This is infrastructure, not an end-user application.
+
+There is also a metadata inconsistency:
+Manifest	Declared version
+package.json	2.6.14
+agentsam.package.json	0.1.0
+
+The AgentSam manifest classifies it as experimental-private-workspace.
+
+I would retain the internal package while expanding the verified procedure library. Its long-term value is considerable: it could become the common execution layer for PrimeTech's engineering disciplines.
+
+3. Theme Contract
+Private / Needs review
+2.6.14
+CMS infrastructure
+
+Path: packages/theme-contract/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11
+
+
+
+
+
+
+
+
+
+
+
+What it is: The technical agreement between your CMS and its independently installable website themes.
+
+This is not an actual theme.
+
+It defines how a theme is allowed to represent, render and customize customer-owned content.
+
+This is particularly important for your Theme Store.
+The fundamental distinction
+Customer owns the data
+
+Products, collections, media, navigation, customers and publishing state.
+
+
+Theme owns the presentation
+
+Layouts, visual renderers, presets, tokens, motion, section capabilities and default compositions.
+
+
+Switching themes must not duplicate or destroy customer store data.
+
+This is what allows a customer to switch between Cypress, Ember, Forge, Revise, Summit and the other themes without rebuilding their product catalog.
+Its six architectural building blocks
+Building block	Responsibility
+Component	Reusable visual primitive
+Section definition	Describes an editable composition
+Section instance	Customer-owned placement of a section
+Template definition	Defines a page composition
+Layout definition	Defines the outer site frame
+Theme package	Bundles visual assets and rendering capabilities
+
+For example:
+
+A Product Hero is a section definition.
+
+A particular customer's Product Hero on a particular page is a section instance.
+
+Cypress and Revise can render that same instance differently.
+
+The instance's stable ID and customer data remain intact.
+What I found that needs attention
+There is a significant architectural issue here.
+
+You currently have two different packages with the same npm package identity:
+SDK root package
+
+packages/theme-contract/
+2.6.14 · Private
+Contains:
+- theme-package-contract.v1.schema.json
+- template-contract.v1.schema.json
+- runtime/theme-preview-registry.js
+This is a relatively small contract/schema and preview-registry package.
+
+CMS application package
+
+apps/ecommerce-cms-agentsam/packages/theme-contract/
+0.1.0 · Private
+Contains substantially more:
+- Editor bridge.
+- Theme project adapter.
+- CMS adapter.
+- CMS page adapter.
+- Portability logic.
+- Route handling.
+- Platform stock sections.
+- Portable section rendering.
+- PrimeTech scene renderers.
+- Revise Atlas runtime.
+The CMS application tests import this implementation directly. Its synchronization script also generates the frontend editor modules from these source files.
+
+Both declare:
+
+@inneranimalmedia/theme-contract
+
+But their contents and versions differ.
+
+There is also no README in the SDK root version, and its AgentSam catalog metadata currently says unknown and needs-review.
+
+This is not a problem I would solve by simply changing 2.6.14 to 2.6.15.
+
+I would consolidate the complete CMS implementation into one canonical shared package, with the CMS consuming that implementation rather than maintaining its own duplicate.
+
+This is directly related to your requirement of one canonical CMS architecture.
+
+4. IAMScene
+Public
+0.1.2
+Independent release train
+
+Path: packages/iamscene/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9
+
+
+
+
+
+
+
+
+
+
+
+What it is: Your portable, editable 3D scene format and runtime.
+
+This is not just a renderer or a collection of 3D assets.
+
+It defines a common format that different applications can create, edit, validate, animate and display.
+
+The native file extension is:
+
+*.iamscene.json
+What a scene contains
+A scene document can describe:
+- Scene identity and metadata.
+- Node hierarchy.
+- Object transforms.
+- Geometry provenance.
+- Materials.
+- Asset references.
+- Cameras.
+- Environments.
+- Animation tracks.
+- Declarative interactions.
+The format uses a right-handed, Y-up coordinate system with meters as its default unit.
+
+It has stable identities for scene nodes, materials, assets, animations and interactions.
+
+It also prohibits executable JavaScript inside scene documents.
+The actual API
+The package exposes six major API areas:
+Module	Responsibility
+types.ts	Scene data types
+document.ts	Creation and serialization
+validate.ts	Document validation
+editor.ts	Scene editing
+animation.ts	Time-based animation
+runtime.ts	Browser scene presentation
+
+For example:
+import {
+  createSceneDocument,
+  createSceneEditor,
+  parseSceneDocument,
+  validateSceneDocument
+} from '@inneranimalmedia/iamscene';
+
+const scene = createSceneDocument({
+  id: 'product-world',
+  name: 'Product World'
+});
+
+const editor = createSceneEditor(scene);
+
+editor.addNode({
+  id: 'hero-group',
+  name: 'Hero Group',
+  kind: 'group',
+  parentId: 'scene-root',
+  visible: true,
+  transform: {
+    position: [0, 0, 0],
+    rotation: [0, 0, 0, 1],
+    scale: [1, 1, 1]
+  }
+});
+
+const saved = editor.serialize();
+const reopened = parseSceneDocument(saved);
+
+if (!validateSceneDocument(reopened).valid) {
+  throw new Error('Invalid scene');
+}
+
+
+The OCCT connection
+This is one of the most important features.
+
+IAMScene integrates with your canonical:
+- agentsam-occt
+- agentsam-3d-viewer
+The package includes both as bundled dependencies.
+
+Its native geometry pipeline can generate:
+Output	Purpose
+GLTF	Presentation geometry
+STEP	Interoperable geometry
+BREP	Native geometry representation
+SHA-256	Asset integrity and provenance
+
+The canonical geometry feature history stays in the scene document.
+
+The GLTF is not treated as the only source of truth.
+
+This is exactly the kind of foundation that can connect CAD Creator, SamSketch, robotics visualization and creative production without requiring every application to invent its own scene format.
+Existing integration points
+I found references in:
+- apps/samsketch/src/native-scene-editor.ts
+- apps/samsketch/src/main.ts
+- packages/theme-scenes
+- apps/local-studio/backend/worker/work-samsketch-scenes.js
+There are also three example projects:
+1. Original circuit hover scene.
+2. Retrofuturistic circuit loop.
+3. Scroll-controlled circuit.
+The package has 23 explicit test cases across seven test files. That is a test inventory, not a claim that all 23 have passed in this audit.
+What IAMScene is NOT
+It does not replace:
+- A native parametric CAD project.
+- A complete BIM project.
+- A video timeline.
+- A physics simulation.
+- A game save-state.
+It can represent or present scenes associated with those systems, but those systems retain their own authoritative data.
+
+For example, a Franka robot visualization could use IAMScene to represent its environment and objects. That does not make IAMScene the robot's motion controller or safety system.
+Why it is version 0.1.2
+Unlike the three packages above, IAMScene explicitly declares:
+
+"releaseTrain": "independent"
+
+It is also public, has a declared FSL-1.1-MIT license, and has public npm distribution configured.
+
+Its 0.1.2 version is therefore not necessarily a stale 2.6.15 package. It is independently versioned.
+
+Its AgentSam catalog still describes it as in-development and needs-review, which is a separate maturity classification.
+
+5. How these four packages work together
+This is where the distinction becomes useful.
+PrimeTech
+
+Professional creative and engineering products
+
+Architectural Intelligence
+
+Understands materials, specifications, references and architectural requirements.
+
+
+PrimeTech Procedures
+
+Executes controlled, repeatable engineering workflows.
+
+
+IAMScene
+
+Defines, edits and presents portable spatial scenes.
+
+
+Theme Contract
+
+Makes CMS themes compatible with customer-owned content.
+
+
+
+
+AgentSam shared infrastructure
+
+Identity · Authorization · Operations · Assets · Runtime · Distribution
+
+
+Here is how I would classify their ownership:
+Package	Primary owner	Distribution
+Architectural Intelligence	PrimeTech Architecture	AgentSam capability
+PrimeTech Procedures	PrimeTech Engineering	Internal shared package
+Theme Contract	AgentSam CMS	Internal shared package
+IAMScene	PrimeTech Spatial / Creative	Public developer package
+
+6. What I would actually change
+My recommendations are:
+Package	Action
+Architectural Intelligence	Retain, expand real operations, prepare public distribution
+PrimeTech Procedures	Retain private, expand verified procedures, align versions
+Theme Contract	Consolidate duplicate implementations immediately
+IAMScene	Retain public and independent, mature its API and integrations
+
+Keep
+ IAMScene is an especially valuable foundation. I would not merge it into CAD Creator or bury it inside PrimeTech Procedures.
+
+Keep
+ PrimeTech Procedures should become the reusable execution layer, not another application or runtime.
+
+Reconcile
+ Theme Contract has the clearest immediate architectural defect: two same-named private packages with different contents.
+
+Expand
+ Architectural Intelligence has a good foundation, but its current five MCP operations are substantially smaller than the twelve architectural skills might suggest.
+
+My biggest recommendation: Treat these as four distinct assets with four distinct ownership boundaries. They complement one another; they should not be collapsed into a single PrimeTech package.
+
+The next thing I would investigate is the actual dependency graph between these four packages and CAD Creator, SamSketch, the CMS and Local Studio, so we can identify which ones are already genuinely integrated versus merely present in the monorepo.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+It contains five executable MCP tools:
+
+
+
+Tool
+
+
+
+Function
+
+
+
+arch.material.lookup
+
+
+
+Looks up actual lumber dimensions
+
+
+
+arch.assembly.thickness
+
+
+
+Calculates specified assembly thickness
+
+
+
+arch.qa.compare_dimensions
+
+
+
+Compares dimensions against tolerance
+
+
+
+arch.references.list
+
+
+
+Returns curated technical authorities
+
+
+
+arch.capabilities.status
+
+
+
+Reports implemented capabilities please add them to CREATE TABLE "agentsam_tools" (
+  id TEXT PRIMARY KEY DEFAULT ('ast_' || lower(hex(randomblob(8)))),
+  tool_name TEXT NOT NULL UNIQUE,
+  display_name TEXT NOT NULL,
+  tool_category TEXT NOT NULL,
+  handler_type TEXT NOT NULL DEFAULT 'mcp'
+    CHECK (handler_type IN (
+      'mcp','r2','github','terminal','http','proxy','ai','d1',
+      'hyperdrive','supabase','kv','durable_object','filesystem',
+      'browser_agentic','mybrowser','websearch','telemetry','eval',
+      'task.planner','task.organizer','task.manager','workspace.reader',
+      -- New semantic lanes (502)
+      'cf','deploy','git','memory','notify','workflow','agent',
+      'browser','media','canvas','integrations',
+      -- 1268: 'cms' added -- dedicated dispatcher case now legally reachable
+      'cms'
+    )),
+  description TEXT,
+  input_schema TEXT,
+  output_schema TEXT,
+  linked_mcp_tool_id TEXT,
+  mcp_service_url TEXT,
+  handler_config TEXT DEFAULT '{}',
+  intent_tags TEXT DEFAULT '[]',
+  intent_category_tags TEXT,
+  modes_json TEXT DEFAULT '["agent","plan","debug","multitask","ask"]',
+  risk_level TEXT NOT NULL DEFAULT 'low'
+    CHECK (risk_level IN ('low','medium','high','critical')),
+  requires_approval INTEGER NOT NULL DEFAULT 0,
+  requires_confirmation INTEGER NOT NULL DEFAULT 0,
+  token_budget_per_call INTEGER DEFAULT NULL,
+  max_calls_per_session INTEGER DEFAULT NULL,
+  cost_per_call_usd REAL DEFAULT 0.0,
+  is_active INTEGER NOT NULL DEFAULT 1,
+  is_degraded INTEGER NOT NULL DEFAULT 0,
+  failure_rate REAL DEFAULT 0.0,
+  avg_latency_ms REAL DEFAULT NULL,
+  use_count INTEGER NOT NULL DEFAULT 0,
+  last_used_at INTEGER DEFAULT NULL,
+  last_health_check INTEGER DEFAULT NULL,
+  sort_priority INTEGER DEFAULT 50,
+  workspace_scope TEXT NOT NULL DEFAULT '["*"]',
+  subagent_profile_id TEXT DEFAULT NULL,
+  schema_hint TEXT DEFAULT NULL,
+  notes TEXT DEFAULT NULL,
+  created_at INTEGER NOT NULL DEFAULT (unixepoch()),
+  updated_at INTEGER NOT NULL DEFAULT (unixepoch()),
+  is_global INTEGER DEFAULT 1,
+  tool_key TEXT,
+  capability_key TEXT,
+  handler_key TEXT,
+  route_key TEXT,
+  workflow_key TEXT,
+  task_type TEXT DEFAULT 'tool_use',
+  domain TEXT DEFAULT 'general',
+  capability_tier TEXT DEFAULT 'common',
+  internal_seo TEXT DEFAULT '',
+  tool_code TEXT DEFAULT NULL,
+  oauth_visible INTEGER NOT NULL DEFAULT 0,
+  dispatch_target TEXT NOT NULL DEFAULT 'internal',
+  result_policy_json TEXT,
+  caller_policy TEXT
+, cache_policy_json TEXT, updated_at_unix INTEGER, connector_visible INTEGER NOT NULL DEFAULT 0
+  CHECK (connector_visible IN (0, 1)), connector_priority INTEGER, connector_access_class TEXT NOT NULL DEFAULT 'read'
+  CHECK (connector_access_class IN ('read', 'write')), account_id TEXT, plugin_key TEXT, plugin_id TEXT REFERENCES agentsam_plugins(id) ON DELETE SET NULL) skills go into CREATE TABLE agentsam_skill (
+  id                 TEXT PRIMARY KEY,
+  account_id         TEXT NOT NULL,
+
+  name               TEXT NOT NULL,
+  slash_trigger      TEXT NOT NULL
+                       CHECK (slash_trigger GLOB '/[a-z0-9][a-z0-9-]*'),
+
+  npm_package_name   TEXT,
+  npm_version        TEXT,
+  is_published       INTEGER NOT NULL DEFAULT 0 CHECK (is_published IN (0,1)),
+
+  description        TEXT NOT NULL DEFAULT '',
+  content_markdown   TEXT NOT NULL DEFAULT '',
+  file_path          TEXT NOT NULL DEFAULT '',
+  content_checksum   TEXT NOT NULL DEFAULT '',
+
+  globs              TEXT NOT NULL DEFAULT '[]',
+  always_apply       INTEGER NOT NULL DEFAULT 0 CHECK (always_apply IN (0,1)),
+  task_types_json    TEXT NOT NULL DEFAULT '[]',
+  route_keys_json    TEXT NOT NULL DEFAULT '[]',
+
+  access_mode        TEXT NOT NULL DEFAULT 'read_write'
+                       CHECK (access_mode IN ('read_only','read_write')),
+
+  icon               TEXT NOT NULL DEFAULT '',
+  tags_json          TEXT NOT NULL DEFAULT '[]',
+  metadata_json      TEXT NOT NULL DEFAULT '{}',
+
+  invocation_count   INTEGER NOT NULL DEFAULT 0,
+  last_invoked_at    TEXT,
+
+  version            INTEGER NOT NULL DEFAULT 1,
+  is_active          INTEGER NOT NULL DEFAULT 1 CHECK (is_active IN (0,1)),
+  sort_order         INTEGER NOT NULL DEFAULT 0,
+
+  created_at         TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at         TEXT NOT NULL DEFAULT (datetime('now')),
+
+  UNIQUE (account_id, slash_trigger),
+  UNIQUE (npm_package_name, npm_version)
+)         
+
+Its main JavaScript implementation is:
+
+packages/primetech-procedures/src/index.js
+
+It exposes four important APIs:
+
+
+
+API
+
+
+
+Purpose
+
+
+
+validateProcedureManifest()
+
+
+
+Validates procedure definitions
+
+
+
+createProcedureCatalog()
+
+
+
+Discovers and manages available procedures
+
+
+
+createPrimeTechProcedureHandler()
+
+
+
+Executes authorized procedures
+
+
+
+summarizeProcedureRuns()
+
+
+
+Summarizes execution receipts
+
+The procedure engine supports five effect classifications:
+- read
+- local_write
+- project_write
+- export
+- external_action
+A procedure also defines its input schema, output schema, required capabilities, execution environment, verification method and approval requirements.
+
+This is important because the engine doesn't simply execute arbitrary commands supplied by an agent.
+
+It uses existing SAM authorization and operation routing.
+ CREATE TABLE agentsam_cad_jobs (id TEXT PRIMARY KEY, session_id TEXT, user_id TEXT NOT NULL, engine TEXT NOT NULL, prompt TEXT, mode TEXT DEFAULT 'text', status TEXT DEFAULT 'pending', external_task_id TEXT, result_url TEXT, r2_key TEXT, error TEXT, created_at INTEGER DEFAULT (unixepoch()), updated_at INTEGER DEFAULT (unixepoch()), workspace_id TEXT, tenant_id TEXT, project_id TEXT, scene_snapshot_id TEXT, progress_pct REAL DEFAULT 0, runner_host TEXT, started_at INTEGER, finished_at INTEGER, error_code TEXT, task_type TEXT DEFAULT 'text-to-3d', parent_task_id TEXT, rig_task_id TEXT, credits_consumed INTEGER DEFAULT 0, model_formats TEXT, texture_data TEXT, r2_bucket TEXT
+  CHECK (r2_bucket IS NULL OR length(trim(r2_bucket)) > 0))      CREATE TABLE agentsam_workflows (
+
+  id TEXT PRIMARY KEY
+
+    DEFAULT ('wf_' || lower(hex(randomblob(8)))),
+
+  workflow_key TEXT NOT NULL
+
+    CHECK(length(trim(workflow_key)) > 0),
+
+  revision INTEGER NOT NULL DEFAULT 1
+
+    CHECK(revision > 0),
+
+  scope_type TEXT NOT NULL DEFAULT 'platform'
+
+    CHECK(scope_type IN ('platform','account')),
+
+  account_id TEXT
+
+    REFERENCES accounts(id)
+
+    ON DELETE CASCADE,
+
+  display_name TEXT NOT NULL
+
+    CHECK(length(trim(display_name)) > 0),
+
+  description TEXT,
+
+  -- Explicit graph entry. Drafts may omit it; activation validates it exists.
+
+  entry_node_key TEXT,
+
+  lifecycle TEXT NOT NULL DEFAULT 'draft'
+
+    CHECK(lifecycle IN ('draft','active','disabled','retired')),
+
+  input_schema_json TEXT NOT NULL DEFAULT '{}'
+
+    CHECK(json_valid(input_schema_json)),
+
+  output_schema_json TEXT NOT NULL DEFAULT '{}'
+
+    CHECK(json_valid(output_schema_json)),
+
+  -- Runtime/category metadata only; never canvas position/layout.
+
+  metadata_json TEXT NOT NULL DEFAULT '{}'
+
+    CHECK(json_valid(metadata_json)),
+
+  -- Studio-only state: viewport, grouping, presentation hints, etc.
+
+  ui_json TEXT NOT NULL DEFAULT '{}'
+
+    CHECK(json_valid(ui_json)),
+
+  created_at INTEGER NOT NULL DEFAULT (unixepoch()),
+
+  updated_at INTEGER NOT NULL DEFAULT (unixepoch()),
+
+  CHECK(
+
+    (scope_type='platform' AND account_id IS NULL)
+
+    OR
+
+    (scope_type='account' AND account_id IS NOT NULL)
+
+  )
+
+)      CREATE TABLE agentsam_workflow_edges (
+
+  id TEXT PRIMARY KEY
+
+    DEFAULT ('wedge_' || lower(hex(randomblob(8)))),
+
+  workflow_id TEXT NOT NULL,
+
+  from_node_key TEXT NOT NULL,
+
+  to_node_key TEXT NOT NULL,
+
+  condition_type TEXT NOT NULL DEFAULT 'always'
+
+    CHECK(condition_type IN ('always','status','field','branch')),
+
+  condition_json TEXT NOT NULL DEFAULT '{}'
+
+    CHECK(json_valid(condition_json)),
+
+  priority INTEGER NOT NULL DEFAULT 0,
+
+  is_fallback INTEGER NOT NULL DEFAULT 0
+
+    CHECK(is_fallback IN (0,1)),
+
+  -- Connector label/style/routing handles are Studio presentation only.
+
+  ui_json TEXT NOT NULL DEFAULT '{}'
+
+    CHECK(json_valid(ui_json)),
+
+  created_at INTEGER NOT NULL DEFAULT (unixepoch()),
+
+  updated_at INTEGER NOT NULL DEFAULT (unixepoch()),
+
+  CHECK(from_node_key <> to_node_key),
+
+  FOREIGN KEY(workflow_id,from_node_key)
+
+    REFERENCES agentsam_workflow_nodes(workflow_id,node_key)
+
+    ON DELETE CASCADE,
+
+  FOREIGN KEY(workflow_id,to_node_key)
+
+    REFERENCES agentsam_workflow_nodes(workflow_id,node_key)
+
+    ON DELETE CASCADE,
+
+  UNIQUE(workflow_id,from_node_key,to_node_key,condition_type,priority)
+
+) CREATE TABLE agentsam_workflow_edges (
+
+  id TEXT PRIMARY KEY
+
+    DEFA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Error in message stream

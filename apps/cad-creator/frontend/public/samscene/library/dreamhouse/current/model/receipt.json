@@ -1,0 +1,36 @@
+{
+  "schema": "dreamhouse.current-world-export.v1",
+  "projectId": "proj_mrb5shkc_3kos2c",
+  "currentWorkRevision": "V1.6",
+  "status": "review-only: not structural or construction approval",
+  "sourceBlend": "builds/v1.5/DreamHouse-V1.5-Working.blend",
+  "sourceBlendSha256": "1c5ea0d0d021581337f1520c5fb697f701ec3e55224604b53a6a26dae2f2b8c4",
+  "sourceIfcSha256": "a293094924e098f2fa02682ec1e7c8ef6e6895abe2d9afea0fc4d79570f5e8da",
+  "materialCatalog": "spec/materials/presentation.json",
+  "materialCatalogSha256": "021643a4c0839455253151e56b95a11121739aa051c48a0740c1c6482b746e29",
+  "sourceDesignIdCount": 351,
+  "nativeDesignIdsVerified": 142,
+  "presentationMaterialOverrides": {
+    "dreamhouse-v12-cooking-island-stone-top": "graphite-stone",
+    "dreamhouse-v12-cooking-island-limestone": "warm-oak",
+    "dreamhouse-v12-kitchen-counter-stone": "limestone",
+    "dreamhouse-v12-family-dining-table": "warm-oak",
+    "dreamhouse-v12-limestone-fire-lounge": "limestone"
+  },
+  "pbrCompatibilityMaterials": [
+    "IAM | Quiet landscape",
+    "V12 light warm pavers",
+    "V12 rich stained timber",
+    "V12 warm cedar soffit",
+    "V12 warm white ivory ledgestone",
+    "V15 | Charcoal standing-seam metal",
+    "V15 | Cream limestone ashlar, staggered masonry",
+    "V15 | Ivory travertine, matte slip-resistant terrace",
+    "V15 | Recessed slab sawcuts",
+    "V15 | Warm light sandblasted concrete, vehicular"
+  ],
+  "model": "builds/current/model/DreamHouse.glb",
+  "modelSha256": "bc7dc482da02f807ed5306cb4e1da7496df6a2705e19cac513b11bf45a498d11",
+  "modelBytes": 6007108,
+  "noDuplicateNativeBIM": true
+}

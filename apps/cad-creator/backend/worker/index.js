@@ -4,6 +4,7 @@ import appManifest from '../../agentsam.app.json';
 import { handlePublicBimStarters } from './bim-starters-library.js';
 import { handleDreamHousePublishedMedia } from './dreamhouse-public-media.js';
 import { handleCmsPage, handleStudio } from './cms-site.js';
+import { handleSamSceneApi } from './samscene-api.js';
 
 /**
  * Canonical Cloudflare Worker boundary for CAD Creator.
@@ -150,6 +151,9 @@ export default {
       if (!studio) return json({ok:false,error:"studio_bundle_entry_unavailable"},503);
       return studio;
     }
+
+    const samsceneApi = await handleSamSceneApi(request, env);
+    if (samsceneApi) return samsceneApi;
 
     // Data-driven public pages (header, footer, menus and pages live in D1/R2).
     const cmsPage = await handleCmsPage(request, env);

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 490" role="img" aria-label="PrimeTech P geometric identity mark">
+<title>PrimeTech P</title>
+<defs>
+  <linearGradient id="ptRed" x1="0" x2="1"><stop stop-color="#FF2D3D"/><stop offset="1" stop-color="#FF2535"/></linearGradient>
+  <linearGradient id="ptOrange" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FF7A1F"/><stop offset="1" stop-color="#FF911F"/></linearGradient>
+  <linearGradient id="ptPurple" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#A24FFF"/><stop offset="1" stop-color="#8A4FFF"/></linearGradient>
+  <linearGradient id="ptGreen" x1="0" y1="0" x2="0.65" y2="1"><stop stop-color="#22C55E"/><stop offset="1" stop-color="#19D66A"/></linearGradient>
+  <linearGradient id="ptBowl" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00D9F7"/><stop offset="1" stop-color="#00B3F0"/></linearGradient>
+</defs>
+<!-- The six modular units follow the supplied PrimeTech P construction: capsule, stem, node, bowl and open counter. -->
+<path fill="url(#ptPurple)" d="M0 78 C0 108 20 130 66 130 H124 V262 C124 296 107 315 65 333 C27 349 0 376 0 414 Z"/>
+<path fill="url(#ptGreen)" d="M124 262 V431 C124 465 97 490 62 490 C27 490 0 465 0 431 V377 C0 338 26 320 66 303 C103 287 124 263 124 262 Z"/>
+<path fill="url(#ptBowl)" d="M123 245 H198 C240 245 262 220 262 185 V167 C262 124 293 98 330 98 C376 98 400 135 400 179 C400 281 331 346 224 346 H123 Z"/>
+<path fill="url(#ptOrange)" d="M157 0 H244 C334 0 400 67 400 164 V181 C398 133 365 102 329 102 C291 102 264 127 262 167 C262 148 250 132 224 130 H157 Z"/>
+<path fill="url(#ptRed)" d="M0 80 C0 35 37 0 81 0 H157 V130 H80 C32 130 0 110 0 80 Z"/>
+<circle cx="333" cy="173" r="67" fill="#00D9F7"/>
+</svg>

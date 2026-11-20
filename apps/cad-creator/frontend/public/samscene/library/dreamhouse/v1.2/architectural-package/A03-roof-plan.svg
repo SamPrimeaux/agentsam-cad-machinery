@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1040" width="1600" height="1040">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<rect x="30" y="25" width="1540" height="985" fill="none" stroke="#304b5f" stroke-width="1.5"/>
+<path d="M30 120 H1570 M30 944 H1570" stroke="#8a9da7" fill="none"/>
+<text x="65" y="68" font-size="30" font-weight="700" font-family="Arial" fill="#1e3445">A03 / Roof plan</text>
+<text x="65" y="99" font-size="17" font-family="Arial" fill="#647986">Original roof system retained except superseded veranda; new pavilion and garage roofs identified amber</text>
+<text x="66" y="973" font-family="Arial" font-size="17" font-weight="bold" fill="#304b5f">DREAMHOUSE V1.2 | DESIGN REVIEW | NOT FOR CONSTRUCTION</text>
+<text x="1532" y="973" font-family="Arial" text-anchor="end" font-size="15" fill="#607984">INNERANIMALMEDIA / CAD</text>
+<polygon points="676.8,748.2 1053.2,748.2 1053.2,551.8 676.8,551.8" fill="#738b9b" fill-opacity="0.16" stroke="#253d50" stroke-width="1.5"/>
+<polygon points="496.8,748.2 693.2,748.2 693.2,596.8 496.8,596.8" fill="#738b9b" fill-opacity="0.16" stroke="#253d50" stroke-width="1.5"/>
+<polygon points="496.8,613.2 618.2,613.2 618.2,461.8 496.8,461.8" fill="#738b9b" fill-opacity="0.16" stroke="#253d50" stroke-width="1.5"/>
+<polygon points="601.8,613.2 693.2,613.2 693.2,551.8 601.8,551.8" fill="#738b9b" fill-opacity="0.16" stroke="#253d50" stroke-width="1.5"/>
+<polygon points="1036.8,748.2 1218.2,748.2 1218.2,551.8 1036.8,551.8" fill="#738b9b" fill-opacity="0.16" stroke="#253d50" stroke-width="1.5"/>
+<polygon points="1096.8,568.2 1218.2,568.2 1218.2,461.8 1096.8,461.8" fill="#738b9b" fill-opacity="0.16" stroke="#253d50" stroke-width="1.5"/>
+<polygon points="819.2,796.2 940.8,796.2 940.8,727.2 819.2,727.2" fill="#738b9b" fill-opacity="0.16" stroke="#253d50" stroke-width="1.5"/>
+<polygon points="297.8,575.7 394.4,596.2 438.1,390.8 342.7,370.5 341.5,370.3" fill="#b99560" fill-opacity="0.23" stroke="#cf7536" stroke-width="2.2" stroke-dasharray="6,2"/>
+<polygon points="393.2,596.0 394.4,596.2 488.5,616.2 489.8,616.5 533.5,411.1 438.1,390.8 436.8,390.5" fill="#b99560" fill-opacity="0.23" stroke="#cf7536" stroke-width="2.2" stroke-dasharray="6,2"/>
+<polygon points="760.0,566.8 866.4,566.8 866.4,431.0 760.0,431.0" fill="#b99560" fill-opacity="0.23" stroke="#cf7536" stroke-width="2.2" stroke-dasharray="6,2"/>
+<polygon points="865.0,566.8 971.4,566.8 971.4,431.0 865.0,431.0" fill="#b99560" fill-opacity="0.23" stroke="#cf7536" stroke-width="2.2" stroke-dasharray="6,2"/>
+<text x="775.00" y="485.00" fill="#cf7536" font-family="Arial" font-size="16" text-anchor="middle">GABLE +8.55 m RIDGE</text>
+<text x="415.00" y="500.00" fill="#cf7536" font-family="Arial" font-size="16" text-anchor="middle">ANGLED SHOP -12°</text>
+<text x="895.00" y="245.00" fill="#117eae" font-family="Arial" font-size="16" text-anchor="middle">POOL / OPEN TO SKY</text>
+</svg>
