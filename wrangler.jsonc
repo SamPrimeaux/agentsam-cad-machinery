@@ -6,6 +6,9 @@
     "nodejs_compat"
   ],
   "workers_dev": false,
+  "vars": {
+    "CMS_SITE_DOMAIN": "cad.inneranimalmedia.com"
+  },
   "observability": {
     "enabled": true
   },
@@ -33,12 +36,12 @@
     "binding": "ASSETS",
     "not_found_handling": "single-page-application",
     "run_worker_first": [
-      "/api/*",
-      "/health",
-      "/case-studies/dream-house/assets/*",
-      "/studio",
-      "/studio/*",
-      "/beyond/media/*"
+      "/*",
+      "!/assets/*",
+      "!/brand/*",
+      "!/primetech/*",
+      "!/fonts/*",
+      "!/studio/assets/*"
     ]
   },
   "build": {

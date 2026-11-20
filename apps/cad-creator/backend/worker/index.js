@@ -3,6 +3,7 @@ import beyondEvidence from '../../frontend/src/app/beyond/source-manifest.json';
 import appManifest from '../../agentsam.app.json';
 import { handlePublicBimStarters } from './bim-starters-library.js';
 import { handleDreamHousePublishedMedia } from './dreamhouse-public-media.js';
+import { handleCmsPage } from './cms-site.js';
 
 /**
  * Canonical Cloudflare Worker boundary for CAD Creator.
@@ -149,6 +150,10 @@ export default {
       if (!entry.ok) return json({ok:false,error:"studio_bundle_entry_unavailable"},503);
       return new Response(entry.body,{headers:{"content-type":"text/html; charset=utf-8","cache-control":"no-store"}});
     }
+
+    // Data-driven public pages (header, footer, menus and pages live in D1/R2).
+    const cmsPage = await handleCmsPage(request, env);
+    if (cmsPage) return cmsPage;
 
     if (path.startsWith("/api/")) {
       // Public UI != permission to read user projects, invoke CAD engines,

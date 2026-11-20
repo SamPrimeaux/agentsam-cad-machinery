@@ -1,0 +1,185 @@
+{
+  "domain_env": "CMS_SITE_DOMAIN",
+  "styles": [
+    "/brand/primetech.css"
+  ],
+  "pages": [
+    {
+      "slug": "about",
+      "route": "/about",
+      "title": "About PrimeTech",
+      "seo": {
+        "title": "About PrimeTech | PrimeTech",
+        "description": "PrimeTech is a connected practice within InnerAnimalMedia."
+      },
+      "sort": 10,
+      "body_class": "pt-page"
+    },
+    {
+      "slug": "brand",
+      "route": "/brand",
+      "title": "Brand & Merchandise",
+      "seo": {
+        "title": "Brand & Merchandise | PrimeTech",
+        "description": "Brand identities, retail experiences, campaigns, physical and digital merchandise."
+      },
+      "sort": 20,
+      "body_class": "pt-page"
+    },
+    {
+      "slug": "cad",
+      "route": "/cad",
+      "title": "CAD & Spatial Design",
+      "seo": {
+        "title": "CAD & Spatial Design | PrimeTech",
+        "description": "Beyond the Blueprint, DreamHouse and native CAD Creator."
+      },
+      "sort": 30,
+      "body_class": "pt-page"
+    },
+    {
+      "slug": "contact",
+      "route": "/contact",
+      "title": "Start a Project",
+      "seo": {
+        "title": "Start a Project | PrimeTech",
+        "description": "Contact PrimeTech via the active InnerAnimalMedia inquiry channel."
+      },
+      "sort": 40,
+      "body_class": "pt-page"
+    },
+    {
+      "slug": "creative",
+      "route": "/creative",
+      "title": "Creative Experiences",
+      "seo": {
+        "title": "Creative Experiences | PrimeTech",
+        "description": "Immersive scenes, creative tools, interactive storytelling and video."
+      },
+      "sort": 50,
+      "body_class": "pt-page"
+    },
+    {
+      "slug": "industries",
+      "route": "/industries",
+      "title": "Industries",
+      "seo": {
+        "title": "Industries | PrimeTech",
+        "description": "A cross-industry creative engineering practice."
+      },
+      "sort": 60,
+      "body_class": "pt-page"
+    },
+    {
+      "slug": "selected-work",
+      "route": "/selected-work",
+      "title": "Selected Work",
+      "seo": {
+        "title": "Selected Work | PrimeTech",
+        "description": "Authentic projects, products and working experiments across our practice."
+      },
+      "sort": 70,
+      "body_class": "pt-page"
+    },
+    {
+      "slug": "capabilities",
+      "route": "/capabilities",
+      "title": "Capabilities",
+      "seo": {
+        "title": "Capabilities | PrimeTech",
+        "description": "Full software systems, CAD, brand and merchandise, and creative experiences."
+      },
+      "sort": 80,
+      "body_class": "pt-page"
+    },
+    {
+      "slug": "systems",
+      "route": "/systems",
+      "title": "Software & Systems",
+      "seo": {
+        "title": "Software & Systems | PrimeTech",
+        "description": "Software engineering, commerce systems, automation and AgentSam."
+      },
+      "sort": 90,
+      "body_class": "pt-page"
+    },
+    {
+      "slug": "work",
+      "route": "/work",
+      "title": "Selected Work",
+      "seo": {
+        "title": "Selected Work | PrimeTech",
+        "description": "Authentic projects, products and working experiments across our practice."
+      },
+      "sort": 100,
+      "body_class": "pt-page"
+    }
+  ],
+  "globals": {
+    "header": "globals/header.html",
+    "footer": "globals/footer.html"
+  },
+  "menus": {
+    "main": [
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Capabilities",
+        "href": "/capabilities"
+      },
+      {
+        "label": "Industries",
+        "href": "/industries"
+      },
+      {
+        "label": "CAD",
+        "href": "/cad"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ],
+    "company": [
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Selected work",
+        "href": "/selected-work"
+      },
+      {
+        "label": "Capabilities",
+        "href": "/capabilities"
+      },
+      {
+        "label": "Industries",
+        "href": "/industries"
+      },
+      {
+        "label": "CAD & spatial design",
+        "href": "/cad"
+      },
+      {
+        "label": "Brand & merchandise",
+        "href": "/brand"
+      },
+      {
+        "label": "Software systems",
+        "href": "/systems"
+      },
+      {
+        "label": "Creative experiences",
+        "href": "/creative"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ],
+    "legal": []
+  }
+}
