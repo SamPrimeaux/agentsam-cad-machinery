@@ -153,17 +153,10 @@ export async function handleStudio(request, env) {
   }
   const entry = await env.ASSETS.fetch(new Request(new URL('/studio-entry.txt', request.url), request));
   if (!entry.ok) return null;
-  let chrome = { header: '' };
-  try {
-    const site = await env.DB.prepare('SELECT id FROM cms_sites WHERE primary_domain = ?').bind(env.CMS_SITE_DOMAIN).first();
-    if (site) chrome = await loadChrome(env, site.id, '/studio');
-  } catch { /* render the editor without chrome rather than fail */ }
-  const head = `<meta name="iam-chrome" content="external"><link rel="stylesheet" href="/brand/primetech.css">${FONT_LINK}`
-    + '<style>body{display:flex;flex-direction:column;height:100vh;margin:0}body>.site-header{flex:none}'
-    + 'body>#root{flex:1;min-height:0;height:auto!important}</style>'
+  // The studio is full-bleed and brings its own navigation, so the public site header is not injected here.
+  const head = '<meta name="iam-chrome" content="external">'
     + '<script>(function(){var re=/^\\s*(Open AgentSam|AgentSam Work)/i;function sweep(){document.querySelectorAll("a,button").forEach(function(e){if(re.test(e.textContent||"")){var t=e.closest("li")||e;t.remove()}})}new MutationObserver(sweep).observe(document.documentElement,{childList:true,subtree:true});sweep()})()</script>';
   return new HTMLRewriter()
     .on('head', { element(el) { el.append(head, { html: true }); } })
-    .on('body', { element(el) { el.prepend(chrome.header, { html: true }); } })
     .transform(new Response(entry.body, { headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } }));
 }
