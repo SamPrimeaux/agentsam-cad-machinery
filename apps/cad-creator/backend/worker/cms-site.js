@@ -159,7 +159,7 @@ export async function handleStudio(request, env) {
     if (site) chrome = await loadChrome(env, site.id, '/studio');
   } catch { /* render the editor without chrome rather than fail */ }
   const head = `<meta name="iam-chrome" content="external"><link rel="stylesheet" href="/brand/primetech.css">${FONT_LINK}`
-    + '<style>body{display:flex;flex-direction:column;height:100vh;margin:0}body>.pt-brand-header{flex:none}'
+    + '<style>body{display:flex;flex-direction:column;height:100vh;margin:0}body>.site-header{flex:none}'
     + 'body>#root{flex:1;min-height:0;height:auto!important}</style>'
     + '<script>(function(){var re=/^\\s*(Open AgentSam|AgentSam Work)/i;function sweep(){document.querySelectorAll("a,button").forEach(function(e){if(re.test(e.textContent||"")){var t=e.closest("li")||e;t.remove()}})}new MutationObserver(sweep).observe(document.documentElement,{childList:true,subtree:true});sweep()})()</script>';
   return new HTMLRewriter()
