@@ -11,5 +11,7 @@ check(c.assets?.binding === 'ASSETS','website_static_assets_binding');
 check(c.assets?.directory === '../frontend/dist','website_static_assets_directory');
 check(c.r2_buckets?.some(r=>r.binding==='WEBSITE_ASSETS'&&r.bucket_name==='cad'),'dedicated_r2_bucket');
 check(c.d1_databases?.some(r=>r.binding==='DB'&&r.database_name==='inneranimalmedia-business'),'d1_scope');
-check(c.assets?.run_worker_first?.includes('/api/*'),'private_api_worker_first');
+// The Worker owns every route except the static prefixes negated below; /api must never be one of them.
+const wf = c.assets?.run_worker_first || [];
+check(wf.includes('/api/*') || (wf.includes('/*') && !wf.some((r) => r.startsWith('!/api'))),'private_api_worker_first');
 console.log('CAD_WORKER_IDENTITY_VERIFIED');

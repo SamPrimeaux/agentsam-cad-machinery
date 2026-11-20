@@ -1,0 +1,214 @@
+/* IAPJ-aligned editorial treatment for the native IAM Earth scene. */
+[data-iam-about-earth] {
+  position: relative;
+  height: 340svh;
+  overflow: clip;
+  background: #0e0e12;
+  --earth-ink: #f6f6f9;
+  --earth-body: rgba(246,246,249,.76);
+  --earth-muted: rgba(246,246,249,.48);
+  --earth-line: rgba(246,246,249,.2);
+  --earth-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --earth-serif: "Playfair Display", ui-serif, Georgia, serif;
+  color: var(--earth-ink);
+}
+[data-iam-about-earth].compact { height: 290svh; }
+[data-iam-about-earth] a { color: inherit; text-decoration: none; }
+[data-iam-about-earth] .stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+[data-iam-about-earth] .stage-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 54% 64% at 73% 48%, rgba(171,190,207,.105), transparent 72%),
+    radial-gradient(ellipse 36% 45% at 18% 78%, rgba(255,255,255,.035), transparent 76%),
+    linear-gradient(112deg, #151519 0%, #0e0e12 52%, #09090c 100%);
+}
+[data-iam-about-earth] .stage-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(8,8,11,.46), transparent 64%),
+    radial-gradient(ellipse 90% 88% at 50% 50%, transparent 48%, rgba(4,4,6,.28) 100%);
+}
+[data-iam-about-earth] .earth-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+[data-iam-about-earth] .earth-canvas canvas { display: block; width: 100%; height: 100%; }
+[data-iam-about-earth] .earth-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: none;
+  place-items: center;
+}
+[data-iam-about-earth] .earth-fallback .orb {
+  width: min(52vmin, 480px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(65% 48% at 44% 18%, rgba(220,230,239,.24), transparent 62%),
+    radial-gradient(120% 120% at 34% 28%, #33414d 0%, #18232d 48%, #0b1017 100%);
+  box-shadow: 0 0 120px rgba(181,201,219,.1), inset 0 0 70px rgba(230,238,245,.07);
+  animation: earthPulse 7s ease-in-out infinite;
+}
+@keyframes earthPulse { 0%,100% { transform: scale(1); opacity: .9; } 50% { transform: scale(1.025); opacity: 1; } }
+[data-iam-about-earth].no-iam-scene .earth-fallback { display: grid; }
+[data-iam-about-earth].no-iam-scene .earth-canvas { display: none; }
+[data-iam-about-earth] .overlay { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+[data-iam-about-earth] .hero-intro {
+  position: absolute;
+  left: clamp(28px, 8.2vw, 136px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(43vw, 570px);
+  text-align: left;
+  pointer-events: auto;
+  will-change: transform, opacity, filter;
+}
+[data-iam-about-earth] .eyebrow {
+  margin: 0 0 24px;
+  color: var(--earth-muted);
+  font: 600 10px/1.4 var(--earth-display);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+[data-iam-about-earth] .hero-intro h1 {
+  max-width: 12.8ch;
+  margin: 0;
+  color: var(--earth-ink);
+  font: 600 clamp(38px, 4.8vw, 72px)/1.02 var(--earth-display);
+  letter-spacing: -.065em;
+  text-wrap: balance;
+}
+[data-iam-about-earth] .hero-intro p,
+[data-iam-about-earth] .panel p {
+  max-width: 48ch;
+  margin: 24px 0 0;
+  color: var(--earth-body);
+  font: 400 clamp(15px, 1.22vw, 18px)/1.72 var(--earth-display);
+  letter-spacing: -.012em;
+}
+[data-iam-about-earth] .cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 34px;
+  padding: 0 0 9px;
+  border: 0;
+  border-bottom: 1px solid rgba(246,246,249,.62);
+  border-radius: 0;
+  background: transparent;
+  color: var(--earth-ink);
+  font: 600 13px/1.5 var(--earth-display);
+  letter-spacing: .01em;
+  transition: border-color .25s ease, opacity .25s ease, gap .25s ease;
+}
+[data-iam-about-earth] .cta:hover { gap: 24px; border-color: #fff; }
+[data-iam-about-earth] .cta .arrow { font-size: 16px; transition: transform .25s ease; }
+[data-iam-about-earth] .cta:hover .arrow { transform: translate(2px,-2px); }
+[data-iam-about-earth] .panel {
+  position: absolute;
+  top: 50%;
+  width: min(38vw, 520px);
+  pointer-events: none;
+  will-change: transform, opacity, filter;
+}
+[data-iam-about-earth] .panel.culture { right: clamp(28px, 9vw, 148px); text-align: left; }
+[data-iam-about-earth] .panel.promise { left: clamp(28px, 9vw, 148px); text-align: left; }
+[data-iam-about-earth] .panel h2 {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--earth-ink);
+  font: 600 clamp(36px, 4.5vw, 66px)/1.04 var(--earth-display);
+  letter-spacing: -.06em;
+  text-wrap: balance;
+}
+[data-iam-about-earth] .panel .eyebrow { margin-bottom: 22px; }
+[data-iam-about-earth] .closing {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(72px, 11vh, 124px);
+  width: min(86vw, 690px);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+[data-iam-about-earth] .closing .eyebrow { margin-bottom: 18px; }
+[data-iam-about-earth] .closing p {
+  margin: 0;
+  color: var(--earth-body);
+  font: 400 clamp(17px, 1.5vw, 21px)/1.6 var(--earth-display);
+}
+[data-iam-about-earth] .closing p strong { color: var(--earth-ink); font-weight: 600; }
+[data-iam-about-earth] .closing .cta { margin-top: 22px; }
+[data-iam-about-earth] .scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(22px, 4vh, 42px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: translateX(-50%);
+  color: var(--earth-muted);
+  font: 600 9px/1.4 var(--earth-display);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  will-change: opacity;
+}
+[data-iam-about-earth] .scroll-hint span {
+  width: 30px;
+  height: 1px;
+  background: currentColor;
+}
+@media (max-width: 860px) {
+  [data-iam-about-earth] .stage-bg {
+    background: radial-gradient(ellipse 80% 58% at 50% 38%, rgba(171,190,207,.12), transparent 76%),
+      linear-gradient(180deg, #151519 0%, #0e0e12 56%, #09090c 100%);
+  }
+  [data-iam-about-earth] .stage-vignette {
+    background: linear-gradient(180deg, rgba(8,8,11,.08), rgba(8,8,11,.42) 75%, rgba(8,8,11,.68));
+  }
+  [data-iam-about-earth] .hero-intro {
+    left: 50%;
+    top: 58%;
+    width: min(88vw, 560px);
+    text-align: center;
+  }
+  [data-iam-about-earth] .hero-intro h1 { max-width: 13ch; margin-inline: auto; font-size: clamp(34px, 9vw, 48px); }
+  [data-iam-about-earth] .hero-intro p { max-width: 42ch; margin: 18px auto 0; font-size: 14px; }
+  [data-iam-about-earth] .hero-intro .eyebrow { margin-bottom: 16px; }
+  [data-iam-about-earth] .hero-intro .cta { margin-top: 24px; }
+  [data-iam-about-earth] .panel {
+    left: 50% !important;
+    right: auto !important;
+    width: min(86vw, 520px);
+    text-align: center !important;
+  }
+  [data-iam-about-earth] .panel h2 { max-width: 12ch; margin-inline: auto; font-size: clamp(32px, 8.2vw, 48px); }
+  [data-iam-about-earth] .panel p { max-width: 42ch; margin: 18px auto 0; font-size: 14px; }
+  [data-iam-about-earth] .panel .eyebrow { margin-bottom: 16px; }
+  [data-iam-about-earth] .closing { bottom: 10vh; width: 88vw; }
+  [data-iam-about-earth] .closing p { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-iam-about-earth] .hero-intro,
+  [data-iam-about-earth] .panel,
+  [data-iam-about-earth] .closing,
+  [data-iam-about-earth] .scroll-hint { transition: none !important; }
+  [data-iam-about-earth] .earth-fallback .orb { animation: none; }
+}
