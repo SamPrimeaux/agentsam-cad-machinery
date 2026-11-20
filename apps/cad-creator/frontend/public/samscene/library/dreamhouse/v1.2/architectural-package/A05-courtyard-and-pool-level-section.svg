@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1040" width="1600" height="1040">
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<rect x="30" y="25" width="1540" height="985" fill="none" stroke="#304b5f" stroke-width="1.5"/>
+<path d="M30 120 H1570 M30 944 H1570" stroke="#8a9da7" fill="none"/>
+<text x="65" y="68" font-size="30" font-weight="700" font-family="Arial" fill="#1e3445">A05 / Courtyard and pool level section</text>
+<text x="65" y="99" font-size="17" font-family="Arial" fill="#647986">True cut through native model at X = -7.00 m; proposed level surface and pool excavation</text>
+<text x="66" y="973" font-family="Arial" font-size="17" font-weight="bold" fill="#304b5f">DREAMHOUSE V1.2 | DESIGN REVIEW | NOT FOR CONSTRUCTION</text>
+<text x="1532" y="973" font-family="Arial" text-anchor="end" font-size="15" fill="#607984">INNERANIMALMEDIA / CAD</text>
+<line x1="70.0" y1="690.0" x2="70.0" y2="695.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="70.0" y1="690.0" x2="310.0" y2="690.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="70.0" y1="695.0" x2="310.0" y2="695.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="310.0" y1="695.0" x2="310.0" y2="690.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="72.8" y1="619.0" x2="72.8" y2="690.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="72.8" y1="619.0" x2="67.2" y2="619.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="72.8" y1="690.0" x2="67.2" y2="690.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="67.2" y1="619.0" x2="67.2" y2="690.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="307.2" y1="619.0" x2="307.2" y2="630.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="307.2" y1="619.0" x2="312.8" y2="619.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="307.2" y1="630.0" x2="312.8" y2="630.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="312.8" y1="619.0" x2="312.8" y2="630.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="171.5" y1="619.0" x2="171.5" y2="690.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="171.5" y1="619.0" x2="168.5" y2="619.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="171.5" y1="690.0" x2="168.5" y2="690.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="168.5" y1="619.0" x2="168.5" y2="690.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="59.0" y1="615.8" x2="59.0" y2="619.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="59.0" y1="615.8" x2="190.0" y2="557.8" stroke="#253d50" stroke-width="1.2"/>
+<line x1="59.0" y1="619.0" x2="190.0" y2="561.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="190.0" y1="557.8" x2="190.0" y2="561.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="190.0" y1="557.8" x2="321.0" y2="615.8" stroke="#253d50" stroke-width="1.2"/>
+<line x1="190.0" y1="561.0" x2="321.0" y2="619.0" stroke="#253d50" stroke-width="1.2"/>
+<line x1="321.0" y1="619.0" x2="321.0" y2="615.8" stroke="#253d50" stroke-width="1.2"/>
+<line x1="760.0" y1="690.0" x2="760.0" y2="692.9" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="712.6" y1="690.0" x2="760.0" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="760.0" y1="692.9" x2="760.0" y2="694.6" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="760.0" y1="694.6" x2="733.4" y2="694.6" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="686.0" y1="691.7" x2="686.0" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="686.0" y1="694.6" x2="686.0" y2="691.7" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="686.0" y1="690.0" x2="712.6" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="733.4" y1="694.6" x2="686.0" y2="694.6" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="502.0" y1="690.0" x2="502.0" y2="692.9" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="372.7" y1="690.0" x2="502.0" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="502.0" y1="692.9" x2="502.0" y2="694.6" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="502.0" y1="694.6" x2="429.3" y2="694.6" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="300.0" y1="691.7" x2="300.0" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="300.0" y1="694.6" x2="300.0" y2="691.7" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="300.0" y1="690.0" x2="372.7" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="429.3" y1="694.6" x2="300.0" y2="694.6" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="676.0" y1="713.0" x2="676.0" y2="715.0" stroke="#117eae" stroke-width="1.75"/>
+<line x1="594.0" y1="713.0" x2="676.0" y2="713.0" stroke="#117eae" stroke-width="1.75"/>
+<line x1="676.0" y1="715.0" x2="676.0" y2="717.0" stroke="#117eae" stroke-width="1.75"/>
+<line x1="676.0" y1="717.0" x2="594.0" y2="717.0" stroke="#117eae" stroke-width="1.75"/>
+<line x1="512.0" y1="715.0" x2="512.0" y2="713.0" stroke="#117eae" stroke-width="1.75"/>
+<line x1="512.0" y1="717.0" x2="512.0" y2="715.0" stroke="#117eae" stroke-width="1.75"/>
+<line x1="512.0" y1="713.0" x2="594.0" y2="713.0" stroke="#117eae" stroke-width="1.75"/>
+<line x1="594.0" y1="717.0" x2="512.0" y2="717.0" stroke="#117eae" stroke-width="1.75"/>
+<line x1="675.0" y1="691.7" x2="675.0" y2="692.2" stroke="#117eae" stroke-width="1.75"/>
+<line x1="594.0" y1="691.7" x2="675.0" y2="691.7" stroke="#117eae" stroke-width="1.75"/>
+<line x1="675.0" y1="692.2" x2="675.0" y2="692.7" stroke="#117eae" stroke-width="1.75"/>
+<line x1="675.0" y1="692.7" x2="594.0" y2="692.7" stroke="#117eae" stroke-width="1.75"/>
+<line x1="513.0" y1="692.2" x2="513.0" y2="691.7" stroke="#117eae" stroke-width="1.75"/>
+<line x1="513.0" y1="692.7" x2="513.0" y2="692.2" stroke="#117eae" stroke-width="1.75"/>
+<line x1="513.0" y1="691.7" x2="594.0" y2="691.7" stroke="#117eae" stroke-width="1.75"/>
+<line x1="594.0" y1="692.7" x2="513.0" y2="692.7" stroke="#117eae" stroke-width="1.75"/>
+<line x1="482.0" y1="601.0" x2="301.0" y2="601.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="512.0" y1="690.0" x2="512.0" y2="691.6" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="507.0" y1="690.0" x2="512.0" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="512.0" y1="691.6" x2="512.0" y2="693.2" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="512.0" y1="693.2" x2="507.0" y2="693.2" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="502.0" y1="691.6" x2="502.0" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="502.0" y1="693.2" x2="502.0" y2="691.6" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="502.0" y1="690.0" x2="507.0" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="507.0" y1="693.2" x2="502.0" y2="693.2" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="686.0" y1="690.0" x2="686.0" y2="691.6" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="681.0" y1="690.0" x2="686.0" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="686.0" y1="691.6" x2="686.0" y2="693.2" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="686.0" y1="693.2" x2="681.0" y2="693.2" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="676.0" y1="691.6" x2="676.0" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="676.0" y1="693.2" x2="676.0" y2="691.6" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="676.0" y1="690.0" x2="681.0" y2="690.0" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="681.0" y1="693.2" x2="676.0" y2="693.2" stroke="#cf7536" stroke-width="1.75"/>
+<line x1="175" y1="690" x2="1150" y2="690" stroke="#477c87" stroke-dasharray="8,5"/>
+<text x="900" y="725" font-family="Arial" font-size="17" fill="#3d7784">Courtyard walk +0.000 (designed flat, no steps)</text>
+<text x="670" y="850" font-family="Arial" font-size="17" fill="#167da8">Pool basin below finished walking surface</text>
+</svg>

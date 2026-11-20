@@ -1,0 +1,182 @@
+/*
+ * InnerAnimalMedia Brand Tokens v1.0 — proposed, not deployed.
+ * One palette; three contextual expressions. Do not treat these as three themes.
+ * Place at the existing canonical design-token owner after reviewing integrations.
+ * No fonts or logos are bundled by this CSS file.
+ */
+
+:root {
+  /* 01 — Immutable brand palette / primitives */
+  --ia-ink-950: #090F1B;
+  --ia-navy-950: #0C1425;
+  --ia-navy-900: #111C33;
+  --ia-navy-800: #1B2E51;
+  --ia-graphite-900: #20252D;
+  --ia-graphite-800: #2B3039;
+  --ia-slate-700: #435065;
+  --ia-slate-600: #596A83;
+  --ia-blue-800: #153FA6;
+  --ia-blue-700: #1D4FC9;
+  --ia-blue-600: #245EE8;
+  --ia-blue-500: #3981F5;
+  --ia-blue-400: #6DA9F8;
+  --ia-blue-300: #9CC7FF;
+  --ia-blue-100: #DEEBFF;
+  --ia-mist-100: #EDF3FD;
+  --ia-mist-50: #F6F9FF;
+  --ia-paper-50: #F5F4F1;
+  --ia-neutral-100: #E8E9EC;
+  --ia-white: #FFFFFF;
+
+  /* 02 — Shared type and fluid composition roles (font availability needs audit) */
+  --ia-font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --ia-font-body: "Inter", system-ui, sans-serif;
+  --ia-font-ui: "Inter", system-ui, sans-serif;
+  --ia-font-code: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --ia-type-display: clamp(2.5rem, 1.8rem + 3.8vw, 6rem);
+  --ia-type-heading: clamp(2rem, 1.7rem + 1.5vw, 3.5rem);
+  --ia-type-body: clamp(1rem, 0.975rem + 0.15vw, 1.125rem);
+  --ia-page-gutter: clamp(1rem, 4vw, 5rem);
+  --ia-section-space: clamp(4rem, 8vw, 8rem);
+  --ia-content-max: 84rem;
+  --ia-reading-measure: 65ch;
+  --ia-radius-control: 0.625rem;
+  --ia-radius-card: 1rem;
+  --ia-focus-width: 3px;
+  --ia-transition-fast: 160ms;
+  --ia-transition-base: 260ms;
+  --ia-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 03 — Expression-specific SEMANTIC tokens. Default = luminous. */
+:root,
+[data-ia-expression="luminous"] {
+  color-scheme: light;
+  --ia-bg: #F6F9FF;
+  --ia-surface: #FFFFFF;
+  --ia-surface-muted: #EDF3FD;
+  --ia-surface-raised: #FFFFFF;
+  --ia-heading: #111C33;
+  --ia-text: #1B2E51;
+  --ia-text-muted: #435065;
+  --ia-border: #CFDAEA;
+  --ia-divider: #D7E1EF;
+  --ia-link: #1D4FC9;
+  --ia-link-hover: #153FA6;
+  --ia-action: #1D4FC9;
+  --ia-action-hover: #153FA6;
+  --ia-action-text: #FFFFFF;
+  --ia-focus: #245EE8;
+  --ia-selection: #DEEBFF;
+  --ia-on-media: #FFFFFF;
+  --ia-glow: rgb(109 169 248 / 22%);
+  --ia-code-atmosphere: rgb(46 91 157 / 14%);
+  --ia-scrim: rgb(9 15 27 / 56%);
+  --ia-shadow: 0 20px 64px rgb(17 28 51 / 10%);
+}
+
+/* Editorial Contrast: neutral, photographic, typographic. */
+[data-ia-expression="editorial"] {
+  color-scheme: light;
+  --ia-bg: #F5F4F1;
+  --ia-surface: #FFFFFF;
+  --ia-surface-muted: #E8E9EC;
+  --ia-surface-raised: #FFFFFF;
+  --ia-heading: #20252D;
+  --ia-text: #2B3039;
+  --ia-text-muted: #435065;
+  --ia-border: #D1D4DA;
+  --ia-divider: #D9DBDF;
+  --ia-link: #304E8C;
+  --ia-link-hover: #1B2E51;
+  --ia-action: #2B3039;
+  --ia-action-hover: #111C33;
+  --ia-action-text: #FFFFFF;
+  --ia-focus: #1D4FC9;
+  --ia-selection: #DEEBFF;
+  --ia-on-media: #FFFFFF;
+  --ia-glow: rgb(109 169 248 / 10%);
+  --ia-code-atmosphere: rgb(46 91 157 / 9%);
+  --ia-scrim: rgb(9 15 27 / 60%);
+  --ia-shadow: 0 22px 70px rgb(32 37 45 / 12%);
+}
+
+/* Midnight Electric: matte, precise, usable technical atmosphere. */
+[data-ia-expression="midnight"] {
+  color-scheme: dark;
+  --ia-bg: #0C1425;
+  --ia-surface: #111C33;
+  --ia-surface-muted: #1B2E51;
+  --ia-surface-raised: #202F4C;
+  --ia-heading: #FFFFFF;
+  --ia-text: #F0F5FF;
+  --ia-text-muted: #BDCBE2;
+  --ia-border: #354765;
+  --ia-divider: #2D3C56;
+  --ia-link: #9CC7FF;
+  --ia-link-hover: #FFFFFF;
+  --ia-action: #1D4FC9;
+  --ia-action-hover: #245EE8;
+  --ia-action-text: #FFFFFF;
+  --ia-focus: #9CC7FF;
+  --ia-selection: #304E8C;
+  --ia-on-media: #FFFFFF;
+  --ia-glow: rgb(57 129 245 / 22%);
+  --ia-code-atmosphere: rgb(156 199 255 / 19%);
+  --ia-scrim: rgb(9 15 27 / 65%);
+  --ia-shadow: 0 24px 80px rgb(0 0 0 / 35%);
+}
+
+/* 04 — Example consumption. Prefer existing canonical components/classes. */
+.ia-brand-surface {
+  background: var(--ia-bg);
+  color: var(--ia-text);
+  font-family: var(--ia-font-body);
+}
+.ia-brand-surface h1,
+.ia-brand-surface h2,
+.ia-brand-surface h3 {
+  color: var(--ia-heading);
+  font-family: var(--ia-font-display);
+}
+.ia-brand-surface a { color: var(--ia-link); }
+.ia-brand-surface a:hover { color: var(--ia-link-hover); }
+.ia-brand-surface :is(a, button, input, textarea, select):focus-visible {
+  outline: var(--ia-focus-width) solid var(--ia-focus);
+  outline-offset: 3px;
+}
+.ia-brand-surface .ia-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--ia-radius-control);
+  background: var(--ia-action);
+  color: var(--ia-action-text);
+  text-decoration: none;
+  font-family: var(--ia-font-ui);
+  font-weight: 600;
+  transition: background-color var(--ia-transition-fast) var(--ia-ease-out);
+}
+.ia-brand-surface .ia-action:hover {
+  background: var(--ia-action-hover);
+  color: var(--ia-action-text);
+}
+.ia-brand-surface .ia-action:focus-visible {
+  outline: var(--ia-focus-width) solid var(--ia-focus);
+  outline-offset: 3px;
+}
+.ia-brand-surface .ia-atmosphere {
+  background-image: radial-gradient(circle at 72% 34%, var(--ia-glow), transparent 56%);
+}
+.ia-brand-surface .ia-code-atmosphere {
+  color: var(--ia-code-atmosphere);
+  font-family: var(--ia-font-code);
+  pointer-events: none;
+  user-select: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ia-brand-surface .ia-action { transition: none; }
+}

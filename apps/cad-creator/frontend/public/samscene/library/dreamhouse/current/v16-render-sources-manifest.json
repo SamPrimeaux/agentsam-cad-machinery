@@ -1,0 +1,30 @@
+{
+  "schema": "dreamhouse.current-render-source-manifest.v1",
+  "projectId": "proj_mrb5shkc_3kos2c",
+  "currentSceneRevision": "V1.6",
+  "nativeBimRevision": "V1.5",
+  "reviewOnly": true,
+  "renderSources": [
+    {
+      "view": "great-room",
+      "key": "projects/dreamhouse/current/presentation/source/great-room.png",
+      "bytes": 1420996,
+      "sha256": "5359f13b7179ca35c4a1c284ecf4bbe15aa4abfb4c7234a6937589328d835b1f",
+      "mediaType": "image/png"
+    },
+    {
+      "view": "kitchen",
+      "key": "projects/dreamhouse/current/presentation/source/kitchen.png",
+      "bytes": 1321725,
+      "sha256": "b2fe8eca6fe5e448cbf68e4730f379dfdb6242191294b0456299d34c14027a2f",
+      "mediaType": "image/png"
+    },
+    {
+      "view": "courtyard",
+      "key": "projects/dreamhouse/current/presentation/source/courtyard.png",
+      "bytes": 1617247,
+      "sha256": "05903a8eb7f0b78de112da7a8f003dace7bec6dfc942c835e51e15ff68bf7b49",
+      "mediaType": "image/png"
+    }
+  ]
+}

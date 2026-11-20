@@ -1,0 +1,75 @@
+{
+  "project": "DreamHouse",
+  "revision": "V1.2",
+  "model": "builds/v1.2/bim/DreamHouse-V1.2-Review-BIM.FCStd",
+  "nativeObjectCount": 189,
+  "sourceIFCSpaces": 21,
+  "vectorSheets": [
+    {
+      "id": "A01",
+      "title": "Ground floor BIM cut",
+      "svg": "A01-ground-floor-bim-cut.svg",
+      "bytes": 141527,
+      "sha256": "30b954da45bfcf2e3421e7ddb90ad1c26f4d13337fb87ea322c35b523ec7b428"
+    },
+    {
+      "id": "A02",
+      "title": "Dimensioned site and courtyard",
+      "svg": "A02-dimensioned-site-and-courtyard.svg",
+      "bytes": 22357,
+      "sha256": "29181e89436126fda559b06880dcc97b5fc4e0337761d74305c8c12151203519"
+    },
+    {
+      "id": "A03",
+      "title": "Roof plan",
+      "svg": "A03-roof-plan.svg",
+      "bytes": 2932,
+      "sha256": "053820c1c0de354f44b34c98787b0b771b12ad62285066bfb312e236823d22b8"
+    },
+    {
+      "id": "A04",
+      "title": "Pavilion transverse section",
+      "svg": "A04-pavilion-transverse-section.svg",
+      "bytes": 16485,
+      "sha256": "679f2a902b88135d30f823f169375e4a0c181af855c0cc783015667564a13905"
+    },
+    {
+      "id": "A05",
+      "title": "Courtyard and pool level section",
+      "svg": "A05-courtyard-and-pool-level-section.svg",
+      "bytes": 7588,
+      "sha256": "a8221c76cdca8459692947e2313026cd505435b77c48447affe974bd848a530a"
+    },
+    {
+      "id": "A06",
+      "title": "Twenty one space index",
+      "svg": "A06-twenty-one-space-index.svg",
+      "bytes": 5207,
+      "sha256": "c5b7e49e26d0771fd38b9778208126a158dbaa4f074adf03bd59cb92fa46f41f"
+    }
+  ],
+  "dxfFiles": [
+    "A01-ground-floor-native-cut.dxf",
+    "A02-site-courtyard-native-outline.dxf"
+  ],
+  "modelUnits": "metres; DXF units millimetres",
+  "reviewStatus": "Owner review pending; not approved for construction",
+  "designConstraints": {
+    "courtyardLevelM": 0,
+    "poolSizeM": [
+      17.4,
+      8.2
+    ],
+    "pavilionSizeM": [
+      14,
+      9.05
+    ],
+    "shopAngleDegrees": -12,
+    "pavilionRidgeM": 8.55
+  },
+  "verification": {
+    "planCutHeightM": 1.2,
+    "pavilionSectionY_m": 16,
+    "poolSectionX_m": -7
+  }
+}

@@ -1,0 +1,1 @@
+var e=class e extends Event{static{this.type=`setSimulatorTimeOfDay`}constructor(t){super(e.type,{bubbles:!0,composed:!0}),this.timeOfDay=t}},t=class e extends Event{static{this.type=`setSimulatorDayNight`}constructor(t){super(e.type,{bubbles:!0,composed:!0}),this.enabled=t}};export{e as n,t};

@@ -1,0 +1,398 @@
+{
+  "$schema": "dreamhouse.current-project.v1",
+  "projectId": "proj_mrb5shkc_3kos2c",
+  "name": "DreamHouse",
+  "currentWorkRevision": "V1.6",
+  "presentationChannel": "one-current-project",
+  "projectStatus": "design-review-and-geometry-coordination",
+  "approval": "NOT FOR CONSTRUCTION; architectural/engineering/owner review required",
+  "navigation": {
+    "canonicalPage": "/case-studies/dream-house",
+    "alternateVersionPages": []
+  },
+  "sourceOfTruth": {
+    "nativeFreeCAD": {
+      "path": "DreamHouse.FCStd",
+      "sha256": "e02b6f18d338d6215acc1ad57f55f42276ce961334eb95277e8bdf1f5e3aec33",
+      "bytes": 3117323
+    },
+    "verifiedIFC": {
+      "path": "DreamHouse.ifc",
+      "sha256": "a293094924e098f2fa02682ec1e7c8ef6e6895abe2d9afea0fc4d79570f5e8da",
+      "bytes": 1166039
+    },
+    "nativeGeometryVerifiedThrough": "V1.5",
+    "currentBlender": {
+      "path": "builds/v1.5/DreamHouse-V1.5-Working.blend",
+      "sha256": "1c5ea0d0d021581337f1520c5fb697f701ec3e55224604b53a6a26dae2f2b8c4",
+      "bytes": 18945305
+    },
+    "sceneReviewGLB": {
+      "path": "builds/current/model/DreamHouse.glb",
+      "sha256": "bc7dc482da02f807ed5306cb4e1da7496df6a2705e19cac513b11bf45a498d11",
+      "bytes": 6007108
+    },
+    "priorSceneReviewPreservedInHistory": {
+      "path": "builds/v1.5/presentation/DreamHouse-V1.5-review.glb",
+      "sha256": "d270e9296716856233ea21ba8289ac5393a25edf51db2e0105908627b44ad260"
+    },
+    "geometry": {
+      "nativeDesignIds": 142,
+      "validSolids": 142,
+      "spaces": 21,
+      "doorOpeningRelationships": 3,
+      "nativeEditSaveReopenVerified": true,
+      "blenderToNativeMismatchCount": 0
+    },
+    "currentIFCRepair": {
+      "artifact": {
+        "path": "builds/v1.6/bim/sprint1/DreamHouse-V1.6-IFC-shop-host-candidate.ifc",
+        "sha256": "f3288c2d8b7abb76631fc2a9e4e1d6d62fa57e877b6437cb742c094d9599a8f4",
+        "bytes": 1167473
+      },
+      "status": "tested candidate, not yet exported from a saved native FreeCAD revision",
+      "originalIFC": {
+        "path": "builds/v1.5/bim/DreamHouse-V1.5-Review-BIM.ifc",
+        "sha256": "a293094924e098f2fa02682ec1e7c8ef6e6895abe2d9afea0fc4d79570f5e8da",
+        "bytes": 1166039
+      },
+      "repairEvidence": {
+        "path": "builds/v1.6/bim/sprint1/driveway-shop-host-repair-receipt.json",
+        "sha256": "5386d56c2bd32bb967201556cf2ebad54527d35a5ed3d6c00dfe8f2a5c311f83",
+        "bytes": 1433
+      },
+      "geometryQA": {
+        "path": "builds/v1.6/bim/sprint1/geometry-semantics-report.json",
+        "sha256": "23e45e79d18f6ef48780b99267af8a2512af986565500444a045a8427e38e46d",
+        "bytes": 31672
+      }
+    }
+  },
+  "presentation": {
+    "reviewGLB": {
+      "path": "builds/current/model/DreamHouse.glb",
+      "sha256": "bc7dc482da02f807ed5306cb4e1da7496df6a2705e19cac513b11bf45a498d11",
+      "bytes": 6007108
+    },
+    "glbExportReceipt": {
+      "path": "builds/current/model/receipt.json",
+      "sha256": "8f6e70af95796bc40240b48a9c3821a8dd79822ec3d2fab72e53c0c882517bf5",
+      "bytes": 1618
+    },
+    "sourceDerivedImages": [
+      {
+        "id": "great-room",
+        "kind": "source-derived-interior-or-courtyard-review",
+        "view": "great-room",
+        "media": {
+          "path": "builds/v1.6/presentation/lookdev-final/DreamHouse-V16-lookdev-great-room.png",
+          "sha256": "5359f13b7179ca35c4a1c284ecf4bbe15aa4abfb4c7234a6937589328d835b1f",
+          "bytes": 1420996
+        },
+        "approval": "review-only"
+      },
+      {
+        "id": "kitchen",
+        "kind": "source-derived-interior-or-courtyard-review",
+        "view": "kitchen",
+        "media": {
+          "path": "builds/v1.6/presentation/lookdev-final/DreamHouse-V16-lookdev-kitchen.png",
+          "sha256": "b2fe8eca6fe5e448cbf68e4730f379dfdb6242191294b0456299d34c14027a2f",
+          "bytes": 1321725
+        },
+        "approval": "review-only"
+      },
+      {
+        "id": "courtyard-lookdev",
+        "kind": "source-derived-interior-or-courtyard-review",
+        "view": "courtyard",
+        "media": {
+          "path": "builds/v1.6/presentation/lookdev-final/DreamHouse-V16-lookdev-courtyard.png",
+          "sha256": "05903a8eb7f0b78de112da7a8f003dace7bec6dfc942c835e51e15ff68bf7b49",
+          "bytes": 1617247
+        },
+        "approval": "review-only"
+      },
+      {
+        "id": "aerial",
+        "kind": "concept-render",
+        "description": "Elevated view of the V1.5 DreamHouse, shop, pool, and surrounding site.",
+        "media": {
+          "path": "builds/v1.5/case-study-media/aerial.webp",
+          "sha256": "a0709867452ac9ce122aa31b156c94e852902a7dc490fc07d16ec85c0ff33c07",
+          "bytes": 20514
+        },
+        "approval": "review-only"
+      },
+      {
+        "id": "courtyard",
+        "kind": "concept-render",
+        "description": "V1.5 courtyard and swimming pool facing the house and workshop.",
+        "media": {
+          "path": "builds/v1.5/case-study-media/courtyard.webp",
+          "sha256": "ec3936d2e8f929687ae21e24e9b7a1128988f8fd84ab328dd1fe33598bbc6b15",
+          "bytes": 24742
+        },
+        "approval": "review-only"
+      },
+      {
+        "id": "workshop",
+        "kind": "concept-render",
+        "description": "Workshop west side with glazed roll-up door in the V1.5 concept.",
+        "media": {
+          "path": "builds/v1.5/case-study-media/workshop.webp",
+          "sha256": "2d65035374988243cb2821df5d0c7a6b81f82cf93076af4f0499bf2996cbca8c",
+          "bytes": 16206
+        },
+        "approval": "review-only"
+      },
+      {
+        "id": "roof-junction",
+        "kind": "concept-render",
+        "description": "V1.5 roof junction showing the connected building wings.",
+        "media": {
+          "path": "builds/v1.5/case-study-media/roof-junction.webp",
+          "sha256": "55833555e3bb9ee3f9ad02a79b66caf0e630c82c53c20ab12660f4ecc38a19d0",
+          "bytes": 22244
+        },
+        "approval": "review-only"
+      },
+      {
+        "id": "arrival",
+        "kind": "concept-render",
+        "description": "Driveway and arrival side of the V1.5 DreamHouse.",
+        "media": {
+          "path": "builds/v1.5/case-study-media/arrival.webp",
+          "sha256": "62d9f484c288fe6989457ed856e459bfb1dbcc41a4b42411472b222a9da52750",
+          "bytes": 18992
+        },
+        "approval": "review-only"
+      },
+      {
+        "id": "top",
+        "kind": "concept-render",
+        "description": "Elevated roof-plan view of the V1.5 DreamHouse.",
+        "media": {
+          "path": "builds/v1.5/case-study-media/top.webp",
+          "sha256": "7085add6d4f4b4e58bef60498577a0d819c8eea42c2e5f92507f52bf09ab272b",
+          "bytes": 12308
+        },
+        "approval": "review-only"
+      },
+      {
+        "id": "west-opening",
+        "kind": "technical-drawing",
+        "description": "IFC-derived schematic west workshop roll-up opening elevation",
+        "media": {
+          "path": "builds/v1.5/case-study-media/west-opening.webp",
+          "sha256": "dc0cd97e1851f1a610b603e38001b5a384f3660d4400d5c4eccb2ce09314df87",
+          "bytes": 19158
+        },
+        "approval": "review-only"
+      },
+      {
+        "id": "courtyard-levels",
+        "kind": "technical-drawing",
+        "description": "IFC-derived schematic courtyard and driveway level coordination",
+        "media": {
+          "path": "builds/v1.5/case-study-media/courtyard-levels.webp",
+          "sha256": "c0b82f1a94ce9226cf40b66f8ffe64de4ebddf23cccc84697f8c29e2c9ccee8e",
+          "bytes": 17650
+        },
+        "approval": "review-only"
+      }
+    ],
+    "publicMediaCatalog": {
+      "path": "builds/current/public-media.json",
+      "sha256": "05f3d540408c557adff96527efa437de1339f4cf7487afcc0c954403a7b4decb",
+      "bytes": 9062
+    },
+    "reviewLookdev": {
+      "path": "builds/v1.6/presentation/lookdev-final/manifest.json",
+      "sha256": "643c2b6ca4ee4e76f91bb513a82515c54267ef7f96a19770f3e59bb269c11683",
+      "bytes": 2043
+    },
+    "sourceGalleryManifest": {
+      "path": "builds/v1.5/case-study-media/manifest.json",
+      "sha256": "c6cc3b2069216d6f3e016c37e944b133f7dcd6f71dfd5b54abb324306e06519a",
+      "bytes": 7054
+    },
+    "status": "single unified review collection; original 3D source retained; not an accepted construction presentation"
+  },
+  "drafting": {
+    "coordinationSet": {
+      "path": "builds/v1.5/architectural-package/DreamHouse-V1.5-BIM-Drafting-Set.pdf",
+      "sha256": "00216737d604cca56b0d8dcc3dea84738525b36935e2963a6d66445c1bc265c9",
+      "bytes": 626700
+    },
+    "sheets": [
+      {
+        "id": "D01",
+        "title": "Site and level coordination",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D01-site-and-level-coordination.pdf",
+          "sha256": "68c92cd1038476b55e194f4e119e6dba70cfb471be1d8e96120be6e24e20de11",
+          "bytes": 63573
+        },
+        "approval": "schematic-coordination-only"
+      },
+      {
+        "id": "D02",
+        "title": "Ground floor cut plan",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D02-ground-floor-cut-plan.pdf",
+          "sha256": "f462e3b12e9818d2e59f485502505db6c115ceeb1c68e8a51267744dd80435c2",
+          "bytes": 55947
+        },
+        "approval": "schematic-coordination-only"
+      },
+      {
+        "id": "D03",
+        "title": "Roof plan",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D03-roof-plan.pdf",
+          "sha256": "12db0aa36ff252eae82d7973b4e7118928c5eda3fab84050dfb2f3519365ff0b",
+          "bytes": 37185
+        },
+        "approval": "schematic-coordination-only"
+      },
+      {
+        "id": "D04",
+        "title": "Roof hidden axonometric",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D04-roof-hidden-axonometric.pdf",
+          "sha256": "31d3f8e17362311253bf8a04d38676450fff2c4cb1437a0e78091e8e9bc92356",
+          "bytes": 84347
+        },
+        "approval": "schematic-coordination-only"
+      },
+      {
+        "id": "D05",
+        "title": "Complete BIM axonometric",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D05-complete-bim-axonometric.pdf",
+          "sha256": "b31849c7002530d89e7daf82a4630d457856b33d692c9a636194f976b82c8ff2",
+          "bytes": 87269
+        },
+        "approval": "schematic-coordination-only"
+      },
+      {
+        "id": "D06",
+        "title": "Arrival elevation",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D06-arrival-elevation.pdf",
+          "sha256": "6e681c0c0e3fd1321ba5d385e2101016a07785ca688be28ac420d7b8df013e88",
+          "bytes": 37132
+        },
+        "approval": "schematic-coordination-only"
+      },
+      {
+        "id": "D07",
+        "title": "Courtyard elevation",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D07-courtyard-elevation.pdf",
+          "sha256": "8200ee7bbb67ac9f903f5b47e23727e85d333cabb8e5b4824dd21050a6c0a180",
+          "bytes": 45816
+        },
+        "approval": "schematic-coordination-only"
+      },
+      {
+        "id": "D08",
+        "title": "West elevation",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D08-west-elevation.pdf",
+          "sha256": "f6ddb0a3663e1983415e4da6473d79d1bcbc201c1fb76b3c7fd207cb05f82b01",
+          "bytes": 36930
+        },
+        "approval": "schematic-coordination-only"
+      },
+      {
+        "id": "D09",
+        "title": "East elevation",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D09-east-elevation.pdf",
+          "sha256": "43e5fd796e0408b6c0def8c607cbcdd1ad319f6537bccbc0d98ac9525b0c7b25",
+          "bytes": 39616
+        },
+        "approval": "schematic-coordination-only"
+      },
+      {
+        "id": "D10",
+        "title": "Workshop transverse section",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D10-workshop-transverse-section.pdf",
+          "sha256": "e4652adbf3e6533946cf10960caa712c0398acdcf250b3806aa6eed4b00f302a",
+          "bytes": 33636
+        },
+        "approval": "schematic-coordination-only"
+      },
+      {
+        "id": "D11",
+        "title": "Pavilion longitudinal section",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D11-pavilion-longitudinal-section.pdf",
+          "sha256": "c931df67961a1f56870d42675bbdf571dc39bcd9cd939a508eb454daf2b46c81",
+          "bytes": 34453
+        },
+        "approval": "schematic-coordination-only"
+      },
+      {
+        "id": "D12",
+        "title": "Courtyard and pool section",
+        "media": {
+          "path": "builds/v1.5/architectural-package/drafting/D12-courtyard-and-pool-section.pdf",
+          "sha256": "8763cf471179fb9c81a9d2bbdc1b5d712ab9d338ef103363c4faf359aa19de0c",
+          "bytes": 30856
+        },
+        "approval": "schematic-coordination-only"
+      }
+    ],
+    "sourceIFC": {
+      "path": "builds/v1.5/bim/DreamHouse-V1.5-Review-BIM.ifc",
+      "sha256": "a293094924e098f2fa02682ec1e7c8ef6e6895abe2d9afea0fc4d79570f5e8da",
+      "bytes": 1166039
+    },
+    "status": "12-sheet schematic V1.5 native coordination; review against V1.6 repair before promoting"
+  },
+  "materials": {
+    "catalog": {
+      "path": "spec/materials/presentation.json",
+      "sha256": "021643a4c0839455253151e56b95a11121739aa051c48a0740c1c6482b746e29",
+      "bytes": 1644
+    },
+    "reviewRoles": [
+      "charcoal-metal",
+      "limestone",
+      "warm-oak",
+      "sage",
+      "graphite-stone",
+      "woven-fabric"
+    ],
+    "visualAssignments": 5,
+    "ifcMaterialObjects": 0,
+    "approval": "VISUAL REVIEW ONLY - no approved construction materials, finishes, quantities, or procurement"
+  },
+  "qualityGates": {
+    "sourceBIM": "PASS",
+    "nativeEditSaveReopen": "PASS",
+    "blenderGeometryMatch": "PASS",
+    "IFCWorkshopRepairCandidate": "PASS",
+    "34IFCGeometryFlagsReviewed": "PASS",
+    "renderProvenance": "PASS",
+    "currentSceneGLB": "PASS",
+    "currentPublicMediaIntegrity": "PASS",
+    "12SheetSourceIntegrity": "PASS",
+    "sourceMediaIntegrity": "PASS",
+    "architectureApproval": "PENDING",
+    "nativeIFCExportAlignment": "PENDING",
+    "materialsApprovalAndIFCAssignment": "PENDING",
+    "structuralAndMEPCoordination": "PENDING"
+  },
+  "sourceLineage": {
+    "historicalRevisionsRemainInGit": true,
+    "noSecondActiveBIM": true,
+    "noCopiedBIMBinary": true,
+    "noDuplicateMaterialLibraries": true,
+    "sourceImageAndDrawingPathsRetainedForProvenance": true
+  }
+}

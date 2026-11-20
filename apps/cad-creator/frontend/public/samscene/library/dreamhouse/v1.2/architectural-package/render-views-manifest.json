@@ -1,0 +1,62 @@
+{
+  "revision": "V1.2",
+  "sourceSha256": "c3bbe0d562667a992212329428ee29b0b8e0b86e7c8c52db71b3e59fc07c00b0",
+  "views": [
+    {
+      "id": "A07",
+      "file": "A07-isometric-architectural-overview.png",
+      "bytes": 1490422,
+      "sha256": "4d310fec92f36472108b8ae90f9eb3c0fb14259e4e59c8f8835fdebe1c85f327",
+      "view": "orthographic",
+      "roofHidden": false
+    },
+    {
+      "id": "A08",
+      "file": "A08-courtyard-exterior-isometric.png",
+      "bytes": 1539669,
+      "sha256": "267563071fd5e80245a90398409834f07638f2bbc164f4c6061f425bb5885dd5",
+      "view": "orthographic",
+      "roofHidden": false
+    },
+    {
+      "id": "A09",
+      "file": "A09-north-south-facade.png",
+      "bytes": 1329350,
+      "sha256": "24b1d03a5260793ae2bc17f0f9bc8ebe80ae68b1f52694299becbcdaa91faa83",
+      "view": "orthographic",
+      "roofHidden": false
+    },
+    {
+      "id": "A10",
+      "file": "A10-south-north-facade.png",
+      "bytes": 1344416,
+      "sha256": "1f25e562e4f78555a46135b2801eeaa6f1e64045408878e70d441d8fa5224ac6",
+      "view": "orthographic",
+      "roofHidden": false
+    },
+    {
+      "id": "A11",
+      "file": "A11-east-west-facade.png",
+      "bytes": 1324762,
+      "sha256": "e64618a378d8d51fe48702fd1f6d8b938f95612ecf494a0732259b1125ba5b38",
+      "view": "orthographic",
+      "roofHidden": false
+    },
+    {
+      "id": "A12",
+      "file": "A12-west-east-facade.png",
+      "bytes": 1341598,
+      "sha256": "13f0b9d5a743827b9dc3ff9444fb961477fedde1141b905c85e9f0da0b45f795",
+      "view": "orthographic",
+      "roofHidden": false
+    },
+    {
+      "id": "A13",
+      "file": "A13-roof-off-plan-orientation.png",
+      "bytes": 1520773,
+      "sha256": "4ee24070a1a2b666629f8af088a944c254edee367759ffa9df7fd649abcf6bb0",
+      "view": "orthographic",
+      "roofHidden": true
+    }
+  ]
+}

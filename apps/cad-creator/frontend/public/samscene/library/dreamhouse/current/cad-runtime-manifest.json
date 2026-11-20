@@ -1,0 +1,755 @@
+{
+  "schema": "agentsam.cad.project-current.v1",
+  "projectId": "proj_mrb5shkc_3kos2c",
+  "projectSlug": "dreamhouse",
+  "ownerAccountId": "au_871d920d1233cbd1",
+  "storage": {
+    "bucket": "cad",
+    "prefix": "projects/dreamhouse/current/",
+    "revisionPrefix": "projects/dreamhouse/revisions/",
+    "binding": "CAD_PROJECT_ASSETS"
+  },
+  "currentWorkRevision": "V1.6",
+  "bimRevision": "V1.5",
+  "sceneRevision": "V1.6",
+  "status": "draft",
+  "reviewState": "V1.6 scene, material and case-study presentation; V1.5 native FreeCAD/IFC remain the verified BIM authority. Workshop IFC repair is a candidate pending native FreeCAD synchronization. Not for construction.",
+  "approval": "NOT FOR CONSTRUCTION; architectural/engineering/owner review required",
+  "sourceOfTruth": {
+    "nativeGeometryVerifiedThrough": "V1.5",
+    "nativeDesignIds": 142,
+    "validSolids": 142,
+    "spaces": 21,
+    "doorOpeningRelationships": 3,
+    "nativeEditSaveReopenVerified": true,
+    "blenderToNativeGeometryMismatchCount": 0,
+    "nativeIFCExportAlignment": "pending V1.6 native FreeCAD synchronization"
+  },
+  "files": {
+    "bim": {
+      "bucket": "cad",
+      "key": "projects/dreamhouse/current/DreamHouse-V1.5.FCStd",
+      "sha256": "e02b6f18d338d6215acc1ad57f55f42276ce961334eb95277e8bdf1f5e3aec33",
+      "bytes": 3117323,
+      "sourceRevision": "V1.5",
+      "role": "native-freecad",
+      "contentType": "application/octet-stream"
+    },
+    "ifc": {
+      "bucket": "cad",
+      "key": "projects/dreamhouse/current/DreamHouse-V1.5.ifc",
+      "sha256": "a293094924e098f2fa02682ec1e7c8ef6e6895abe2d9afea0fc4d79570f5e8da",
+      "bytes": 1166039,
+      "sourceRevision": "V1.5",
+      "role": "verified-ifc",
+      "contentType": "application/octet-stream"
+    },
+    "scene": {
+      "bucket": "cad",
+      "key": "projects/dreamhouse/current/DreamHouse.blend",
+      "sha256": "1c5ea0d0d021581337f1520c5fb697f701ec3e55224604b53a6a26dae2f2b8c4",
+      "bytes": 18945305,
+      "sourceRevision": "V1.6",
+      "role": "current-blender-scene",
+      "contentType": "application/octet-stream"
+    },
+    "viewer": {
+      "bucket": "cad",
+      "key": "projects/dreamhouse/current/DreamHouse.glb",
+      "sha256": "bc7dc482da02f807ed5306cb4e1da7496df6a2705e19cac513b11bf45a498d11",
+      "bytes": 6007108,
+      "sourceRevision": "V1.6",
+      "role": "current-review-viewer",
+      "contentType": "model/gltf-binary"
+    },
+    "preview": {
+      "bucket": "cad",
+      "key": "projects/dreamhouse/current/preview.png",
+      "sha256": "5359f13b7179ca35c4a1c284ecf4bbe15aa4abfb4c7234a6937589328d835b1f",
+      "bytes": 1420996,
+      "sourceRevision": "V1.6",
+      "role": "current-preview",
+      "contentType": "image/png"
+    },
+    "materials": {
+      "bucket": "cad",
+      "key": "projects/dreamhouse/current/materials/presentation.json",
+      "sha256": "021643a4c0839455253151e56b95a11121739aa051c48a0740c1c6482b746e29",
+      "bytes": 1644,
+      "sourceRevision": "V1.6",
+      "role": "single-presentation-material-catalog",
+      "contentType": "application/json"
+    },
+    "drawingSet": {
+      "bucket": "cad",
+      "key": "projects/dreamhouse/current/drawings/DreamHouse-BIM-Drafting-Set.pdf",
+      "sha256": "00216737d604cca56b0d8dcc3dea84738525b36935e2963a6d66445c1bc265c9",
+      "bytes": 626700,
+      "sourceRevision": "V1.5",
+      "role": "12-sheet-schematic-coordination-set",
+      "contentType": "application/pdf"
+    },
+    "drawingManifest": {
+      "bucket": "cad",
+      "key": "projects/dreamhouse/current/drawings/drafting-manifest.json",
+      "sha256": "c96ebe05a84fc05ad054fa810bcdafbd2d834162c2257125c9bbf227137ab5c0",
+      "bytes": 15429,
+      "sourceRevision": "V1.5",
+      "role": "drawing-export-manifest",
+      "contentType": "application/json"
+    },
+    "drawingContactSheet": {
+      "bucket": "cad",
+      "key": "projects/dreamhouse/current/drawings/DreamHouse-Drafting-Contact-Sheet.jpg",
+      "sha256": "67a9c035e63c3de89412bae3925d57812b187a6396b7fe724d953c082795e2b6",
+      "bytes": 239068,
+      "sourceRevision": "V1.5",
+      "role": "drawing-contact-sheet",
+      "contentType": "image/jpeg"
+    },
+    "mediaCatalog": {
+      "bucket": "cad",
+      "key": "case-studies/dreamhouse/current/public-media.json",
+      "sha256": "05f3d540408c557adff96527efa437de1339f4cf7487afcc0c954403a7b4decb",
+      "bytes": 9062,
+      "sourceRevision": "V1.6",
+      "role": "single-current-case-study-media-catalog",
+      "contentType": "application/json"
+    }
+  },
+  "drawings": {
+    "revision": "V1.5",
+    "status": "schematic-coordination-only",
+    "sheetCount": 12,
+    "sheets": [
+      {
+        "sheet": "D01",
+        "title": "Site and level coordination",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D01-site-and-level-coordination.pdf",
+            "sha256": "68c92cd1038476b55e194f4e119e6dba70cfb471be1d8e96120be6e24e20de11",
+            "bytes": 63573,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D01-site-and-level-coordination.svg",
+            "sha256": "de450919c579b6ce461d738862c0cd14e78dd50021695c359d1275893beffcd4",
+            "bytes": 988664,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D01-site-and-level-coordination.png",
+            "sha256": "7260c674b1df267220e155525f03052b9e426cd6c796ba21aa36422ca5c58dda",
+            "bytes": 128705,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D01-site-and-level-coordination.dxf",
+            "sha256": "408a72b39146bc577db4c9fe346192056a837cc6a21654fa9e693a1fe6a4aeb1",
+            "bytes": 400946,
+            "contentType": "application/dxf"
+          }
+        }
+      },
+      {
+        "sheet": "D02",
+        "title": "Ground floor cut plan",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D02-ground-floor-cut-plan.pdf",
+            "sha256": "f462e3b12e9818d2e59f485502505db6c115ceeb1c68e8a51267744dd80435c2",
+            "bytes": 55947,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D02-ground-floor-cut-plan.svg",
+            "sha256": "4a1fa3bbebb747964e051939f60a50a60ffa67a518a0d4a4f671f282a5a32649",
+            "bytes": 508352,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D02-ground-floor-cut-plan.png",
+            "sha256": "32dd29cdc50fb1e5839619882b5ef1558cca7abe7e9f4bcb03b8d8a032e9c6f2",
+            "bytes": 108671,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D02-ground-floor-cut-plan.dxf",
+            "sha256": "505ae8cc40ad8a5df949dc50b618e466096915d84da8c36bd19792679c07091f",
+            "bytes": 192403,
+            "contentType": "application/dxf"
+          }
+        }
+      },
+      {
+        "sheet": "D03",
+        "title": "Roof plan",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D03-roof-plan.pdf",
+            "sha256": "12db0aa36ff252eae82d7973b4e7118928c5eda3fab84050dfb2f3519365ff0b",
+            "bytes": 37185,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D03-roof-plan.svg",
+            "sha256": "d771afd6c36f838ed53bc5c35f49c065351bc8090c7e51d9fe4a8b8200df8ca7",
+            "bytes": 208457,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D03-roof-plan.png",
+            "sha256": "858d816af18e4aa00b419bdeaa38d9d0ca515337b7de38190a99a88e68fecc15",
+            "bytes": 121408,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D03-roof-plan.dxf",
+            "sha256": "18f29e171d00d1532ba5dc8305f80538c16d8132defb5d2df1c1797a35663e9b",
+            "bytes": 51494,
+            "contentType": "application/dxf"
+          }
+        }
+      },
+      {
+        "sheet": "D04",
+        "title": "Roof hidden axonometric",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D04-roof-hidden-axonometric.pdf",
+            "sha256": "31d3f8e17362311253bf8a04d38676450fff2c4cb1437a0e78091e8e9bc92356",
+            "bytes": 84347,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D04-roof-hidden-axonometric.svg",
+            "sha256": "090a441cd433f7c5c43c78667ec035129f028e14d562d00b9fed4aed8d28551c",
+            "bytes": 1101966,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D04-roof-hidden-axonometric.png",
+            "sha256": "4b73b0f639a5afdc508fc38fedeea30a413c91ace3d2c55229710f6069261c4c",
+            "bytes": 416804,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D04-roof-hidden-axonometric.dxf",
+            "sha256": "37e0ff6de4a72f2072a51cc3077c062d95c144b5f316c6062b445303f15ab90b",
+            "bytes": 454725,
+            "contentType": "application/dxf"
+          }
+        }
+      },
+      {
+        "sheet": "D05",
+        "title": "Complete BIM axonometric",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D05-complete-bim-axonometric.pdf",
+            "sha256": "b31849c7002530d89e7daf82a4630d457856b33d692c9a636194f976b82c8ff2",
+            "bytes": 87269,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D05-complete-bim-axonometric.svg",
+            "sha256": "b8cfad243784108c5680fe92067b7e5599b8716dd579c920a2ea1eca3e400253",
+            "bytes": 1148963,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D05-complete-bim-axonometric.png",
+            "sha256": "90090c47ba63e45cae55aceecaca7e85d207c46d86c11bf5d1910aab1fbbcf84",
+            "bytes": 456405,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D05-complete-bim-axonometric.dxf",
+            "sha256": "81c13ecfa21c46f40fb8fe4117ab6b462827765862da26da9208d46e76935d03",
+            "bytes": 475368,
+            "contentType": "application/dxf"
+          }
+        }
+      },
+      {
+        "sheet": "D06",
+        "title": "Arrival elevation",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D06-arrival-elevation.pdf",
+            "sha256": "6e681c0c0e3fd1321ba5d385e2101016a07785ca688be28ac420d7b8df013e88",
+            "bytes": 37132,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D06-arrival-elevation.svg",
+            "sha256": "f0bc2ae205b77fd0b976a163aaf8ebbd3003df0a9aa745ffed3deb9ac8a9153a",
+            "bytes": 252079,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D06-arrival-elevation.png",
+            "sha256": "c03ad4bfdb793ce5c37e9dffcc0aa503f8a20e905a7e9a98617cedf057102e54",
+            "bytes": 112683,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D06-arrival-elevation.dxf",
+            "sha256": "58a5e6edebfd217d6a82347b2f115620aaafce41b445b7bda3d8122e3ce39dfb",
+            "bytes": 78071,
+            "contentType": "application/dxf"
+          }
+        }
+      },
+      {
+        "sheet": "D07",
+        "title": "Courtyard elevation",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D07-courtyard-elevation.pdf",
+            "sha256": "8200ee7bbb67ac9f903f5b47e23727e85d333cabb8e5b4824dd21050a6c0a180",
+            "bytes": 45816,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D07-courtyard-elevation.svg",
+            "sha256": "b79175d176e604d5685507cef57f7e24008b5f01d0f5a4ff37e39466341e6f40",
+            "bytes": 474061,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D07-courtyard-elevation.png",
+            "sha256": "ef39d4ef917e50ec307c8457d42707082abc184103033024f8eee06b0e94eb26",
+            "bytes": 134672,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D07-courtyard-elevation.dxf",
+            "sha256": "aa80d9f1cc9333153e8111729aed0d771db2b2ecb3a56fb22d096d442a41650b",
+            "bytes": 173517,
+            "contentType": "application/dxf"
+          }
+        }
+      },
+      {
+        "sheet": "D08",
+        "title": "West elevation",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D08-west-elevation.pdf",
+            "sha256": "f6ddb0a3663e1983415e4da6473d79d1bcbc201c1fb76b3c7fd207cb05f82b01",
+            "bytes": 36930,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D08-west-elevation.svg",
+            "sha256": "055a57510940cc19818ac56e9ea54933d86b35cff8577635775d14425fb075cd",
+            "bytes": 218373,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D08-west-elevation.png",
+            "sha256": "9cef310754b190749ae747096954812cdc71e7767aa03db4d131c929977f70a2",
+            "bytes": 105118,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D08-west-elevation.dxf",
+            "sha256": "cb08f50ff4da7d534f5f1a7c9eb76e372755acb3e66b94ad1ae0a35dfbf98688",
+            "bytes": 59395,
+            "contentType": "application/dxf"
+          }
+        }
+      },
+      {
+        "sheet": "D09",
+        "title": "East elevation",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D09-east-elevation.pdf",
+            "sha256": "43e5fd796e0408b6c0def8c607cbcdd1ad319f6537bccbc0d98ac9525b0c7b25",
+            "bytes": 39616,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D09-east-elevation.svg",
+            "sha256": "233650996d909af74a8f4543bb10933956981a63eea6de714800d8163bff286a",
+            "bytes": 312603,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D09-east-elevation.png",
+            "sha256": "eea509811e397346346b1aadef259c48550578cf790d240c8ffeb6162070296e",
+            "bytes": 99757,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D09-east-elevation.dxf",
+            "sha256": "530aac8a4ca7129a5a8e12b23d13f7c349b6254474aaf5a52e9e6278c659702b",
+            "bytes": 100077,
+            "contentType": "application/dxf"
+          }
+        }
+      },
+      {
+        "sheet": "D10",
+        "title": "Workshop transverse section",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D10-workshop-transverse-section.pdf",
+            "sha256": "e4652adbf3e6533946cf10960caa712c0398acdcf250b3806aa6eed4b00f302a",
+            "bytes": 33636,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D10-workshop-transverse-section.svg",
+            "sha256": "74c0dd87e7bd73aa1d68b905620cf1836579ee5199320ed0b932fe76d07f0b91",
+            "bytes": 118380,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D10-workshop-transverse-section.png",
+            "sha256": "c831275ac51e28c7e4ca65e994ee9fb2393c099de95ddada6157ef01b5a49fce",
+            "bytes": 85166,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D10-workshop-transverse-section.dxf",
+            "sha256": "05a0a9a696de37e69105f8bba704e24d5ca8ce1ddbb3680bf1e99eb04a0fb3db",
+            "bytes": 17645,
+            "contentType": "application/dxf"
+          }
+        }
+      },
+      {
+        "sheet": "D11",
+        "title": "Pavilion longitudinal section",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D11-pavilion-longitudinal-section.pdf",
+            "sha256": "c931df67961a1f56870d42675bbdf571dc39bcd9cd939a508eb454daf2b46c81",
+            "bytes": 34453,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D11-pavilion-longitudinal-section.svg",
+            "sha256": "ac70dd548bfe817931c4cd6e6fd446816c40704bfe5008a184b3cd9edd2f0bfa",
+            "bytes": 155702,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D11-pavilion-longitudinal-section.png",
+            "sha256": "3cf69ce8a8754e67767610e0f0d7ae14f62ed8522974e149b66c0826218ee2b5",
+            "bytes": 98697,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D11-pavilion-longitudinal-section.dxf",
+            "sha256": "a618e806e4f69158ee4271e6ffdda82a8a7a1e9ed5e4e2a8a8106632dc6e680b",
+            "bytes": 34665,
+            "contentType": "application/dxf"
+          }
+        }
+      },
+      {
+        "sheet": "D12",
+        "title": "Courtyard and pool section",
+        "sourceRevision": "V1.5",
+        "approval": "schematic-coordination-only",
+        "files": {
+          "pdf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D12-courtyard-and-pool-section.pdf",
+            "sha256": "8763cf471179fb9c81a9d2bbdc1b5d712ab9d338ef103363c4faf359aa19de0c",
+            "bytes": 30856,
+            "contentType": "application/pdf"
+          },
+          "svg": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D12-courtyard-and-pool-section.svg",
+            "sha256": "4843820bfc61ffb00f78ade9782652f85342c349f75ff4e17c9ec5a612105c46",
+            "bytes": 94706,
+            "contentType": "image/svg+xml"
+          },
+          "png": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D12-courtyard-and-pool-section.png",
+            "sha256": "74793cb00736922285a0c29d5e0516d0f03b5c5943ece7f0fe6aaa4a9ae12cec",
+            "bytes": 78830,
+            "contentType": "image/png"
+          },
+          "dxf": {
+            "bucket": "cad",
+            "key": "projects/dreamhouse/current/drawings/D12-courtyard-and-pool-section.dxf",
+            "sha256": "aaf321a730f5ce603fc81d85f6f0f07b57bcb9729b85e9c8bcc035b49f3fb2f6",
+            "bytes": 8757,
+            "contentType": "application/dxf"
+          }
+        }
+      }
+    ]
+  },
+  "materials": {
+    "catalog": {
+      "bucket": "cad",
+      "key": "projects/dreamhouse/current/materials/presentation.json",
+      "sha256": "021643a4c0839455253151e56b95a11121739aa051c48a0740c1c6482b746e29",
+      "bytes": 1644,
+      "sourceRevision": "V1.6",
+      "role": "single-presentation-material-catalog",
+      "contentType": "application/json"
+    },
+    "roles": [
+      "charcoal-metal",
+      "limestone",
+      "warm-oak",
+      "sage",
+      "graphite-stone",
+      "woven-fabric"
+    ],
+    "presentationAssignments": 5,
+    "ifcMaterialObjects": 0,
+    "approval": "presentation-only; not approved construction specifications or procurement"
+  },
+  "caseStudyMedia": {
+    "revision": "V1.6",
+    "manifestKey": "case-studies/dreamhouse/current/public-media.json",
+    "assetCount": 11,
+    "publicStatus": "pending_worker_release",
+    "assets": [
+      {
+        "id": "aerial",
+        "kind": "concept-render",
+        "alt": "Elevated view of the V1.5 DreamHouse, shop, pool, and surrounding site.",
+        "r2_bucket": "cad",
+        "r2_key": "case-studies/dreamhouse/v1.5/aerial.webp",
+        "content_type": "image/webp",
+        "bytes": 20514,
+        "sha256": "a0709867452ac9ce122aa31b156c94e852902a7dc490fc07d16ec85c0ff33c07",
+        "width": 960,
+        "height": 640,
+        "status": "schematic-design-review"
+      },
+      {
+        "id": "courtyard",
+        "kind": "concept-render",
+        "alt": "V1.5 courtyard and swimming pool facing the house and workshop.",
+        "r2_bucket": "cad",
+        "r2_key": "case-studies/dreamhouse/v1.5/courtyard.webp",
+        "content_type": "image/webp",
+        "bytes": 24742,
+        "sha256": "ec3936d2e8f929687ae21e24e9b7a1128988f8fd84ab328dd1fe33598bbc6b15",
+        "width": 960,
+        "height": 640,
+        "status": "schematic-design-review"
+      },
+      {
+        "id": "workshop",
+        "kind": "concept-render",
+        "alt": "Workshop west side with glazed roll-up door in the V1.5 concept.",
+        "r2_bucket": "cad",
+        "r2_key": "case-studies/dreamhouse/v1.5/workshop.webp",
+        "content_type": "image/webp",
+        "bytes": 16206,
+        "sha256": "2d65035374988243cb2821df5d0c7a6b81f82cf93076af4f0499bf2996cbca8c",
+        "width": 960,
+        "height": 640,
+        "status": "schematic-design-review"
+      },
+      {
+        "id": "roof-junction",
+        "kind": "concept-render",
+        "alt": "V1.5 roof junction showing the connected building wings.",
+        "r2_bucket": "cad",
+        "r2_key": "case-studies/dreamhouse/v1.5/roof-junction.webp",
+        "content_type": "image/webp",
+        "bytes": 22244,
+        "sha256": "55833555e3bb9ee3f9ad02a79b66caf0e630c82c53c20ab12660f4ecc38a19d0",
+        "width": 960,
+        "height": 640,
+        "status": "schematic-design-review"
+      },
+      {
+        "id": "arrival",
+        "kind": "concept-render",
+        "alt": "Driveway and arrival side of the V1.5 DreamHouse.",
+        "r2_bucket": "cad",
+        "r2_key": "case-studies/dreamhouse/v1.5/arrival.webp",
+        "content_type": "image/webp",
+        "bytes": 18992,
+        "sha256": "62d9f484c288fe6989457ed856e459bfb1dbcc41a4b42411472b222a9da52750",
+        "width": 960,
+        "height": 640,
+        "status": "schematic-design-review"
+      },
+      {
+        "id": "top",
+        "kind": "concept-render",
+        "alt": "Elevated roof-plan view of the V1.5 DreamHouse.",
+        "r2_bucket": "cad",
+        "r2_key": "case-studies/dreamhouse/v1.5/top.webp",
+        "content_type": "image/webp",
+        "bytes": 12308,
+        "sha256": "7085add6d4f4b4e58bef60498577a0d819c8eea42c2e5f92507f52bf09ab272b",
+        "width": 960,
+        "height": 640,
+        "status": "schematic-design-review"
+      },
+      {
+        "id": "west-opening",
+        "kind": "technical-drawing",
+        "alt": "IFC-derived schematic west workshop roll-up opening elevation",
+        "r2_bucket": "cad",
+        "r2_key": "case-studies/dreamhouse/v1.5/west-opening.webp",
+        "content_type": "image/webp",
+        "bytes": 19158,
+        "sha256": "dc0cd97e1851f1a610b603e38001b5a384f3660d4400d5c4eccb2ce09314df87",
+        "width": 960,
+        "height": 678,
+        "status": "schematic-design-review"
+      },
+      {
+        "id": "courtyard-levels",
+        "kind": "technical-drawing",
+        "alt": "IFC-derived schematic courtyard and driveway level coordination",
+        "r2_bucket": "cad",
+        "r2_key": "case-studies/dreamhouse/v1.5/courtyard-levels.webp",
+        "content_type": "image/webp",
+        "bytes": 17650,
+        "sha256": "c0b82f1a94ce9226cf40b66f8ffe64de4ebddf23cccc84697f8c29e2c9ccee8e",
+        "width": 960,
+        "height": 678,
+        "status": "schematic-design-review"
+      },
+      {
+        "id": "great-room",
+        "kind": "source-derived-lookdev",
+        "alt": "Great Room material and lighting review derived from the current DreamHouse model",
+        "r2_bucket": "cad",
+        "r2_key": "case-studies/dreamhouse/current/great-room.webp",
+        "content_type": "image/webp",
+        "bytes": 66140,
+        "sha256": "4e2876fe091a2bae43ad5a46f936b5964162ac2852c1376b8b2762b0d3bdda60",
+        "width": 1600,
+        "height": 900,
+        "status": "schematic-design-review"
+      },
+      {
+        "id": "kitchen",
+        "kind": "source-derived-lookdev",
+        "alt": "Source-derived DreamHouse kitchen material and daylight review",
+        "r2_bucket": "cad",
+        "r2_key": "case-studies/dreamhouse/current/kitchen.webp",
+        "content_type": "image/webp",
+        "bytes": 45276,
+        "sha256": "f8b5c9b287f4c97fd8760ed29f51b9ccf1dde6c4416da2508c814b7e15f32829",
+        "width": 1600,
+        "height": 900,
+        "status": "schematic-design-review"
+      },
+      {
+        "id": "courtyard-lookdev",
+        "kind": "source-derived-lookdev",
+        "alt": "Current DreamHouse courtyard and pool scene review",
+        "r2_bucket": "cad",
+        "r2_key": "case-studies/dreamhouse/current/courtyard-lookdev.webp",
+        "content_type": "image/webp",
+        "bytes": 105592,
+        "sha256": "12d9ff48b9dd8d91676dde0628e6c56d383d3fd0454105ccf712204296198429",
+        "width": 1600,
+        "height": 900,
+        "status": "schematic-design-review"
+      }
+    ]
+  },
+  "qualityGates": {
+    "sourceBIM": "PASS",
+    "nativeEditSaveReopen": "PASS",
+    "blenderGeometryMatch": "PASS",
+    "IFCWorkshopRepairCandidate": "PASS",
+    "34IFCGeometryFlagsReviewed": "PASS",
+    "renderProvenance": "PASS",
+    "currentSceneGLB": "PASS",
+    "currentPublicMediaIntegrity": "PASS",
+    "12SheetSourceIntegrity": "PASS",
+    "sourceMediaIntegrity": "PASS",
+    "architectureApproval": "PENDING",
+    "nativeIFCExportAlignment": "PENDING",
+    "materialsApprovalAndIFCAssignment": "PENDING",
+    "structuralAndMEPCoordination": "PENDING"
+  },
+  "sourceLineage": {
+    "historicalRevisionsRemainInGit": true,
+    "noSecondActiveBIM": true,
+    "noCopiedBIMBinary": true,
+    "noDuplicateMaterialLibraries": true,
+    "sourceImageAndDrawingPathsRetainedForProvenance": true
+  }
+}

@@ -171,6 +171,20 @@
       "sort": 98,
       "body_class": "",
       "redirect_to": "/beyond-the-blueprint"
+    },
+    {
+      "slug": "samscene",
+      "route": "/samscene",
+      "title": "SamScene Studio",
+      "seo": {
+        "title": "SamScene 3D Studio | PrimeTech",
+        "description": "Compose, direct and preview cinematic 3D scenes: PBR environments, guided story beats, SamSpeak voice direction and a shared asset library."
+      },
+      "sort": 85,
+      "body_class": "",
+      "app_entry": "/samscene/",
+      "app_chrome": true,
+      "app_css": "body>#root{position:fixed;top:77px;left:0;right:0;bottom:0;transform:translateZ(0);overflow:hidden}body{overflow:hidden}"
     }
   ],
   "globals": {
@@ -202,6 +216,10 @@
       {
         "label": "CAD",
         "href": "/cad"
+      },
+      {
+        "label": "SamScene",
+        "href": "/samscene"
       },
       {
         "label": "Contact",
