@@ -42,6 +42,11 @@
       "!/primetech/*",
       "!/editorial-assets/*",
       "!/about-app/*",
+      "!/cms-content/*",
+      "!/companions/*",
+      "!/scenes/*",
+      "!/glb/*",
+      "!/home-app/*",
       "!/fonts/*",
       "!/studio/assets/*"
     ]

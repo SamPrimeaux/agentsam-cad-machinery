@@ -33,8 +33,15 @@ function renderMenu(items, currentPath) {
 
 async function readText(env, key) {
   if (!key) return '';
+  // R2 holds the editable copy; the deploy ships a seed copy so a fresh site renders before any edit.
   const object = await env.WEBSITE_ASSETS.get(key);
-  return object ? object.text() : '';
+  if (object) return object.text();
+  if (!env.ASSETS) return '';
+  const seed = await env.ASSETS.fetch(new Request(`https://seed.invalid/cms-content/${key.replace(/\.html$/, '')}`));
+  if (!seed.ok) return '';
+  const text = await seed.text();
+  // The SPA fallback answers unknown paths with the app shell; that is not a fragment.
+  return /^\s*<!doctype/i.test(text) ? '' : text;
 }
 
 async function loadChrome(env, siteId, path) {
@@ -50,7 +57,7 @@ async function loadChrome(env, siteId, path) {
   const fill = (html) => html.replace(/\{\{menu:([a-z0-9_-]+)\}\}/gi, (_, name) => menuHtml[name] || '');
   const keys = Object.fromEntries((globals.results || []).map((g) => [g.global_key, g.content_object_key]));
   const [header, footer] = await Promise.all([readText(env, keys.header), readText(env, keys.footer)]);
-  return { header: fill(header), footer: fill(footer) };
+  return { header: fill(header), footer: fill(footer), menus: menuHtml };
 }
 
 const FONT_LINK = '<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">';
@@ -79,11 +86,24 @@ export async function handleCmsPage(request, env) {
   if (!page) return null;
 
   const meta = safeJson(page.metadata_json, {});
+  if (meta.redirect_to) return Response.redirect(new URL(meta.redirect_to, request.url).toString(), 301);
   const chrome = await loadChrome(env, site.id, path);
 
   if (meta.app_entry) {
     if (!env.ASSETS) return null;
     const res = await env.ASSETS.fetch(new Request(new URL(meta.app_entry, request.url), request));
+    if (meta.app_chrome === false) {
+      // The app ships its own header/footer; serve it untouched.
+      // Keep the app's own header element (its scripts depend on it) but drive its
+      // links from the same CMS menu so every surface shows one navigation.
+      return new HTMLRewriter()
+        .on('#main-nav', { element(el) { if (chrome.menus.main) el.setInnerContent(chrome.menus.main, { html: true }); } })
+        .on('a.login-link', { element(el) {
+          el.setAttribute('href', '/studio');
+          el.setInnerContent('<span class="login-arrow" aria-hidden="true">↗</span><span>Open Studio</span>', { html: true });
+        } })
+        .transform(new Response(res.body, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=60' } }));
+    }
     const head = `<meta name="iam-chrome" content="external"><link rel="stylesheet" href="/brand/primetech.css">${FONT_LINK}`;
     const rewritten = new HTMLRewriter()
       .on('head', { element(el) { el.append(head, { html: true }); } })
@@ -120,4 +140,25 @@ export async function handleCmsPage(request, env) {
       'x-content-type-options': 'nosniff',
     },
   });
+}
+
+
+// /studio: the SDK-built editor wrapped in the same site header as every other page.
+// The public studio never points visitors at another app, so those controls are removed.
+export async function handleStudio(request, env) {
+  const entry = await env.ASSETS.fetch(new Request(new URL('/studio-entry.txt', request.url), request));
+  if (!entry.ok) return null;
+  let chrome = { header: '' };
+  try {
+    const site = await env.DB.prepare('SELECT id FROM cms_sites WHERE primary_domain = ?').bind(env.CMS_SITE_DOMAIN).first();
+    if (site) chrome = await loadChrome(env, site.id, '/studio');
+  } catch { /* render the editor without chrome rather than fail */ }
+  const head = `<meta name="iam-chrome" content="external"><link rel="stylesheet" href="/brand/primetech.css">${FONT_LINK}`
+    + '<style>body{display:flex;flex-direction:column;height:100vh;margin:0}body>.pt-brand-header{flex:none}'
+    + 'body>#root{flex:1;min-height:0;height:auto!important}</style>'
+    + '<script>(function(){var re=/^\\s*(Open AgentSam|AgentSam Work)/i;function sweep(){document.querySelectorAll("a,button").forEach(function(e){if(re.test(e.textContent||"")){var t=e.closest("li")||e;t.remove()}})}new MutationObserver(sweep).observe(document.documentElement,{childList:true,subtree:true});sweep()})()</script>';
+  return new HTMLRewriter()
+    .on('head', { element(el) { el.append(head, { html: true }); } })
+    .on('body', { element(el) { el.prepend(chrome.header, { html: true }); } })
+    .transform(new Response(entry.body, { headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } }));
 }

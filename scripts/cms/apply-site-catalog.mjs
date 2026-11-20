@@ -21,15 +21,22 @@ const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../.
 const site = opt('site'), domain = opt('domain'), target = opt('target', 'local');
 const config = opt('config', 'wrangler.jsonc');
 const version = opt('version', 'v1');
-if (!site || !domain || !['local', 'remote'].includes(target)) {
-  console.error('usage: --site <catalog dir> --domain <primary domain> --target local|remote [--publish] [--bootstrap] [--config file]');
+if (!site || !domain || !['local', 'remote', 'dump'].includes(target)) {
+  console.error('usage: --site <catalog dir> --domain <primary domain> --target local|remote|dump [--publish] [--bootstrap] [--config file]');
   process.exit(2);
 }
 const dir = path.join(root, 'catalog/cms', site);
 const manifest = JSON.parse(fs.readFileSync(path.join(dir, 'site.json'), 'utf8'));
 const status = flag('publish') ? 'published' : 'draft';
 const q = (v) => "'" + String(v).replace(/'/g, "''") + "'";
+const dump = target === 'dump'; // emit a manifest instead of calling wrangler (for token-less environments)
+const dumped = { uploads: [], sql: null };
 const wrangler = (a) => {
+  if (dump) {
+    if (a[0] === 'r2') dumped.uploads.push({ key: a[3].split('/').slice(1).join('/'), file: a[5] });
+    if (a[0] === 'd1') dumped.sql = a[4];
+    return;
+  }
   const r = spawnSync('npx', ['--no-install', 'wrangler', ...a, '-c', config, '--' + target], { cwd: root, stdio: 'inherit' });
   if (r.status !== 0) { console.error('wrangler failed:', a.join(' ')); process.exit(r.status || 1); }
 };
@@ -54,11 +61,11 @@ for (const [globalKey, file] of Object.entries(manifest.globals)) {
       content_version = content_version + 1, updated_at = datetime('now');`);
 }
 for (const page of manifest.pages) {
-  const key = page.app_entry ? null : `${prefix}/pages/${page.slug}.html`;
+  const key = (page.app_entry || page.redirect_to) ? null : `${prefix}/pages/${page.slug}.html`;
   if (key) upload(key, path.join(dir, 'pages', `${page.slug}.html`));
   sql.push(`INSERT INTO cms_pages (id, site_id, slug, route_path, title, status, seo_json, metadata_json, sort_order, content_object_key, published_at)
     VALUES ('cmsp_' || lower(hex(randomblob(8))), ${siteId}, ${q(page.slug)}, ${q(page.route)}, ${q(page.title)}, ${q(status)},
-      ${q(JSON.stringify(page.seo || {}))}, ${q(JSON.stringify({ styles: manifest.styles || [], body_class: page.body_class || '', ...(page.app_entry ? { app_entry: page.app_entry, app_prefix: !!page.app_prefix, app_footer: !!page.app_footer } : {}) }))}, ${page.sort || 0}, ${key ? q(key) : 'NULL'},
+      ${q(JSON.stringify(page.seo || {}))}, ${q(JSON.stringify({ styles: manifest.styles || [], body_class: page.body_class || '', ...(page.app_entry ? { app_entry: page.app_entry, app_prefix: !!page.app_prefix, app_footer: !!page.app_footer, app_chrome: page.app_chrome !== false } : {}), ...(page.redirect_to ? { redirect_to: page.redirect_to } : {}) }))}, ${page.sort || 0}, ${key ? q(key) : 'NULL'},
       ${status === 'published' ? 'unixepoch()' : 'NULL'})
     ON CONFLICT (site_id, slug) DO UPDATE SET route_path = excluded.route_path, title = excluded.title, status = excluded.status,
       seo_json = excluded.seo_json, metadata_json = excluded.metadata_json, sort_order = excluded.sort_order,
@@ -72,5 +79,7 @@ for (const [name, items] of Object.entries(manifest.menus)) {
 const file = path.join(os.tmpdir(), `cms-apply-${process.pid}.sql`);
 fs.writeFileSync(file, sql.join('\n') + '\n');
 wrangler(['d1', 'execute', 'DB', '--file', file]);
+if (dump) { fs.copyFileSync(file, '/tmp/cms-apply-dump.sql'); dumped.sql = '/tmp/cms-apply-dump.sql'; }
 fs.rmSync(file, { force: true });
 console.log(`CMS_CATALOG_APPLIED site=${site} target=${target} status=${status} pages=${manifest.pages.length}`);
+if (dump) console.log('MANIFEST ' + JSON.stringify(dumped));

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "sourceRepository": "SamPrimeaux/agentsam-sdk",
+  "sourcePath": "assets/brand/inneranimal-companions/v1",
+  "policy": "PrimeTech showcases the original supplied portrait assets. It does not procedurally reconstruct, redraw, stylize, or replace either companion.",
+  "companions": {
+    "geaux": {
+      "name": "Geaux",
+      "animal": "Silverback gorilla",
+      "version": "0.1.0",
+      "sourcePackage": "InnerAnimal-Geaux-v0.1.0.zip",
+      "sourceArchiveSha256": "6e54ff9ed5e6bed75623cb55c36f336f6caa13e4e18d6038d6c6f2184aca5cb0",
+      "showcaseAssets": {
+        "avatars/geaux-avatar-128.png": {
+          "sha256": "1aa692b603db9d963ec7d7be67b66bc61e003512484c7edd1587e3574fe4d97d",
+          "bytes": 21874
+        },
+        "avatars/geaux-icon-64.png": {
+          "sha256": "326f322523a3a0fe65a84ee4c1613cf5a91e905e261cb30958adb7654992d727",
+          "bytes": 6473
+        },
+        "avatars/geaux-portrait-256.png": {
+          "sha256": "e9d95075230f2896b39ca3f34c09b3f0824c42033ec2b83aeacf8dc08eec5057",
+          "bytes": 22779
+        }
+      },
+      "visualApproval": "pending",
+      "sourceStatus": "production-review-candidate"
+    },
+    "meaux": {
+      "name": "Meaux",
+      "animal": "Raccoon",
+      "version": "0.1.0",
+      "sourcePackage": "InnerAnimal-Meaux-v0.1.0.zip",
+      "sourceArchiveSha256": "89726adddc559c41aa1f59d58f170c062cdcfccf55d4f0975cbfbff7426b559a",
+      "showcaseAssets": {
+        "avatars/meaux-avatar-128.png": {
+          "sha256": "6c3bbe47c9525e62bdf0536ed8579a52991d506cbcbe96361971f96475167ed2",
+          "bytes": 19277
+        },
+        "avatars/meaux-icon-64.png": {
+          "sha256": "556535394dba58123a7ce08306130fe81c3b3d79477aa1d2ac3dcb4a24d7805e",
+          "bytes": 5075
+        },
+        "avatars/meaux-portrait-256.png": {
+          "sha256": "923080d789f4ee8faa4b783ea3a51c4ae24c0f7f2a1eb36f39b5153a01c86935",
+          "bytes": 20646
+        }
+      },
+      "visualApproval": "pending",
+      "sourceStatus": "production-review-candidate"
+    }
+  }
+}

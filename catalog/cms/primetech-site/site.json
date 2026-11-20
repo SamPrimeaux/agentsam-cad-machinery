@@ -5,19 +5,6 @@
   ],
   "pages": [
     {
-      "slug": "home",
-      "route": "/",
-      "title": "Home",
-      "seo": {
-        "title": "PrimeTech | Beyond the Blueprint",
-        "description": "Every dream begins before there is a blueprint."
-      },
-      "sort": 1,
-      "body_class": "",
-      "app_entry": "/",
-      "app_footer": true
-    },
-    {
       "slug": "about",
       "route": "/about",
       "title": "About PrimeTech",
@@ -140,6 +127,50 @@
       "body_class": "",
       "app_entry": "/about-app/",
       "app_prefix": true
+    },
+    {
+      "slug": "home",
+      "route": "/",
+      "title": "Home",
+      "seo": {
+        "title": "PrimeTech | Creative Engineering",
+        "description": "Software systems, dimensional tools, brands, merchandise and immersive experiences, connected by one creative practice."
+      },
+      "sort": 1,
+      "body_class": "",
+      "app_entry": "/home-app/",
+      "app_chrome": false
+    },
+    {
+      "slug": "beyond-the-blueprint",
+      "route": "/beyond-the-blueprint",
+      "title": "Beyond the Blueprint",
+      "seo": {
+        "title": "Beyond the Blueprint | PrimeTech CAD",
+        "description": "Every dream begins before there is a blueprint."
+      },
+      "sort": 96,
+      "body_class": "",
+      "app_entry": "/",
+      "app_footer": true
+    },
+    {
+      "slug": "services",
+      "route": "/services",
+      "title": "Services",
+      "seo": {},
+      "sort": 97,
+      "body_class": "",
+      "redirect_to": "/capabilities"
+    },
+    {
+      "slug": "cad-beyond",
+      "route": "/cad/beyond-the-blueprint",
+      "title": "Beyond the Blueprint (alias)",
+      "seo": {},
+      "sort": 98,
+      "body_class": "",
+      "redirect_to": "/beyond-the-blueprint"
     }
   ],
   "globals": {
@@ -163,6 +194,10 @@
       {
         "label": "Industries",
         "href": "/industries"
+      },
+      {
+        "label": "Work",
+        "href": "/selected-work"
       },
       {
         "label": "CAD",
