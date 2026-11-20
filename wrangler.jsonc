@@ -40,6 +40,8 @@
       "!/assets/*",
       "!/brand/*",
       "!/primetech/*",
+      "!/editorial-assets/*",
+      "!/about-app/*",
       "!/fonts/*",
       "!/studio/assets/*"
     ]

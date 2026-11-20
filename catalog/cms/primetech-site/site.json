@@ -13,7 +13,8 @@
         "description": "PrimeTech is a connected practice within InnerAnimalMedia."
       },
       "sort": 10,
-      "body_class": "pt-page"
+      "body_class": "pt-page",
+      "app_entry": "/about-app/"
     },
     {
       "slug": "brand",
@@ -113,6 +114,19 @@
       },
       "sort": 100,
       "body_class": "pt-page"
+    },
+    {
+      "slug": "blog",
+      "route": "/blog",
+      "title": "Blog",
+      "seo": {
+        "title": "Blog | PrimeTech",
+        "description": "Notes, projects and field work from PrimeTech and InnerAnimalMedia."
+      },
+      "sort": 95,
+      "body_class": "",
+      "app_entry": "/about-app/",
+      "app_prefix": true
     }
   ],
   "globals": {
@@ -124,6 +138,10 @@
       {
         "label": "About",
         "href": "/about"
+      },
+      {
+        "label": "Blog",
+        "href": "/blog"
       },
       {
         "label": "Capabilities",

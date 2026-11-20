@@ -46,10 +46,24 @@ export async function handleCmsPage(request, env) {
     .bind(env.CMS_SITE_DOMAIN).first();
   if (!site) return null;
 
-  const page = await env.DB.prepare(
-    "SELECT title, seo_json, metadata_json, content_object_key FROM cms_pages WHERE site_id = ? AND route_path = ? AND status = 'published'"
-  ).bind(site.id, path).first();
-  if (!page || !page.content_object_key) return null;
+  const pageQuery = "SELECT title, seo_json, metadata_json, content_object_key FROM cms_pages WHERE site_id = ? AND route_path = ? AND status = 'published'";
+  let page = await env.DB.prepare(pageQuery).bind(site.id, path).first();
+  if (!page) {
+    // Section routes (e.g. /blog/some-post) resolve to their parent app page.
+    const parent = '/' + path.split('/')[1];
+    const candidate = parent === path ? null : await env.DB.prepare(pageQuery).bind(site.id, parent).first();
+    if (candidate && safeJson(candidate.metadata_json, {}).app_prefix) page = candidate;
+  }
+  if (!page) return null;
+
+  // App pages: a built single-page app is the page (its own header/footer/router).
+  const appEntry = safeJson(page.metadata_json, {}).app_entry;
+  if (appEntry) {
+    if (!env.ASSETS) return null;
+    const res = await env.ASSETS.fetch(new Request(new URL(appEntry, request.url), request));
+    return new Response(res.body, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=60' } });
+  }
+  if (!page.content_object_key) return null;
 
   const [globals, menus] = await Promise.all([
     env.DB.prepare(

@@ -54,10 +54,11 @@ for (const [globalKey, file] of Object.entries(manifest.globals)) {
       content_version = content_version + 1, updated_at = datetime('now');`);
 }
 for (const page of manifest.pages) {
-  const key = `${prefix}/pages/${page.slug}.html`; upload(key, path.join(dir, 'pages', `${page.slug}.html`));
+  const key = page.app_entry ? null : `${prefix}/pages/${page.slug}.html`;
+  if (key) upload(key, path.join(dir, 'pages', `${page.slug}.html`));
   sql.push(`INSERT INTO cms_pages (id, site_id, slug, route_path, title, status, seo_json, metadata_json, sort_order, content_object_key, published_at)
     VALUES ('cmsp_' || lower(hex(randomblob(8))), ${siteId}, ${q(page.slug)}, ${q(page.route)}, ${q(page.title)}, ${q(status)},
-      ${q(JSON.stringify(page.seo || {}))}, ${q(JSON.stringify({ styles: manifest.styles || [], body_class: page.body_class || '' }))}, ${page.sort || 0}, ${q(key)},
+      ${q(JSON.stringify(page.seo || {}))}, ${q(JSON.stringify({ styles: manifest.styles || [], body_class: page.body_class || '', ...(page.app_entry ? { app_entry: page.app_entry, app_prefix: !!page.app_prefix } : {}) }))}, ${page.sort || 0}, ${key ? q(key) : 'NULL'},
       ${status === 'published' ? 'unixepoch()' : 'NULL'})
     ON CONFLICT (site_id, slug) DO UPDATE SET route_path = excluded.route_path, title = excluded.title, status = excluded.status,
       seo_json = excluded.seo_json, metadata_json = excluded.metadata_json, sort_order = excluded.sort_order,
