@@ -147,6 +147,10 @@ export async function handleCmsPage(request, env) {
 // /studio: the SDK-built editor wrapped in the same site header as every other page.
 // The public studio never points visitors at another app, so those controls are removed.
 export async function handleStudio(request, env) {
+  // Both studios sit behind the PrimeTech onboarding: no cookie yet -> onboarding, which hands back here.
+  if (!/(?:^|;\s*)pt_onboarded=1(?:;|$)/.test(request.headers.get('cookie') || '')) {
+    return Response.redirect(new URL('/samscene?next=/studio', request.url).toString(), 302);
+  }
   const entry = await env.ASSETS.fetch(new Request(new URL('/studio-entry.txt', request.url), request));
   if (!entry.ok) return null;
   let chrome = { header: '' };
