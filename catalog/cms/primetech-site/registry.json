@@ -1,0 +1,399 @@
+{
+ "version": 1,
+ "media": [
+  {
+   "dir": "glb",
+   "urlBase": "/glb",
+   "ext": [
+    "glb"
+   ],
+   "category": "model_3d"
+  },
+  {
+   "dir": "samscene/models",
+   "urlBase": "/samscene/models",
+   "ext": [
+    "glb"
+   ],
+   "category": "model_3d"
+  },
+  {
+   "dir": "samscene/library",
+   "urlBase": "/samscene/library",
+   "ext": [
+    "glb",
+    "gltf"
+   ],
+   "category": "model_3d",
+   "recursive": true
+  },
+  {
+   "dir": "scenes",
+   "urlBase": "/scenes",
+   "ext": [
+    "gltf"
+   ],
+   "category": "model_3d",
+   "recursive": true
+  },
+  {
+   "dir": "assets/aistudio",
+   "urlBase": "/assets/aistudio",
+   "ext": [
+    "webp"
+   ],
+   "category": "image"
+  },
+  {
+   "dir": "samscene/assets/aistudio",
+   "urlBase": "/samscene/assets/aistudio",
+   "ext": [
+    "mov",
+    "webp"
+   ],
+   "category": "video"
+  }
+ ],
+ "definitions": [
+  {
+   "kind": "scene",
+   "key": "primetech:native-circuit",
+   "label": "Native circuit scene",
+   "category": "home",
+   "scene_doc": "/scenes/original-4341/original-4341.iamscene.json"
+  },
+  {
+   "kind": "scene",
+   "key": "iam:about-earth",
+   "label": "About Earth globe",
+   "reuse": true
+  },
+  {
+   "kind": "scene",
+   "key": "primetech:architectural-identity",
+   "label": "PrimeTech Architectural Identity",
+   "category": "samscene",
+   "renderer_key": "threejs.samscene.primetech-chamber.v2",
+   "scene_id": "primetech-scene-01-arch-identity"
+  },
+  {
+   "kind": "scene",
+   "key": "primetech:sculptural-emblem",
+   "label": "PrimeTech Sculptural Emblem",
+   "category": "samscene",
+   "renderer_key": "threejs.samscene.sculptural-emblem.v2",
+   "scene_id": "primetech-scene-02-sculptural-emblem"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:home-home",
+   "label": "Our mission is to redefine impossible.",
+   "category": "home"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:home-design",
+   "label": "Designed to see things differently.",
+   "category": "home"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:home-engineering",
+   "label": "Built to work together.",
+   "category": "home"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:home-principles",
+   "label": "Technology with a reason to exist.",
+   "category": "home"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:home-capabilities",
+   "label": "One world. More ways to create.",
+   "category": "home"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:home-cad",
+   "label": "Ideas into dimensions.",
+   "category": "home"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:home-agentsam",
+   "label": "Meet the creative co-worker.",
+   "category": "home"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:home-creative",
+   "label": "The next creative frontier.",
+   "category": "home"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:home-themes",
+   "label": "Design that goes beyond the screen.",
+   "category": "home"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:home-company",
+   "label": "Imagination. Meet execution.",
+   "category": "home"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:home-contact",
+   "label": "What should we build next?",
+   "category": "home"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:samscene-onboarding",
+   "label": "PrimeTech onboarding",
+   "category": "onboarding"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:samscene-gallery",
+   "label": "SamScene scene gallery",
+   "category": "samscene"
+  },
+  {
+   "kind": "section",
+   "key": "primetech:cad-studio",
+   "label": "CAD studio",
+   "category": "studio"
+  },
+  {
+   "kind": "3d_asset",
+   "key": "primetech:model",
+   "label": "PrimeTech 3D model",
+   "category": "model_3d"
+  }
+ ],
+ "pages": {
+  "home": [
+   {
+    "section": "primetech:home-home",
+    "key": "home",
+    "name": "Our mission is to redefine impossible.",
+    "data": {
+     "anchor": "#home",
+     "scene_index": 0
+    }
+   },
+   {
+    "section": "primetech:home-design",
+    "key": "design",
+    "name": "Designed to see things differently.",
+    "data": {
+     "anchor": "#design",
+     "scene_index": 1
+    }
+   },
+   {
+    "section": "primetech:home-engineering",
+    "key": "engineering",
+    "name": "Built to work together.",
+    "data": {
+     "anchor": "#engineering",
+     "scene_index": 2
+    }
+   },
+   {
+    "section": "primetech:native-circuit",
+    "type": "scene",
+    "key": "native-circuit",
+    "name": "Native circuit scene",
+    "data": {
+     "anchor": "#original-circuit-stage",
+     "doc": "/scenes/original-4341/original-4341.iamscene.json"
+    }
+   },
+   {
+    "section": "primetech:home-principles",
+    "key": "principles",
+    "name": "Technology with a reason to exist.",
+    "data": {
+     "anchor": "#principles",
+     "scene_index": 3
+    }
+   },
+   {
+    "section": "primetech:home-capabilities",
+    "key": "capabilities",
+    "name": "One world. More ways to create.",
+    "data": {
+     "anchor": "#capabilities",
+     "scene_index": 4
+    }
+   },
+   {
+    "section": "primetech:home-cad",
+    "key": "cad",
+    "name": "Ideas into dimensions.",
+    "data": {
+     "anchor": "#cad",
+     "scene_index": 5
+    }
+   },
+   {
+    "section": "primetech:home-agentsam",
+    "key": "agentsam",
+    "name": "Meet the creative co-worker.",
+    "data": {
+     "anchor": "#agentsam",
+     "scene_index": 6
+    }
+   },
+   {
+    "section": "primetech:home-creative",
+    "key": "creative",
+    "name": "The next creative frontier.",
+    "data": {
+     "anchor": "#creative",
+     "scene_index": 7
+    }
+   },
+   {
+    "section": "primetech:home-themes",
+    "key": "themes",
+    "name": "Design that goes beyond the screen.",
+    "data": {
+     "anchor": "#themes",
+     "scene_index": 8
+    }
+   },
+   {
+    "section": "primetech:home-company",
+    "key": "company",
+    "name": "Imagination. Meet execution.",
+    "data": {
+     "anchor": "#company",
+     "scene_index": 9
+    }
+   },
+   {
+    "section": "primetech:home-contact",
+    "key": "contact",
+    "name": "What should we build next?",
+    "data": {
+     "anchor": "#contact",
+     "scene_index": 10
+    }
+   }
+  ],
+  "samscene": [
+   {
+    "section": "primetech:samscene-onboarding",
+    "key": "onboarding",
+    "name": "PrimeTech onboarding",
+    "data": {
+     "cookie": "pt_onboarded",
+     "gates": [
+      "/studio",
+      "/samscene"
+     ],
+     "steps": [
+      "name",
+      "company",
+      "focus"
+     ],
+     "focus_source": "blocks"
+    }
+   },
+   {
+    "section": "primetech:samscene-gallery",
+    "key": "gallery",
+    "name": "SamScene scene gallery",
+    "data": {
+     "scenes": [
+      "primetech-scene-01-arch-identity",
+      "primetech-scene-02-sculptural-emblem"
+     ]
+    }
+   }
+  ],
+  "studio": [
+   {
+    "section": "primetech:cad-studio",
+    "key": "cad-studio",
+    "name": "CAD studio",
+    "data": {
+     "mount": "/studio",
+     "gated_by": "onboarding"
+    }
+   }
+  ],
+  "about": [
+   {
+    "section": "iam:about-earth",
+    "type": "scene",
+    "key": "about-earth",
+    "name": "About Earth globe",
+    "data": {
+     "scene": "iam:about-earth"
+    }
+   }
+  ]
+ },
+ "studioPage": {
+  "slug": "studio",
+  "route": "/studio",
+  "title": "CAD Studio"
+ },
+ "onboardingFocus": [
+  {
+   "id": "architecture",
+   "label": "Architecture & BIM",
+   "color": "purple",
+   "route": "/studio"
+  },
+  {
+   "id": "product",
+   "label": "Product Design",
+   "color": "red",
+   "route": "/samscene"
+  },
+  {
+   "id": "motion",
+   "label": "Motion & Media",
+   "color": "blue",
+   "route": "/samscene"
+  },
+  {
+   "id": "interactive",
+   "label": "Interactive Experiences",
+   "color": "orange",
+   "route": "/samscene"
+  },
+  {
+   "id": "brand",
+   "label": "Brand & Marketing",
+   "color": "green",
+   "route": "/brand"
+  },
+  {
+   "id": "robotics",
+   "label": "Robotics & Automation",
+   "color": "blue",
+   "route": "/studio"
+  },
+  {
+   "id": "learning",
+   "label": "Learning & Development",
+   "color": "purple",
+   "route": "/blog"
+  },
+  {
+   "id": "industrial",
+   "label": "Industrial & Manufacturing",
+   "color": "red",
+   "route": "/studio"
+  }
+ ]
+}

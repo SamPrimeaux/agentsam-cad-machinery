@@ -13,6 +13,7 @@ import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { registrySql } from './registry-sql.mjs';
 
 const args = process.argv.slice(2);
 const opt = (name, fallback) => { const i = args.indexOf('--' + name); return i < 0 ? fallback : args[i + 1]; };
@@ -75,6 +76,10 @@ for (const [name, items] of Object.entries(manifest.menus)) {
   sql.push(`INSERT INTO cms_navigation_menus (project_id, project_slug, menu_name, menu_items, site_id)
     SELECT slug, slug, ${q(name)}, ${q(JSON.stringify(items))}, id FROM cms_sites WHERE primary_domain = ${q(domain)}
     ON CONFLICT (project_id, menu_name) DO UPDATE SET menu_items = excluded.menu_items, updated_at = datetime('now');`);
+}
+const registryFile = path.join(dir, 'registry.json');
+if (fs.existsSync(registryFile)) {
+  sql.push(...registrySql({ registry: JSON.parse(fs.readFileSync(registryFile, 'utf8')), publicDir: path.join(root, 'apps/cad-creator/frontend/public'), domain, bucket, status }));
 }
 const file = path.join(os.tmpdir(), `cms-apply-${process.pid}.sql`);
 fs.writeFileSync(file, sql.join('\n') + '\n');
