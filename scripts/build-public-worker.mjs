@@ -21,7 +21,9 @@ requireInvariant(rootConfig.main === 'apps/cad-creator/backend/' + appConfig.mai
 requireInvariant(rootConfig.assets?.directory === 'apps/cad-creator/frontend/dist', 'asset_directory');
 requireInvariant(rootConfig.assets?.binding === appConfig.assets?.binding, 'asset_binding');
 requireInvariant(JSON.stringify(rootConfig.assets.run_worker_first) === JSON.stringify(appConfig.assets.run_worker_first), 'worker_first_routes');
-requireInvariant(rootConfig.assets.run_worker_first.includes('/studio') && rootConfig.assets.run_worker_first.includes('/studio/*'), 'studio_worker_routing');
+const wfr = rootConfig.assets.run_worker_first;
+// /studio is served by the Worker: either listed, or covered by the catch-all with only its static assets negated.
+requireInvariant((wfr.includes('/studio') && wfr.includes('/studio/*')) || (wfr.includes('/*') && !wfr.some((r) => r.startsWith('!/studio') && r !== '!/studio/assets/*')), 'studio_worker_routing');
 requireInvariant(JSON.stringify(rootConfig.routes) === JSON.stringify(appConfig.routes), 'domain_routes');
 requireInvariant(JSON.stringify(rootConfig.d1_databases) === JSON.stringify(appConfig.d1_databases), 'database_bindings');
 requireInvariant(JSON.stringify(rootConfig.r2_buckets) === JSON.stringify(appConfig.r2_buckets), 'r2_bindings');
