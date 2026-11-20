@@ -134,3 +134,22 @@ body.pt-cad-story .pt-brand-footer{margin-top:0}
 @media(max-width:900px){.site-header .main-nav{gap:13px}.site-header .main-nav a{font-size:12px}.panel-cad .chapter-copy,.panel-brand .chapter-copy{max-width:56%;width:56%}.panel-cad .cad-evidence-preview{width:37%}.brand-evidence-grid{width:38%}}
 @media(max-width:750px){.site-header .wordmark-p{width:27px;height:34px}.panel-cad .panel-inner,.panel-brand .panel-inner{justify-content:flex-start}.panel-cad .chapter-copy,.panel-brand .chapter-copy{width:100%;max-width:100%;margin-left:0;margin-top:0}.panel-cad .chapter-copy h2,.panel-brand .chapter-copy h2{font-size:clamp(54px,13vw,82px)}.panel-cad .cad-evidence-preview,.brand-evidence-grid{position:relative;top:auto;left:auto;transform:none;width:100%;margin:24px 0 0}.panel-cad .cad-evidence-preview{max-height:none}.panel-cad .cad-evidence-preview img{height:clamp(180px,35vh,350px)}.brand-evidence-grid img{height:clamp(170px,30vh,260px)}.brand-evidence-grid figure:nth-child(2){transform:translateY(12px)}.brand-evidence-grid figcaption{font-size:8px;white-space:normal}.panel-company .panel-inner{margin:35px 14px;min-height:clamp(560px,82svh,740px);padding:45px 23px;border-radius:24px}.panel-company .chapter-copy h2{font-size:clamp(55px,13vw,85px)}.panel-company .chapter-copy>p{font-size:15px}.panel-contact .contact-direct .contact-primary{min-width:220px}}
 @media(prefers-reduced-motion:reduce){.panel-cad .cad-evidence-preview img{transition:none}}
+
+/* One header for the whole site: the homepage header, used on every page (CMS global "header"). */
+.site-header{--gutter:clamp(22px,2.8vw,55px);--ink:#203149;color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;position:fixed;z-index:130;inset:0 0 auto;display:flex;align-items:center;gap:clamp(15px,2.3vw,44px);height:clamp(79px,7vw,106px);padding:0 var(--gutter);transition:background .3s,box-shadow .3s}
+.site-header.scrolled,.site-header.pt-bar{background:rgba(245,249,249,.83);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);box-shadow:0 1px 0 var(--pt-line,#16334b1a)}
+.site-header.pt-bar{position:sticky;top:0}
+.site-header .wordmark{display:flex;align-items:center;text-decoration:none;color:inherit;white-space:nowrap}
+.site-header .main-nav{margin-left:auto;display:flex;align-items:center}
+.site-header .main-nav a{text-decoration:none;white-space:nowrap;color:inherit;font-weight:500;transition:opacity .2s}
+.site-header .main-nav a:hover,.site-header .main-nav a[aria-current=page],.site-header .main-nav a.active{opacity:.55}
+.site-header .login-link{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(32,49,73,.42);border-radius:40px;padding:7px 17px 7px 7px;margin-left:clamp(2px,2vw,36px);font-size:clamp(13px,1vw,17px);font-weight:500;white-space:nowrap;text-decoration:none;color:inherit;background:#f4fafb2e}
+.site-header .login-link:hover{background:#fffc}
+.site-header .login-arrow{display:grid;place-items:center;width:27px;height:27px;background:var(--ink);color:#fff;border-radius:50%;font-size:16px}
+.site-header .mobile-menu{display:none;align-items:center;justify-content:center;flex-direction:column;gap:6px;padding:8px;border:0;background:transparent;cursor:pointer}
+.site-header .mobile-menu span{width:23px;height:2px;background:var(--ink);transition:transform .2s}
+.site-header .mobile-menu[aria-expanded=true] span:first-child{transform:translateY(4px) rotate(45deg)}
+.site-header .mobile-menu[aria-expanded=true] span:last-child{transform:translateY(-4px) rotate(-45deg)}
+@media(max-width:1150px){.site-header .main-nav{gap:22px}.site-header .login-link{margin-left:0}}
+@media(max-width:800px){.site-header{height:77px}.site-header .main-nav{display:none;position:absolute;top:76px;left:0;right:0;background:#ebf8fcf7;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);padding:27px var(--gutter) 34px;flex-direction:column;align-items:flex-start;gap:27px;box-shadow:0 18px 32px #1325371a}.site-header .main-nav.open{display:flex}.site-header .main-nav a{font-size:20px}.site-header .login-link{margin-left:auto;font-size:12px;padding:5px 11px 5px 5px;gap:6px}.site-header .login-arrow{width:24px;height:24px}.site-header .mobile-menu{display:flex}}
+@media(max-width:480px){.site-header{gap:9px}.site-header .login-link{font-size:0;padding:5px;border:0;background:transparent}.site-header .login-arrow{width:31px;height:31px;font-size:20px}.site-header .mobile-menu{padding:6px}}
