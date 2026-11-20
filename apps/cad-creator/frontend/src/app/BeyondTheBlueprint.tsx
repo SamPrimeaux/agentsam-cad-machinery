@@ -72,6 +72,8 @@ function renderEditorialMarkup(): string {
 }
 const editorialMarkup = renderEditorialMarkup();
 
+const externalChrome = typeof document !== 'undefined' && !!document.querySelector('meta[name="iam-chrome"][content="external"]');
+
 export function BeyondTheBlueprint() {
   useEffect(() => {
     document.body.classList.add('btb-body');
@@ -90,14 +92,14 @@ export function BeyondTheBlueprint() {
     };
   }, []);
   return <div className="btb-site">
-    <header className="btb-cad-site-header">
+    {!externalChrome && <header className="btb-cad-site-header">
       <a href="/" className="btb-cad-brand" aria-label="AgentSam CAD home"><strong>A</strong><span>AgentSam <em>/ CAD</em></span></a>
       <nav aria-label="CAD navigation">
         <a href="/case-studies/dream-house">DreamHouse</a>
         <a href="/#architectural-evidence">The work</a>
         <a className="btb-cad-studio-link" href="/studio">Open CAD Studio ↗</a>
       </nav>
-    </header>
+    </header>}
     <main id="main-content" dangerouslySetInnerHTML={{ __html: editorialMarkup }} />
   </div>;
 }

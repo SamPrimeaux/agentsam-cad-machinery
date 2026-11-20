@@ -5,6 +5,19 @@
   ],
   "pages": [
     {
+      "slug": "home",
+      "route": "/",
+      "title": "Home",
+      "seo": {
+        "title": "PrimeTech | Beyond the Blueprint",
+        "description": "Every dream begins before there is a blueprint."
+      },
+      "sort": 1,
+      "body_class": "",
+      "app_entry": "/",
+      "app_footer": true
+    },
+    {
       "slug": "about",
       "route": "/about",
       "title": "About PrimeTech",

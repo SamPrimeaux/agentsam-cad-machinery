@@ -7,9 +7,13 @@
  *   cms_globals header / footer     -> content_object_key (HTML template in R2)
  *   cms_navigation_menus            -> menu_items JSON; templates reference {{menu:<name>}}
  *
+ * Two page kinds:
+ *   content pages  - R2 HTML fragment wrapped in the header/footer globals
+ *   app pages      - metadata.app_entry names a built SPA; the worker injects the header
+ *                    global (and the footer when metadata.app_footer) at serve time and
+ *                    sets <meta name="iam-chrome" content="external"> so the app drops its own.
  * Nav is data: editing a menu row changes every page without a redeploy.
- * Returns null when the path is not a published CMS page so the caller falls
- * through to the static assets / SPA.
+ * Returns null when the path is not a published CMS page so the caller falls through.
  */
 
 const esc = (v) => String(v ?? '')
@@ -32,6 +36,24 @@ async function readText(env, key) {
   const object = await env.WEBSITE_ASSETS.get(key);
   return object ? object.text() : '';
 }
+
+async function loadChrome(env, siteId, path) {
+  const [globals, menus] = await Promise.all([
+    env.DB.prepare(
+      "SELECT global_key, content_object_key FROM cms_globals WHERE site_id = ? AND global_key IN ('header','footer') AND status = 'published'"
+    ).bind(siteId).all(),
+    env.DB.prepare('SELECT menu_name, menu_items FROM cms_navigation_menus WHERE site_id = ? AND is_active = 1')
+      .bind(siteId).all(),
+  ]);
+  const menuHtml = {};
+  for (const row of menus.results || []) menuHtml[row.menu_name] = renderMenu(safeJson(row.menu_items, []), path);
+  const fill = (html) => html.replace(/\{\{menu:([a-z0-9_-]+)\}\}/gi, (_, name) => menuHtml[name] || '');
+  const keys = Object.fromEntries((globals.results || []).map((g) => [g.global_key, g.content_object_key]));
+  const [header, footer] = await Promise.all([readText(env, keys.header), readText(env, keys.footer)]);
+  return { header: fill(header), footer: fill(footer) };
+}
+
+const FONT_LINK = '<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">';
 
 export async function handleCmsPage(request, env) {
   if (!['GET', 'HEAD'].includes(request.method)) return null;
@@ -56,35 +78,28 @@ export async function handleCmsPage(request, env) {
   }
   if (!page) return null;
 
-  // App pages: a built single-page app is the page (its own header/footer/router).
-  const appEntry = safeJson(page.metadata_json, {}).app_entry;
-  if (appEntry) {
+  const meta = safeJson(page.metadata_json, {});
+  const chrome = await loadChrome(env, site.id, path);
+
+  if (meta.app_entry) {
     if (!env.ASSETS) return null;
-    const res = await env.ASSETS.fetch(new Request(new URL(appEntry, request.url), request));
-    return new Response(res.body, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=60' } });
+    const res = await env.ASSETS.fetch(new Request(new URL(meta.app_entry, request.url), request));
+    const head = `<meta name="iam-chrome" content="external"><link rel="stylesheet" href="/brand/primetech.css">${FONT_LINK}`;
+    const rewritten = new HTMLRewriter()
+      .on('head', { element(el) { el.append(head, { html: true }); } })
+      .on('body', { element(el) {
+        el.prepend(chrome.header, { html: true });
+        if (meta.app_footer) el.append(chrome.footer, { html: true });
+      } })
+      .transform(new Response(res.body, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=60' } }));
+    return rewritten;
   }
+
   if (!page.content_object_key) return null;
-
-  const [globals, menus] = await Promise.all([
-    env.DB.prepare(
-      "SELECT global_key, content_object_key FROM cms_globals WHERE site_id = ? AND global_key IN ('header','footer') AND status = 'published'"
-    ).bind(site.id).all(),
-    env.DB.prepare('SELECT menu_name, menu_items FROM cms_navigation_menus WHERE site_id = ? AND is_active = 1')
-      .bind(site.id).all(),
-  ]);
-
-  const menuHtml = {};
-  for (const row of menus.results || []) menuHtml[row.menu_name] = renderMenu(safeJson(row.menu_items, []), path);
-  const fillMenus = (html) => html.replace(/\{\{menu:([a-z0-9_-]+)\}\}/gi, (_, name) => menuHtml[name] || '');
-
-  const globalKey = Object.fromEntries((globals.results || []).map((g) => [g.global_key, g.content_object_key]));
-  const [header, footer, body] = await Promise.all([
-    readText(env, globalKey.header), readText(env, globalKey.footer), readText(env, page.content_object_key),
-  ]);
+  const body = await readText(env, page.content_object_key);
   if (!body) return null;
 
   const seo = safeJson(page.seo_json, {});
-  const meta = safeJson(page.metadata_json, {});
   const styles = (Array.isArray(meta.styles) ? meta.styles : [])
     .map((href) => `<link rel="stylesheet" href="${esc(href)}">`).join('');
   const bodyClass = meta.body_class ? ` class="${esc(meta.body_class)}"` : '';
@@ -95,8 +110,7 @@ export async function handleCmsPage(request, env) {
     + `<title>${esc(seo.title || page.title)}</title>${description}`
     + `<link rel="canonical" href="https://${esc(env.CMS_SITE_DOMAIN)}${esc(path)}">`
     + '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-    + '<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">'
-    + `${styles}</head><body${bodyClass}>${fillMenus(header)}${body}${fillMenus(footer)}</body></html>`;
+    + `${FONT_LINK}${styles}</head><body${bodyClass}>${chrome.header}${body}${chrome.footer}</body></html>`;
 
   return new Response(request.method === 'HEAD' ? null : html, {
     status: 200,
