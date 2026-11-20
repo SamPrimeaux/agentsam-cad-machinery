@@ -24,12 +24,12 @@ function CaseImage({ assetId, caption, className = '' }: { assetId: string; capt
 }
 
 function DreamHouseProductionHero() {
-  const cover = publishedMedia.find(item => item.id === 'aerial');
+  const cover = publishedMedia.find(item => item.id === 'courtyard-lookdev');
   return <div className="dh-production-hero">
     {cover && <img src={cover.public_path} alt={cover.alt} loading="eager" fetchPriority="high" />}
     <div className="dh-production-hero-caption">
-      <span>DREAMHOUSE / V1.5</span>
-      <span>BLENDER PRODUCTION MODEL · SCHEMATIC COORDINATION</span>
+      <span>DREAMHOUSE / CURRENT</span>
+      <span>NATIVE BIM + EDITABLE SCENE · REVIEW ONLY</span>
     </div>
   </div>;
 }
@@ -39,16 +39,16 @@ export function DreamHouseCaseStudy() {
     <header className="dh-header">
       <a className="dh-wordmark" href="/"><span className="dh-mark">A</span><span>AgentSam <em>/ CAD</em></span></a>
       <nav aria-label="Site navigation">
-        <a href="#approach">The work</a><a href="#system">The system</a>
+        <a href="#approach">The work</a><a href="#system">The system</a><a href="#interiors">Current scenes</a>
         <a className="dh-header-cta" href={STUDIO}>Open CAD Creator <span aria-hidden>↗</span></a>
       </nav>
     </header>
     <main>
       <section className="dh-hero">
-        <div className="dh-meta"><span>CASE STUDY / 001</span><span>ARCHITECTURAL PRODUCTION</span><span>V1.5 — DESIGN REVIEW</span></div>
+        <div className="dh-meta"><span>CASE STUDY / 001</span><span>ARCHITECTURAL PRODUCTION</span><span>V1.6 — CURRENT REVIEW</span></div>
         <div className="dh-hero-intro"><div className="dh-eyebrow"><span className="dh-dot"/> FROM IDEA TO REAL SPACE</div>
           <h1>Architecture,<br/><i>made tangible.</i></h1>
-          <p>One architectural project linked through native FreeCAD, IFC4, Blender, and model-derived drawings. The building can be reviewed as both geometry and an explorable world.</p>
+          <p>One evolving architectural project: 142 validated native solids, a real FreeCAD/IFC source, a coordinated drawing set and new room-scale visual reviews. There is one model, not a separate house per version.</p>
           <a className="dh-primary" href={STUDIO}>Enter the design studio <span>↗</span></a>
         </div>
         <div className="dh-hero-art"><DreamHouseProductionHero/></div>
@@ -73,7 +73,16 @@ export function DreamHouseCaseStudy() {
           <CaseImage assetId="aerial" caption="05 — Full house / V1.5 coordination model"/>
           <CaseImage assetId="top" caption="06 — Roof plan / aerial composition"/>
         </div>
-        <p className="dh-caption">Source: DreamHouse V1.5 Blender production renders, not photographs of a completed building. Architecture, site and construction details remain in schematic design review.</p>
+        <p className="dh-caption">The exterior and technical media remain source-pinned to the verified native model and earlier schematic reviews; the new interior frames join this same current project. These are model renders, not photographs of a completed building.</p>
+      </section>
+      <section className="dh-gallery dh-gallery--interior" id="interiors">
+        <div className="dh-smallcaps">THE CURRENT ENVIRONMENT / SOURCE-DERIVED VISUAL REVIEW</div>
+        <div className="dh-gallery-grid">
+          <CaseImage assetId="great-room" caption="09 — Great Room / current interior study"/>
+          <CaseImage assetId="kitchen" caption="10 — Kitchen / material and daylight study"/>
+          <CaseImage assetId="courtyard-lookdev" caption="11 — Courtyard / full architectural scene"/>
+        </div>
+        <p className="dh-caption">These frames were rendered from the existing DreamHouse Blender source and preserve all 142 design identities. The visual finishes are one project-owned look-development recipe, not approved material specifications or a second model.</p>
       </section>
       <section className="dh-gallery" id="drawings">
         <div className="dh-smallcaps">NATIVE BIM / SPRINT 1 IFC REVIEW</div>
@@ -81,7 +90,7 @@ export function DreamHouseCaseStudy() {
           <CaseImage assetId="west-opening" caption="07 — Corrected west workshop roll-up opening / IFC-derived elevation"/>
           <CaseImage assetId="courtyard-levels" caption="08 — Courtyard, workshop slab, driveway / model-derived levels"/>
         </div>
-        <p className="dh-caption">V1.5 tracks 316 IFC products, 21 preserved spaces and 142 linked design elements. The no-step courtyard slab top is modeled at ±0.000 m. The west opening repair is a validated candidate; grading, other geometry checks, engineering and construction approvals remain outstanding.</p>
+        <p className="dh-caption">One source tracks 316 IFC products, 21 preserved spaces and 142 valid native solids. The workshop IFC double-cut is corrected in a verified candidate and the original FreeCAD workshop solid remains closed and valid. Native IFC promotion, material assignments, grading, engineering and owner approvals are still outstanding.</p>
       </section>
       <section className="dh-last"><span>BUILT FOR THE WHOLE JOURNEY</span><h2>A design you can explore.<br/>A project you can carry forward.</h2><p>Continue into CAD Creator to edit the model. Authenticated project storage and machine execution remain under AgentSam's authorized runtime; the public studio does not grant access to private projects.</p><div className="dh-cta-row"><a className="dh-primary" href={STUDIO}>Launch public studio ↗</a><a className="dh-secondary" href={PLAT}>Open in AgentSam ↗</a></div></section>
     </main>

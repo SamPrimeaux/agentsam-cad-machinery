@@ -15,6 +15,7 @@ const entry = {
   r2_bucket: 'cad',
   content_type: 'image/webp',
   bytes: data.byteLength,
+  sha256: sha,
   status: 'schematic-design-review',
 };
 const catalog = new Map([[entry.public_path, entry]]);
@@ -67,16 +68,18 @@ test('missing or tampered R2 bytes fail closed; future SHA-pinned assets are che
   assert.equal(mismatch.status,409);
 });
 
-test('published manifest contains eight review-only V1.5 files and no model binaries',()=>{
-  assert.equal(media.schema,'dreamhouse.case-study-media.v1');
-  assert.equal(media.revision,'V1.5');
-  assert.equal(media.assets.length,8);
-  assert.equal(new Set(media.assets.map(a=>a.id)).size,8);
+test('one current DreamHouse case study includes 11 verified images and no model binaries',()=>{
+  assert.equal(media.schema,'dreamhouse.case-study-media.v2');
+  assert.equal(media.revision,'V1.6');
+  assert.equal(media.assets.length,11);
+  assert.equal(new Set(media.assets.map(a=>a.id)).size,11);
   for(const asset of media.assets){
-    assert.match(asset.r2_key,/^case-studies\/dreamhouse\/v1\.5\/[a-z0-9-]+\.webp$/);
+    assert.match(asset.r2_key,/^case-studies\/dreamhouse\/(?:v1\.5|current)\/[a-z0-9-]+\.webp$/);
     assert.equal(asset.r2_bucket,'cad');
     assert.equal(asset.status,'schematic-design-review');
     assert.equal(asset.public_path,'/case-studies/dream-house/assets/'+asset.id+'.webp');
-    assert.equal(asset.width,960);
+    assert.ok(asset.width===960||asset.width===1600);
+    assert.match(asset.sha256,/^[0-9a-f]{64}$/);
+    assert.ok(asset.bytes>0);
   }
 });
