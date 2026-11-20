@@ -1,132 +1,135 @@
 {
-  "version": 1,
-  "items": [
-    {
-      "id": "primetech-website",
-      "title": "PrimeTech Website",
-      "kind": "site",
-      "thumb": {
-        "image": "/library/site/primetech-p.svg"
-      },
-      "action": {
-        "type": "page",
-        "href": "/site"
-      }
-    },
-    {
-      "id": "primetech-p-icon",
-      "title": "P Icon",
-      "kind": "model",
-      "thumb": {
-        "glb": "/models/primetech-p-icon.glb"
-      },
-      "action": {
-        "type": "model",
-        "url": "/models/primetech-p-icon.glb",
-        "filename": "primetech-p-icon.glb"
-      }
-    },
-    {
-      "id": "primetech-wordmark",
-      "title": "Wordmark",
-      "kind": "model",
-      "thumb": {
-        "glb": "/models/primetech-wordmark.glb"
-      },
-      "action": {
-        "type": "model",
-        "url": "/models/primetech-wordmark.glb",
-        "filename": "primetech-wordmark.glb"
-      }
-    },
-    {
-      "id": "primetech-hero-chamber",
-      "title": "Hero Chamber",
-      "kind": "model",
-      "thumb": {
-        "glb": "/models/primetech-hero-chamber.glb"
-      },
-      "action": {
-        "type": "model",
-        "url": "/models/primetech-hero-chamber.glb",
-        "filename": "primetech-hero-chamber.glb"
-      }
-    },
-    {
-      "id": "primetech-plinth-tile",
-      "title": "Plinth Tile",
-      "kind": "model",
-      "thumb": {
-        "glb": "/models/primetech-plinth-tile.glb"
-      },
-      "action": {
-        "type": "model",
-        "url": "/models/primetech-plinth-tile.glb",
-        "filename": "primetech-plinth-tile.glb"
-      }
-    },
-    {
-      "id": "primetech-sculptural-stage",
-      "title": "Sculptural Stage",
-      "kind": "model",
-      "thumb": {
-        "glb": "/models/primetech-sculptural-stage.glb"
-      },
-      "action": {
-        "type": "model",
-        "url": "/models/primetech-sculptural-stage.glb",
-        "filename": "primetech-sculptural-stage.glb"
-      }
-    },
-    {
-      "id": "dreamhouse-current",
-      "title": "DreamHouse",
-      "kind": "model",
-      "thumb": {
-        "image": "/library/dreamhouse/current/media/courtyard-lookdev.webp"
-      },
-      "action": {
-        "type": "model",
-        "url": "/library/dreamhouse/current/model/DreamHouse.glb",
-        "filename": "DreamHouse.glb"
-      }
-    },
-    {
-      "id": "dreamhouse-v12",
-      "title": "DreamHouse V1.2",
-      "kind": "model",
-      "thumb": {
-        "image": "/beyond/media/v12-isometric.jpg"
-      },
-      "action": {
-        "type": "model",
-        "url": "/library/dreamhouse/v1.2/DreamHouse-V1.2.glb",
-        "filename": "DreamHouse-V1.2.glb"
-      }
-    },
-    {
-      "id": "beyond-the-blueprint",
-      "title": "Beyond the Blueprint",
-      "kind": "story",
-      "thumb": {
-        "image": "/beyond/media/v12-courtyard.jpg"
-      },
-      "action": {
-        "type": "page",
-        "href": "/beyond"
-      }
-    },
-    {
-      "id": "about-earth",
-      "title": "About Earth",
-      "kind": "scene",
-      "thumb": {
-        "glb": "/library/about-earth/about-earth-geometry.glb"
-      },
-      "action": {
-        "type": "page",
-        "href": "/about-earth"
-      }
-    }
-  ]
+ "version": 1,
+ "items": [
+  {
+   "id": "primetech-website",
+   "title": "PrimeTech Website",
+   "kind": "site",
+   "thumb": {
+    "image": "/library/site/primetech-p.svg"
+   },
+   "action": {
+    "type": "page",
+    "href": "/site",
+    "hostedHref": "/"
+   }
+  },
+  {
+   "id": "primetech-p-icon",
+   "title": "P Icon",
+   "kind": "model",
+   "thumb": {
+    "glb": "/models/primetech-p-icon.glb"
+   },
+   "action": {
+    "type": "model",
+    "url": "/models/primetech-p-icon.glb",
+    "filename": "primetech-p-icon.glb"
+   }
+  },
+  {
+   "id": "primetech-wordmark",
+   "title": "Wordmark",
+   "kind": "model",
+   "thumb": {
+    "glb": "/models/primetech-wordmark.glb"
+   },
+   "action": {
+    "type": "model",
+    "url": "/models/primetech-wordmark.glb",
+    "filename": "primetech-wordmark.glb"
+   }
+  },
+  {
+   "id": "primetech-hero-chamber",
+   "title": "Hero Chamber",
+   "kind": "model",
+   "thumb": {
+    "glb": "/models/primetech-hero-chamber.glb"
+   },
+   "action": {
+    "type": "model",
+    "url": "/models/primetech-hero-chamber.glb",
+    "filename": "primetech-hero-chamber.glb"
+   }
+  },
+  {
+   "id": "primetech-plinth-tile",
+   "title": "Plinth Tile",
+   "kind": "model",
+   "thumb": {
+    "glb": "/models/primetech-plinth-tile.glb"
+   },
+   "action": {
+    "type": "model",
+    "url": "/models/primetech-plinth-tile.glb",
+    "filename": "primetech-plinth-tile.glb"
+   }
+  },
+  {
+   "id": "primetech-sculptural-stage",
+   "title": "Sculptural Stage",
+   "kind": "model",
+   "thumb": {
+    "glb": "/models/primetech-sculptural-stage.glb"
+   },
+   "action": {
+    "type": "model",
+    "url": "/models/primetech-sculptural-stage.glb",
+    "filename": "primetech-sculptural-stage.glb"
+   }
+  },
+  {
+   "id": "dreamhouse-current",
+   "title": "DreamHouse",
+   "kind": "model",
+   "thumb": {
+    "image": "/library/dreamhouse/current/media/courtyard-lookdev.webp"
+   },
+   "action": {
+    "type": "model",
+    "url": "/library/dreamhouse/current/model/DreamHouse.glb",
+    "filename": "DreamHouse.glb"
+   }
+  },
+  {
+   "id": "dreamhouse-v12",
+   "title": "DreamHouse V1.2",
+   "kind": "model",
+   "thumb": {
+    "image": "/beyond/media/v12-isometric.jpg"
+   },
+   "action": {
+    "type": "model",
+    "url": "/library/dreamhouse/v1.2/DreamHouse-V1.2.glb",
+    "filename": "DreamHouse-V1.2.glb"
+   }
+  },
+  {
+   "id": "beyond-the-blueprint",
+   "title": "Beyond the Blueprint",
+   "kind": "story",
+   "thumb": {
+    "image": "/beyond/media/v12-courtyard.jpg"
+   },
+   "action": {
+    "type": "page",
+    "href": "/beyond",
+    "hostedHref": "/beyond-the-blueprint"
+   }
+  },
+  {
+   "id": "about-earth",
+   "title": "About Earth",
+   "kind": "scene",
+   "thumb": {
+    "glb": "/library/about-earth/about-earth-geometry.glb"
+   },
+   "action": {
+    "type": "page",
+    "href": "/about-earth",
+    "hostedHref": "/about"
+   }
+  }
+ ]
 }
