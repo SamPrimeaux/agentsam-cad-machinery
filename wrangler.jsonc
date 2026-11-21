@@ -6,9 +6,6 @@
     "nodejs_compat"
   ],
   "workers_dev": false,
-  "vars": {
-    "CMS_SITE_DOMAIN": "cad.inneranimalmedia.com"
-  },
   "observability": {
     "enabled": true
   },
