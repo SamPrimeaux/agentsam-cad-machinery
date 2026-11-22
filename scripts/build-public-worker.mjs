@@ -37,7 +37,7 @@ function run(file, args, cwd) {
 }
 const bin = path.join(app, 'node_modules/.bin/vite');
 if (!fs.existsSync(bin)) {
-  console.log('CAD public Worker: installing locked CAD Creator 2.6.12 dependencies');
+  console.log(`CAD public Worker: installing locked CAD Creator ${publicCadPackage.version} dependencies`);
   run('npm', ['ci', '--no-audit', '--no-fund'], app);
 }
 run('npm', ['run', 'worker:build'], app);
