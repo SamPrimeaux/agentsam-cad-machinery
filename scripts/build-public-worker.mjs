@@ -13,6 +13,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const app = path.join(root, 'apps/cad-creator');
+const publicCadPackage = JSON.parse(fs.readFileSync(path.join(app,'package.json'),'utf8'));
+const publicFrontendPackage = JSON.parse(fs.readFileSync(path.join(app,'frontend/package.json'),'utf8'));
 const rootConfig = JSON.parse(fs.readFileSync(path.join(root, 'wrangler.jsonc'), 'utf8'));
 const appConfig = JSON.parse(fs.readFileSync(path.join(app, 'backend/wrangler.jsonc'), 'utf8'));
 function requireInvariant(value, reason) { if (!value) throw new Error('cad_public_worker_contract:' + reason); }
