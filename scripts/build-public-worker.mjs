@@ -149,6 +149,7 @@ const receipt = {
   schema:'agentsam.cad.public.studio-source.v1',
   application:sdkManifest.id,
   applicationVersion:sdkManifest.version,
+  sdkPackageVersion:sdkCadPackage.version,
   sourceCommit:sdkCommit.stdout.trim(),
   sourceDirty:sdkStatus.status===0 && sdkStatus.stdout.trim().length>0,
   outputBase:'/studio/'
