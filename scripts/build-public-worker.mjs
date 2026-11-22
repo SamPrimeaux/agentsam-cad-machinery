@@ -42,9 +42,9 @@ if (!fs.existsSync(bin)) {
 }
 run('npm', ['run', 'worker:build'], app);
 const dist = path.join(app, 'frontend/dist');
-// The CAD studio is assembled from an immutable, versioned SDK source release,
-// never the obsolete local 2.6.12 snapshot. Developer hosts can supply an
-// existing approved checkout; CI/Worker builds bootstrap the same pinned source.
+// The CAD studio is assembled from the immutable SDK source lock. The public
+// Worker wrapper and its shared CAD/Workbench dependencies are checked against
+// the same SDK package metadata so this separate deployment cannot drift silently.
 const studioLock = JSON.parse(fs.readFileSync(path.join(root,'catalog/studio-source.lock.json'),'utf8'));
 requireInvariant(studioLock.schema === 'agentsam.cad.public.studio-source-lock.v1' && studioLock.status === 'approved', 'sdk_source_lock_not_approved');
 requireInvariant(typeof studioLock.approved_sdk_commit === 'string' && /^[a-f0-9]{40}$/.test(studioLock.approved_sdk_commit), 'sdk_source_commit_not_pinned');
