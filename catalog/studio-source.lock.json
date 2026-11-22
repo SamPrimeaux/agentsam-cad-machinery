@@ -4,8 +4,9 @@
   "repository_url": "https://github.com/SamPrimeaux/agentsam-sdk.git",
   "sdk_package": "@inneranimalmedia/agentsam-cad-creator",
   "approved_app_version": "2.6.16",
-  "approved_sdk_commit": "53050644bdb9d4b45fa70a6edb43786e24af2730",
+  "approved_sdk_package_version": "2.6.17",
+  "approved_sdk_commit": "67866fa9d19401e61ce28a76de71fee00c2291ff",
   "approved_for": "standalone /studio bundle packaging",
-  "origin_evidence": "SDK main CAD 2.6.13 from the merged unified/revision-backed studio, with clean commit ec7edb7 and locally passing frontend typecheck, 46 tests and production build; candidate public release requires CI and standalone visual verification before deployment.",
+  "origin_evidence": "Current SDK main at 67866fa9d19401e61ce28a76de71fee00c2291ff. SDK and CAD package version 2.6.17; independently versioned CAD app manifest 2.6.16. Includes merged CAD templates, IAMScene v2, standalone-host isolation, native sketch authoring, and current BIM/robotics integration.",
   "policy": "Version-pinned clean source; do not ship dirty working trees or silently fall back to a stale local app snapshot."
 }
