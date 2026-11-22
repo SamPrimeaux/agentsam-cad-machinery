@@ -2,7 +2,7 @@
  * CMS-driven public pages for the CAD site.
  *
  * Contract (existing tables only, no new schema):
- *   cms_sites.primary_domain        -> resolves the site from env.CMS_SITE_DOMAIN
+ *   cms_sites.primary_domain        -> resolves the site from the routed request hostname
  *   cms_pages (published)           -> route_path, title, seo_json, metadata_json, content_object_key
  *   cms_globals header / footer     -> content_object_key (HTML template in R2)
  *   cms_navigation_menus            -> menu_items JSON; templates reference {{menu:<name>}}
@@ -64,15 +64,17 @@ const FONT_LINK = '<link href="https://fonts.googleapis.com/css2?family=DM+Sans:
 
 export async function handleCmsPage(request, env) {
   if (!['GET', 'HEAD'].includes(request.method)) return null;
-  if (!env.DB || !env.WEBSITE_ASSETS || !env.CMS_SITE_DOMAIN) return null;
+  if (!env.DB || !env.WEBSITE_ASSETS) return null;
 
   const url = new URL(request.url);
   const lastSegment = url.pathname.split('/').pop() || '';
   if (lastSegment.includes('.')) return null; // a file request, not a page
 
   const path = url.pathname.replace(/\/+$/, '') || '/';
-  const site = await env.DB.prepare('SELECT id FROM cms_sites WHERE primary_domain = ?')
-    .bind(env.CMS_SITE_DOMAIN).first();
+  // Cloudflare custom-domain routing is the source of the request hostname.
+  // CMS site identity is data in cms_sites, never a per-deployment env var.
+  const site = await env.DB.prepare('SELECT id, primary_domain FROM cms_sites WHERE primary_domain = ?')
+    .bind(url.hostname.toLowerCase()).first();
   if (!site) return null;
 
   const pageQuery = "SELECT title, seo_json, metadata_json, content_object_key FROM cms_pages WHERE site_id = ? AND route_path = ? AND status = 'published'";
@@ -129,7 +131,7 @@ export async function handleCmsPage(request, env) {
   const html = '<!doctype html><html lang="en"><head><meta charset="utf-8">'
     + '<meta name="viewport" content="width=device-width,initial-scale=1">'
     + `<title>${esc(seo.title || page.title)}</title>${description}`
-    + `<link rel="canonical" href="https://${esc(env.CMS_SITE_DOMAIN)}${esc(path)}">`
+    + `<link rel="canonical" href="https://${esc(site.primary_domain)}${esc(path)}">`
     + '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
     + `${FONT_LINK}${styles}</head><body${bodyClass}>${chrome.header}${body}${chrome.footer}</body></html>`;
 

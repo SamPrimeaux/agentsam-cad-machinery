@@ -1,5 +1,4 @@
 {
-  "domain_env": "CMS_SITE_DOMAIN",
   "styles": [
     "/brand/primetech.css"
   ],
