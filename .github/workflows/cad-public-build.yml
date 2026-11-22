@@ -30,48 +30,7 @@ jobs:
       - name: Build CAD Creator and validate Worker/source ownership
         run: node scripts/build-public-worker.mjs
       - name: Verify deploy bundle without publishing
-        run: npx --yes wrangler@4.151.1 deploy --dry-run
+        run: apps/cad-creator/node_modules/.bin/wrangler deploy --dry-run
 
-  deploy-public-cad:
-    name: Deploy verified CAD Worker to cad.inneranimalmedia.com
-    needs: verify-public-cad
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    timeout-minutes: 25
-    concurrency:
-      group: cad-production-domain
-      cancel-in-progress: false
-    permissions:
-      contents: read
-    environment: production
-    env:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: Verify Cloudflare release authorization
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [[ -z "${CLOUDFLARE_API_TOKEN:-}" || -z "${CLOUDFLARE_ACCOUNT_ID:-}" ]]; then
-            echo "::error::Production deployment requires CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID in repository or production environment secrets."
-            exit 1
-          fi
-      - name: Build approved CAD frontend and Worker
-        run: node scripts/build-public-worker.mjs
-      - name: Deploy verified Worker to configured custom domain
-        run: npx --yes wrangler@4.151.1 deploy
-      - name: Verify public DreamHouse case study and private CAD boundary
-        shell: bash
-        run: |
-          set -euo pipefail
-          BASE="https://cad.inneranimalmedia.com"
-          curl --fail --retry 7 --retry-all-errors --retry-delay 5 --silent --show-error "$BASE/health" -o /tmp/cad-health.json
-          node -e 'const x=require("/tmp/cad-health.json");if(!x.ok||x.app!=="cad-creator")process.exit(1)'
-          curl --fail --retry 7 --retry-all-errors --retry-delay 5 --silent --show-error "$BASE/case-studies/dream-house/assets/aerial.webp" -o /tmp/dh-aerial.webp
-          node -e 'const fs=require("fs");const b=fs.readFileSync("/tmp/dh-aerial.webp");if(b.length!==20514||b.subarray(0,4).toString()!=="RIFF"||b.subarray(8,12).toString()!=="WEBP")process.exit(1)'
-          status="$(curl -sS -o /dev/null -w '%{http_code}' "$BASE/case-studies/dream-house/assets/DreamHouse.FCStd")"
-          test "$status" = 404 || { echo "::error::CAD native model path is not private ($status)"; exit 1; }
+  # Production publishing is handled by the connected Cloudflare Workers Builds
+  # integration for this repository. GitHub Actions remains verification-only.
