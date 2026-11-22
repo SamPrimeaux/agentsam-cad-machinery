@@ -30,7 +30,7 @@ jobs:
       - name: Build CAD Creator and validate Worker/source ownership
         run: node scripts/build-public-worker.mjs
       - name: Verify deploy bundle without publishing
-        run: npx --yes wrangler@4.151.1 deploy --dry-run
+        run: apps/cad-creator/node_modules/.bin/wrangler deploy --dry-run
 
   deploy-public-cad:
     name: Deploy verified CAD Worker to cad.inneranimalmedia.com
