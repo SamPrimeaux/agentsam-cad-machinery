@@ -65,6 +65,18 @@ if (process.env.AGENTSAM_SDK_SOURCE_ROOT?.trim()) {
   run('npm', ['ci','--no-audit','--no-fund'], sdkDir);
 }
 const sdkCad = path.join(sdkDir, 'apps/cad-creator');
+const sdkCadPackage = JSON.parse(fs.readFileSync(path.join(sdkCad,'package.json'),'utf8'));
+const sdkFrontendPackage = JSON.parse(fs.readFileSync(path.join(sdkCad,'frontend/package.json'),'utf8'));
+const sdkSharedPackage = JSON.parse(fs.readFileSync(path.join(sdkCad,'shared/cad/package.json'),'utf8'));
+const publicSharedPackage = JSON.parse(fs.readFileSync(path.join(app,'shared/cad/package.json'),'utf8'));
+requireInvariant(publicCadPackage.version === studioLock.approved_sdk_package_version, 'public_sdk_package_version_unapproved');
+requireInvariant(sdkCadPackage.version === studioLock.approved_sdk_package_version, 'sdk_package_version_unapproved');
+requireInvariant(publicFrontendPackage.version === sdkFrontendPackage.version, 'public_frontend_version_drift');
+for (const dependency of ['@inneranimalmedia/agentsam-cad-shared','@inneranimalmedia/agentsam-workbench']) {
+  requireInvariant(publicFrontendPackage.dependencies?.[dependency] === sdkFrontendPackage.dependencies?.[dependency], 'public_frontend_dependency_drift:' + dependency);
+}
+requireInvariant(publicSharedPackage.version === sdkSharedPackage.version, 'public_shared_package_version_drift');
+requireInvariant(publicCadPackage.devDependencies?.wrangler === sdkCadPackage.devDependencies?.wrangler, 'public_worker_tooling_drift');
 // SDK root npm workspaces intentionally exclude runnable CAD apps. Resolve the
 // public frontend's external dependencies from its immutable app lock without
 // installing its unpublished @inneranimalmedia workspace packages from npm.
