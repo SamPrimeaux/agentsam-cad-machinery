@@ -20,7 +20,12 @@ const sha=(bytes)=>createHash('sha256').update(bytes).digest('hex');
 function env({published=true,tamper=false}={}){
  return {
   WEBSITE_ASSETS:{async get(key){return key===prefix+'model.glb.gz' ? {arrayBuffer:async()=>zipped.buffer.slice(zipped.byteOffset,zipped.byteOffset+zipped.byteLength)}:null}},
-  DB:{prepare(sql){assert.match(sql,/visibility='public'/);return {bind(key){assert.equal(key,prefix+'model.glb.gz');return {async first(){return published?{content_hash:tamper?'bad':sha(zipped)}:null}}}}}}
+  DB:{prepare(sql){
+   if(sql.includes('FROM cms_sites')) return {bind(domain){assert.equal(domain,'cad.inneranimalmedia.com');return {async first(){return {id:'cad-site',primary_domain:domain}}}}};
+   if(sql.includes('FROM cms_pages')) return {bind(siteId){assert.equal(siteId,'cad-site');return {async first(){return null}}}};
+   assert.match(sql,/visibility='public'/);
+   return {bind(key){assert.equal(key,prefix+'model.glb.gz');return {async first(){return published?{content_hash:tamper?'bad':sha(zipped)}:null}}}};
+  }}
  };
 }
 test('published DreamHouse GLB is integrity checked and transparently decompressed',async()=>{

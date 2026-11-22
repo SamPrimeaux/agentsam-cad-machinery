@@ -13,6 +13,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const app = path.join(root, 'apps/cad-creator');
+const publicCadPackage = JSON.parse(fs.readFileSync(path.join(app,'package.json'),'utf8'));
+const publicFrontendPackage = JSON.parse(fs.readFileSync(path.join(app,'frontend/package.json'),'utf8'));
 const rootConfig = JSON.parse(fs.readFileSync(path.join(root, 'wrangler.jsonc'), 'utf8'));
 const appConfig = JSON.parse(fs.readFileSync(path.join(app, 'backend/wrangler.jsonc'), 'utf8'));
 function requireInvariant(value, reason) { if (!value) throw new Error('cad_public_worker_contract:' + reason); }
@@ -35,14 +37,14 @@ function run(file, args, cwd) {
 }
 const bin = path.join(app, 'node_modules/.bin/vite');
 if (!fs.existsSync(bin)) {
-  console.log('CAD public Worker: installing locked CAD Creator 2.6.12 dependencies');
+  console.log(`CAD public Worker: installing locked CAD Creator ${publicCadPackage.version} dependencies`);
   run('npm', ['ci', '--no-audit', '--no-fund'], app);
 }
 run('npm', ['run', 'worker:build'], app);
 const dist = path.join(app, 'frontend/dist');
-// The CAD studio is assembled from an immutable, versioned SDK source release,
-// never the obsolete local 2.6.12 snapshot. Developer hosts can supply an
-// existing approved checkout; CI/Worker builds bootstrap the same pinned source.
+// The CAD studio is assembled from the immutable SDK source lock. The public
+// Worker wrapper and its shared CAD/Workbench dependencies are checked against
+// the same SDK package metadata so this separate deployment cannot drift silently.
 const studioLock = JSON.parse(fs.readFileSync(path.join(root,'catalog/studio-source.lock.json'),'utf8'));
 requireInvariant(studioLock.schema === 'agentsam.cad.public.studio-source-lock.v1' && studioLock.status === 'approved', 'sdk_source_lock_not_approved');
 requireInvariant(typeof studioLock.approved_sdk_commit === 'string' && /^[a-f0-9]{40}$/.test(studioLock.approved_sdk_commit), 'sdk_source_commit_not_pinned');
@@ -63,6 +65,18 @@ if (process.env.AGENTSAM_SDK_SOURCE_ROOT?.trim()) {
   run('npm', ['ci','--no-audit','--no-fund'], sdkDir);
 }
 const sdkCad = path.join(sdkDir, 'apps/cad-creator');
+const sdkCadPackage = JSON.parse(fs.readFileSync(path.join(sdkCad,'package.json'),'utf8'));
+const sdkFrontendPackage = JSON.parse(fs.readFileSync(path.join(sdkCad,'frontend/package.json'),'utf8'));
+const sdkSharedPackage = JSON.parse(fs.readFileSync(path.join(sdkCad,'shared/cad/package.json'),'utf8'));
+const publicSharedPackage = JSON.parse(fs.readFileSync(path.join(app,'shared/cad/package.json'),'utf8'));
+requireInvariant(publicCadPackage.version === studioLock.approved_sdk_package_version, 'public_sdk_package_version_unapproved');
+requireInvariant(sdkCadPackage.version === studioLock.approved_sdk_package_version, 'sdk_package_version_unapproved');
+requireInvariant(publicFrontendPackage.version === sdkFrontendPackage.version, 'public_frontend_version_drift');
+for (const dependency of ['@inneranimalmedia/agentsam-cad-shared','@inneranimalmedia/agentsam-workbench']) {
+  requireInvariant(publicFrontendPackage.dependencies?.[dependency] === sdkFrontendPackage.dependencies?.[dependency], 'public_frontend_dependency_drift:' + dependency);
+}
+requireInvariant(publicSharedPackage.version === sdkSharedPackage.version, 'public_shared_package_version_drift');
+requireInvariant(publicCadPackage.devDependencies?.wrangler === sdkCadPackage.devDependencies?.wrangler, 'public_worker_tooling_drift');
 // SDK root npm workspaces intentionally exclude runnable CAD apps. Resolve the
 // public frontend's external dependencies from its immutable app lock without
 // installing its unpublished @inneranimalmedia workspace packages from npm.
@@ -135,6 +149,7 @@ const receipt = {
   schema:'agentsam.cad.public.studio-source.v1',
   application:sdkManifest.id,
   applicationVersion:sdkManifest.version,
+  sdkPackageVersion:sdkCadPackage.version,
   sourceCommit:sdkCommit.stdout.trim(),
   sourceDirty:sdkStatus.status===0 && sdkStatus.stdout.trim().length>0,
   outputBase:'/studio/'
